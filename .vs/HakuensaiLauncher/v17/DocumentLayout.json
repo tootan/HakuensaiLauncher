@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4DFDC6B6-4426-45D9-AEF0-3F67ACFD054B}|HakuensaiLauncher.vcxproj|C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4DFDC6B6-4426-45D9-AEF0-3F67ACFD054B}|HakuensaiLauncher.vcxproj|solutionrelative:Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DFDC6B6-4426-45D9-AEF0-3F67ACFD054B}|HakuensaiLauncher.vcxproj|C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\launcherInfo.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{4DFDC6B6-4426-45D9-AEF0-3F67ACFD054B}|HakuensaiLauncher.vcxproj|solutionrelative:launcherInfo.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "launcherInfo.txt",
+              "DocumentMoniker": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\launcherInfo.txt",
+              "RelativeDocumentMoniker": "launcherInfo.txt",
+              "ToolTip": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\launcherInfo.txt",
+              "RelativeToolTip": "launcherInfo.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-08-20T03:01:25.561Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Game.cpp",
+              "DocumentMoniker": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\Game.cpp",
+              "RelativeDocumentMoniker": "Game.cpp",
+              "ToolTip": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\Game.cpp",
+              "RelativeToolTip": "Game.cpp",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAAAO4AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-08-20T02:59:54.349Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

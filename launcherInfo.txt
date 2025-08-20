@@ -1,0 +1,8 @@
+{
+titleimage:image/hahahahaha.png
+gamenumber:1
+}
+{
+titleimage:image/bantyan.JPG
+gamenumber:2
+}
