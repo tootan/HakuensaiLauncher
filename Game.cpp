@@ -49,7 +49,6 @@ public:
 	}
 };
 
-
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 	ChangeWindowMode(TRUE);//ウインドウ設定
 	SetGraphMode(1920, 1080, 32);//画面サイズ指定(FHD、簡単には閉じれないぞ・・・ﾆﾋﾋ)
@@ -163,7 +162,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 	FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
 	char gameInfoLine[256]; //GameInfo.txtの内容を格納する文字列
 	int gameyousocheck;
-	int gameyouso = -1; //Gameの個数をカウントする変数
+	int gameyouso = 0; //Gameの個数をカウントする変数
 	int gamecheck = 0;//StringgameInfoLineの配列をカウントする変数
 	std::vector<int> gametitleimage; //Gameのタイトル画像のインデックスを格納するベクター
 	char chargameyouso[256];//Gameの個数を格納する文字列
@@ -195,92 +194,110 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 			}
 		}
 	}
-		FileRead_close(GameInfoFile); // ファイルを閉じる
-		sprintf(chargameyouso, "%d", gameyouso); //Gameの個数を文字列に変換
-		DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
-		DrawStringToHandle(0, 0, "Complete!", GetColor(255, 255, 255), font);//タイトル描画
-		ScreenFlip();//裏画面を表画面に
-		int feding = 225; //フェードイン用変数
-		int page = 1;//ページ番号変数
-		int pagekasan;
-		while (ProcessMessage() == 0 /*恒例のプロセスメッセージ*/ && ClearDrawScreen() == 0/*スクリーンクリーン（初期化っていうか全削除っていうか・・・もうなんでもいいや）*/) {
-			fps.Update();	//FPS更新
-			time_t t = time(NULL);//現在時刻を取得
-			localtime_s(&local, &t);//現在時刻をローカル時間に変換
-			strftime(timebuf, sizeof(timebuf), "%H:%M", &local);//時刻をフォーマットして文字列に変換
-			GetMousePoint(&mouseX, &mouseY); //マウス座標取得
-			SetDrawMode(DX_DRAWMODE_BILINEAR);//描画モードをバイリニアフィルタに設定(アンチエイリアス効果)
-			DrawRotaGraph(60, 50, 1.0, PI * Communicationmarkangle, Communicationmark, TRUE); //コミュニケーションマーク描画
-			SetDrawMode(DX_DRAWMODE_NEAREST);//描画モードをニアレストネイバーに設定(アンチエイリアス効果なし)
-			DrawStringToHandle(450, 10, "柏苑祭", GetColor(0, 0, 0), titlefont);//タイトル描画
-			DrawStringToHandle(785, 10, "2025", GetColor(255, 0, 0), titlefont);//タイトル描画2
-			DrawBox(0, 105, 1920, 110, GetColor(255, 0, 0), TRUE);//赤い線描画
-			DrawStringToHandle(1320, 5, "♪昼下がり気分", GetColor(0, 0, 0), font);//BGM名描画
-			if (BGMinfo == 1) { //BGMがONなら
-				DrawGraph(1400, 35, onpuon, TRUE); //♪ボタンオン描画
-			}
-			else if (BGMinfo == 0) { //BGMがOFFなら
-				DrawGraph(1400, 35, onpuoff, TRUE); //♪ボタンオフ描画
-			}
-			DrawBox(0, 600, 1920, 800, GetColor(255, 160, 160), TRUE);//赤いボックス描画
-			DrawBox(0, 800, 1920, 900, GetColor(100, 100, 100), TRUE);//灰色のボックス描画
-			DrawStringToHandle(1375, 803, timebuf, GetColor(255, 255, 255), timefont);//時刻描画
-			DrawLineAA(1370, 800, 1370, 900, GetColor(255, 255, 255));//時刻の縦線描画
-			DrawGraph(10, 650, hidaribotan, TRUE); //左ボタン描画
-			DrawGraph(1420, 650, migibotan, TRUE); //右ボタン描画
-			DrawBox(65, 145, 1470, 565, GetColor(200, 200, 200), TRUE);//白いボックス描画
-			DrawStringToHandle(70, 150, chargameyouso, GetColor(0, 0, 0), font);
-			DrawBox(800, 173, 1440, 533, GetColor(0, 0, 0), TRUE);//黒いボックス描画
-			DrawGraph(90, 613, gametitleimage[0], false);//これだ!
-			DrawGraph(285, 613, gametitleimage[1], false);//これだ!
-			DrawBox(480, 613, 655, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画2
-			DrawBox(675, 613, 850, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画3
-			DrawBox(870, 613, 1045, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画4
-			DrawBox(1065, 613, 1240, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画5
-			DrawBox(1260, 613, 1435, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画6
-			fps.Draw();		//FPS描画
-			DrawFormatString(55, 0, GetColor(0, 0, 0), "BGMCount:%d", BGMCount);//BGMCount変数表示
-			DrawFormatString(180, 0, GetColor(0, 0, 0), "MouseX:%d", mouseX);//マウスX座標表示
-			DrawFormatString(280, 0, GetColor(0, 0, 0), "MouseY:%d", mouseY);//マウスY座標表示
-			if (feding != -1) {
-				SetDrawBlendMode(DX_BLENDMODE_ALPHA, feding); //フェードインのためのブレンドモード設定
-				DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE); //画面全体を黒で塗りつぶす
-				SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0); //ブレンドモードを元に戻す
-				feding -= 1; //フェードインのために徐々に透明度を下げる
-			}
-			ScreenFlip();//裏画面を表画面に
-			fps.Wait();		//待機
-			if (BGMCount % 28200 == 0) { // 235秒に一度
-				BGMCount = 0;//カウントリセット
-				PlaySoundMem(BGM, DX_PLAYTYPE_BACK); // 効果音を再生する
-			}
-
-			BGMCount++;//プラス
-			Communicationmarkangle += 0.0005;//回転!
-			if (Communicationmarkangle == 4)/*一回転したら*/ {
-				Communicationmarkangle = 2;//角度リセット
-			}
-			mouseInput = GetMouseInput();
-			if ((mouseInput & MOUSE_INPUT_LEFT) != 0 && (prevMouseInput & MOUSE_INPUT_LEFT) == 0) { // 押された瞬間
-
-				if (mouseX >= 1400 && mouseX <= 1500 && mouseY >= 35 && mouseY <= 135) { //♪ボタンの範囲内なら
-					fps.FPS = 1;
-					if (BGMinfo == 1) {//BGMがONなら
-						ChangeVolumeSoundMem(0, BGM); //BGMの音量を0に設定
-						BGMinfo = 0; //BGM情報をOFFに変更
-						PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
+	FileRead_close(GameInfoFile); // ファイルを閉じる
+	sprintf(chargameyouso, "%d", gameyouso); //Gameの個数を文字列に変換
+	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
+	DrawStringToHandle(0, 0, "Complete!", GetColor(255, 255, 255), font);//タイトル描画
+	ScreenFlip();//裏画面を表画面に
+	int feding = 225; //フェードイン用変数
+	int page = 1;//ページ番号変数
+	int pagekasan = 0;
+	int pagetotal = gameyouso / 7 + 1;
+	while (ProcessMessage() == 0 /*恒例のプロセスメッセージ*/ && ClearDrawScreen() == 0/*スクリーンクリーン（初期化っていうか全削除っていうか・・・もうなんでもいいや）*/) {
+		fps.Update();	//FPS更新
+		time_t t = time(NULL);//現在時刻を取得
+		localtime_s(&local, &t);//現在時刻をローカル時間に変換
+		strftime(timebuf, sizeof(timebuf), "%H:%M", &local);//時刻をフォーマットして文字列に変換
+		GetMousePoint(&mouseX, &mouseY); //マウス座標取得
+		SetDrawMode(DX_DRAWMODE_BILINEAR);//描画モードをバイリニアフィルタに設定(アンチエイリアス効果)
+		DrawRotaGraph(60, 50, 1.0, PI * Communicationmarkangle, Communicationmark, TRUE); //コミュニケーションマーク描画
+		SetDrawMode(DX_DRAWMODE_NEAREST);//描画モードをニアレストネイバーに設定(アンチエイリアス効果なし)
+		DrawStringToHandle(450, 10, "柏苑祭", GetColor(0, 0, 0), titlefont);//タイトル描画
+		DrawStringToHandle(785, 10, "2025", GetColor(255, 0, 0), titlefont);//タイトル描画2
+		DrawBox(0, 105, 1920, 110, GetColor(255, 0, 0), TRUE);//赤い線描画
+		DrawStringToHandle(1320, 5, "♪昼下がり気分", GetColor(0, 0, 0), font);//BGM名描画
+		if (BGMinfo == 1) { //BGMがONなら
+			DrawGraph(1400, 35, onpuon, TRUE); //♪ボタンオン描画
+		}
+		else if (BGMinfo == 0) { //BGMがOFFなら
+			DrawGraph(1400, 35, onpuoff, TRUE); //♪ボタンオフ描画
+		}
+		DrawBox(0, 600, 1920, 800, GetColor(255, 160, 160), TRUE);//赤いボックス描画
+		DrawBox(0, 800, 1920, 900, GetColor(100, 100, 100), TRUE);//灰色のボックス描画
+		DrawStringToHandle(1375, 803, timebuf, GetColor(255, 255, 255), timefont);//時刻描画
+		DrawLineAA(1370, 800, 1370, 900, GetColor(255, 255, 255));//時刻の縦線描画
+        DrawFormatStringToHandle(5, 803, GetColor(255, 255, 255), timefont, "Page:%d/%d", page, pagetotal);//ページ番号描画
+		DrawGraph(10, 650, hidaribotan, TRUE); //左ボタン描画
+		DrawGraph(1420, 650, migibotan, TRUE); //右ボタン描画
+		DrawBox(60, 145, 1470, 560, GetColor(200, 200, 200), TRUE);//灰色ボックス描画
+		DrawStringToHandle(70, 150, chargameyouso, GetColor(0, 0, 0), font);
+		DrawBox(790, 173, 1430, 533, GetColor(0, 0, 0), TRUE);//黒いボックス描画
+		DrawGraph(90, 613, gametitleimage[0 + pagekasan], false);//これだ!
+		if (gameyouso == 2 + pagekasan) {
+			DrawGraph(285, 613, gametitleimage[1 + pagekasan], false);//これだ!
+			if(gameyouso == 3 + pagekasan) {
+				DrawGraph(480, 613, gametitleimage[2 + pagekasan], false);//これだ!
+				if (gameyouso == 4 + pagekasan) {
+					DrawGraph(675, 613, gametitleimage[3 + pagekasan], false);//これだ!
+					if (gameyouso == 5 + pagekasan) {
+						DrawGraph(870, 613, gametitleimage[4 + pagekasan], false);//これだ!
+						if (gameyouso == 6 + pagekasan) {
+							DrawGraph(1065, 613, gametitleimage[5 + pagekasan], false);//これだ!
+							if (gameyouso == 7 + pagekasan) {
+								DrawGraph(1260, 613, gametitleimage[6 + pagekasan], false);//これだ!
+							}
+						}
 					}
-					else { //BGMがOFFなら
-						ChangeVolumeSoundMem(255, BGM); //BGMの音量を最大に設定
-						BGMinfo = 1; //BGM情報をONに変更
-						PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
-					}
-					fps.FPS = 120; //FPSを元に戻す
 				}
 			}
-			prevMouseInput = mouseInput; // ループの最後で状態を保存
+		}
+		DrawBox(480, 613, 655, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画2
+		DrawBox(675, 613, 850, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画3
+		DrawBox(870, 613, 1045, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画4
+		DrawBox(1065, 613, 1240, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画5
+		DrawBox(1260, 613, 1435, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画6
+		fps.Draw();		//FPS描画
+		DrawFormatString(55, 0, GetColor(0, 0, 0), "BGMCount:%d", BGMCount);//BGMCount変数表示
+		DrawFormatString(180, 0, GetColor(0, 0, 0), "MouseX:%d", mouseX);//マウスX座標表示
+		DrawFormatString(280, 0, GetColor(0, 0, 0), "MouseY:%d", mouseY);//マウスY座標表示
+		if (feding != -1) {
+			SetDrawBlendMode(DX_BLENDMODE_ALPHA, feding); //フェードインのためのブレンドモード設定
+			DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE); //画面全体を黒で塗りつぶす
+			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0); //ブレンドモードを元に戻す
+			feding -= 1; //フェードインのために徐々に透明度を下げる
+		}
+		ScreenFlip();//裏画面を表画面に
+		fps.Wait();		//待機
+		if (BGMCount % 28200 == 0) { // 235秒に一度
+			BGMCount = 0;//カウントリセット
+			PlaySoundMem(BGM, DX_PLAYTYPE_BACK); // 効果音を再生する
 		}
 
-		DxLib_End();//終わりー
+		BGMCount++;//プラス
+		Communicationmarkangle += 0.0005;//回転!
+		if (Communicationmarkangle == 4)/*一回転したら*/ {
+			Communicationmarkangle = 2;//角度リセット
+		}
+		mouseInput = GetMouseInput();
+		if ((mouseInput & MOUSE_INPUT_LEFT) != 0 && (prevMouseInput & MOUSE_INPUT_LEFT) == 0) { // 押された瞬間
+			if (mouseX >= 1400 && mouseX <= 1500 && mouseY >= 35 && mouseY <= 135) { //♪ボタンの範囲内なら
+				fps.FPS = 1;
+				if (BGMinfo == 1) {//BGMがONなら
+					ChangeVolumeSoundMem(0, BGM); //BGMの音量を0に設定
+					BGMinfo = 0; //BGM情報をOFFに変更
+					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
+				}
+				else { //BGMがOFFなら
+					ChangeVolumeSoundMem(255, BGM); //BGMの音量を最大に設定
+					BGMinfo = 1; //BGM情報をONに変更
+					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
+				}
+				fps.FPS = 120; //FPSを元に戻す
+			}
+		}
+		prevMouseInput = mouseInput; // ループの最後で状態を保存
+	}
+
+	DxLib_End();//終わりー
 	return 0; //正常終了
 }
