@@ -168,6 +168,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 	std::vector<int> gametitleimage; //Gameのタイトル画像のインデックスを格納するベクター
 	char chargameyouso[256];//Gameの個数を格納する文字列
 	std::string StringgameInfoLine; //GameInfo.txtの内容を格納する文字列
+	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
+	DrawStringToHandle(0, 0, "GameScanning...", GetColor(255, 255, 255), font);//タイトル描画
+	ScreenFlip();//裏画面を表画面に
 	while (FileRead_eof(GameInfoFile) == 0) {
 		FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
 		StringgameInfoLine = std::string(gameInfoLine); // char型のgameInfoLineをstring型に変換して追加
@@ -183,18 +186,23 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 			else {
 				StringgameInfoLine = StringgameInfoLine.substr(11); // "titleimage:"の後ろの文字列を取得
 				gametitleimage.push_back(LoadGraph(StringgameInfoLine.c_str())); // 文字列をグラフィックハンドルに変換してベクターに追加
-				/*FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
+				FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
 				StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
 				gameyousocheck = StringgameInfoLine.find("}");// "}"の位置を探す
 				if (gameyousocheck == std::string::npos) {
 					return -1;// "}"がなかったら異常終了
-				}*/
+				}
 			}
 		}
-
+	}
 		FileRead_close(GameInfoFile); // ファイルを閉じる
 		sprintf(chargameyouso, "%d", gameyouso); //Gameの個数を文字列に変換
+		DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
+		DrawStringToHandle(0, 0, "Complete!", GetColor(255, 255, 255), font);//タイトル描画
+		ScreenFlip();//裏画面を表画面に
 		int feding = 225; //フェードイン用変数
+		int page = 1;//ページ番号変数
+		int pagekasan;
 		while (ProcessMessage() == 0 /*恒例のプロセスメッセージ*/ && ClearDrawScreen() == 0/*スクリーンクリーン（初期化っていうか全削除っていうか・・・もうなんでもいいや）*/) {
 			fps.Update();	//FPS更新
 			time_t t = time(NULL);//現在時刻を取得
@@ -223,10 +231,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 			DrawBox(65, 145, 1470, 565, GetColor(200, 200, 200), TRUE);//白いボックス描画
 			DrawStringToHandle(70, 150, chargameyouso, GetColor(0, 0, 0), font);
 			DrawBox(800, 173, 1440, 533, GetColor(0, 0, 0), TRUE);//黒いボックス描画
-			DrawGraph(100, 613, gametitleimage[0], false);//これだ!
-			//DrawGraph(295, 613, gametitleimage[1], false);//これだ!
-			//DrawBox(100, 613, 275, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画
-			DrawBox(295, 613, 470, 788, GetColor(0, 0, 255), TRUE);//青いボックス描画
+			DrawGraph(90, 613, gametitleimage[0], false);//これだ!
+			DrawGraph(285, 613, gametitleimage[1], false);//これだ!
+			DrawBox(480, 613, 655, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画2
+			DrawBox(675, 613, 850, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画3
+			DrawBox(870, 613, 1045, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画4
+			DrawBox(1065, 613, 1240, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画5
+			DrawBox(1260, 613, 1435, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画6
 			fps.Draw();		//FPS描画
 			DrawFormatString(55, 0, GetColor(0, 0, 0), "BGMCount:%d", BGMCount);//BGMCount変数表示
 			DrawFormatString(180, 0, GetColor(0, 0, 0), "MouseX:%d", mouseX);//マウスX座標表示
@@ -271,6 +282,5 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 		}
 
 		DxLib_End();//終わりー
-	}
 	return 0; //正常終了
 }
