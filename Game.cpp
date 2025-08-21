@@ -232,19 +232,19 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 		DrawBox(60, 145, 1470, 560, GetColor(200, 200, 200), TRUE);//灰色ボックス描画
 		DrawStringToHandle(70, 150, chargameyouso, GetColor(0, 0, 0), font);
 		DrawBox(790, 173, 1430, 533, GetColor(0, 0, 0), TRUE);//黒いボックス描画
-		DrawGraph(90, 613, gametitleimage[0 + pagekasan], false);//これだ!
+		DrawGraph(90, 613, gametitleimage[0 + pagekasan], false);//これか？
 		if (gameyouso == 2 + pagekasan) {
-			DrawGraph(285, 613, gametitleimage[1 + pagekasan], false);//これだ!
+			DrawGraph(285, 613, gametitleimage[1 + pagekasan], false);//これか？
 			if(gameyouso == 3 + pagekasan) {
-				DrawGraph(480, 613, gametitleimage[2 + pagekasan], false);//これだ!
+				DrawGraph(480, 613, gametitleimage[2 + pagekasan], false);//これか？
 				if (gameyouso == 4 + pagekasan) {
-					DrawGraph(675, 613, gametitleimage[3 + pagekasan], false);//これだ!
+					DrawGraph(675, 613, gametitleimage[3 + pagekasan], false);//これか？
 					if (gameyouso == 5 + pagekasan) {
-						DrawGraph(870, 613, gametitleimage[4 + pagekasan], false);//これだ!
+						DrawGraph(870, 613, gametitleimage[4 + pagekasan], false);//これか？
 						if (gameyouso == 6 + pagekasan) {
-							DrawGraph(1065, 613, gametitleimage[5 + pagekasan], false);//これだ!
+							DrawGraph(1065, 613, gametitleimage[5 + pagekasan], false);//これか？
 							if (gameyouso == 7 + pagekasan) {
-								DrawGraph(1260, 613, gametitleimage[6 + pagekasan], false);//これだ!
+								DrawGraph(1260, 613, gametitleimage[6 + pagekasan], false);//これか？
 							}
 						}
 					}
