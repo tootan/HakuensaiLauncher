@@ -7,6 +7,15 @@
 #include <vector>//ベクター関数
 #pragma warning(disable : 4996)// 4996警告を無視する
 #define PI 3.141592653589793238462643 //円周率設定
+// グローバル変数で元のプロシージャを保存
+WNDPROC g_OldWndProc = nullptr;
+// Alt+F4や×ボタンを無効化するプロシージャ
+LRESULT CALLBACK MyWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+	if (msg == WM_CLOSE) {
+		return 0; // WM_CLOSEを無視
+	}
+	return CallWindowProc(g_OldWndProc, hWnd, msg, wParam, lParam);
+}
 //FPS設定(固定)達
 class Fps {
 	int mStartTime;         //測定開始時刻
@@ -56,11 +65,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 	SetMainWindowText("Hakuensai Launcher 2025");//ウインドウ名設定
 	SetAlwaysRunFlag(true);//バックグラウンド実行
 	SetBackgroundColor(255, 255, 255);//背景設定
-	SetWindowStyleMode(1);//ウインドウスタイルをボーダーレスウインドウに設定
+	SetWindowStyleMode(4);//ウインドウスタイルをボーダーレスウインドウに設定
 	SetDoubleStartValidFlag(FALSE); //二重起動禁止
 	if (DxLib_Init() == -1)//起動失敗したらエラー吐かせる
 		return -1;
-
+	HWND hwnd = (HWND)GetMainWindowHandle();
+	g_OldWndProc = (WNDPROC)SetWindowLongPtr(hwnd, GWLP_WNDPROC, (LONG_PTR)MyWndProc);
 	SetDrawScreen(DX_SCREEN_BACK);//裏描画に設定
 	int font = CreateFontToHandle("BIZ UDPゴジック", 30, 3, DX_FONTTYPE_ANTIALIASING);//通常フォント生成
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす

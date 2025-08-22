@@ -9,9 +9,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{4DFDC6B6-4426-45D9-AEF0-3F67ACFD054B}|HakuensaiLauncher.vcxproj|C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\launcherInfo.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{4DFDC6B6-4426-45D9-AEF0-3F67ACFD054B}|HakuensaiLauncher.vcxproj|solutionrelative:launcherInfo.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DFDC6B6-4426-45D9-AEF0-3F67ACFD054B}|HakuensaiLauncher.vcxproj|C:\\USERS\\B1213\\A\\DXLIB\\DXLIB_VC\\\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u306B\u8FFD\u52A0\u3059\u3079\u304D\u30D5\u30A1\u30A4\u30EB_VC\u7528\\DXLIB.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -21,20 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DxLib.h",
-              "DocumentMoniker": "C:\\Users\\b1213\\a\\DxLib\\DxLib_VC\\\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u306B\u8FFD\u52A0\u3059\u3079\u304D\u30D5\u30A1\u30A4\u30EB_VC\u7528\\DxLib.h",
-              "RelativeDocumentMoniker": "..\\..\\a\\DxLib\\DxLib_VC\\\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u306B\u8FFD\u52A0\u3059\u3079\u304D\u30D5\u30A1\u30A4\u30EB_VC\u7528\\DxLib.h",
-              "ToolTip": "C:\\Users\\b1213\\a\\DxLib\\DxLib_VC\\\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u306B\u8FFD\u52A0\u3059\u3079\u304D\u30D5\u30A1\u30A4\u30EB_VC\u7528\\DxLib.h",
-              "RelativeToolTip": "..\\..\\a\\DxLib\\DxLib_VC\\\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u306B\u8FFD\u52A0\u3059\u3079\u304D\u30D5\u30A1\u30A4\u30EB_VC\u7528\\DxLib.h",
-              "ViewState": "AgIAAB4PAAAAAAAAAAAIwCwPAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-08-20T23:59:59.757Z"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -53,9 +38,9 @@
               "Title": "Game.cpp",
               "DocumentMoniker": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\Game.cpp",
               "RelativeDocumentMoniker": "Game.cpp",
-              "ToolTip": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\Game.cpp",
-              "RelativeToolTip": "Game.cpp",
-              "ViewState": "AgIAANcAAAAAAAAAAAAUwOgAAAAkAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\Game.cpp*",
+              "RelativeToolTip": "Game.cpp*",
+              "ViewState": "AgIAADwAAAAAAAAAAAAIwEgAAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-08-20T02:59:54.349Z",
               "EditorCaption": ""
