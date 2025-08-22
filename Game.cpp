@@ -230,8 +230,15 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 		DrawGraph(10, 650, hidaribotan, TRUE); //左ボタン描画
 		DrawGraph(1420, 650, migibotan, TRUE); //右ボタン描画
 		DrawBox(60, 145, 1470, 560, GetColor(200, 200, 200), TRUE);//灰色ボックス描画
-		DrawStringToHandle(70, 150, chargameyouso, GetColor(0, 0, 0), font);
+		DrawStringToHandle(70, 150, "ほああああ", GetColor(0, 0, 0), font);
 		DrawBox(790, 173, 1430, 533, GetColor(0, 0, 0), TRUE);//黒いボックス描画
+		DrawBox(90, 613, 265, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画0
+		DrawBox(285, 613, 460, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画1
+		DrawBox(480, 613, 655, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画2
+		DrawBox(675, 613, 850, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画3
+		DrawBox(870, 613, 1045, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画4
+		DrawBox(1065, 613, 1240, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画5
+		DrawBox(1260, 613, 1435, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画6
 		DrawGraph(90, 613, gametitleimage[0 + pagekasan], false);//これか？
 		if (gameyouso == 2 + pagekasan) {
 			DrawGraph(285, 613, gametitleimage[1 + pagekasan], false);//これか？
@@ -251,11 +258,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 				}
 			}
 		}
-		DrawBox(480, 613, 655, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画2
-		DrawBox(675, 613, 850, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画3
-		DrawBox(870, 613, 1045, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画4
-		DrawBox(1065, 613, 1240, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画5
-		DrawBox(1260, 613, 1435, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画6
 		fps.Draw();		//FPS描画
 		DrawFormatString(55, 0, GetColor(0, 0, 0), "BGMCount:%d", BGMCount);//BGMCount変数表示
 		DrawFormatString(180, 0, GetColor(0, 0, 0), "MouseX:%d", mouseX);//マウスX座標表示
@@ -294,6 +296,20 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 				}
 				fps.FPS = 120; //FPSを元に戻す
 			}
+			else if (mouseX >= 10 && mouseX <= 110 && mouseY >= 650 && mouseY <= 750) { //左ボタンの範囲内なら
+				if (page > 1) { //ページが1より大きいなら
+					page -= 1; //ページを1つ戻す
+					pagekasan -= 7; //ページカウントを戻す
+					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
+				}
+			}
+			else if (mouseX >= 1420 && mouseX <= 1520 && mouseY >= 650 && mouseY <= 750)/*右ボタンの範囲内なら*/{
+				if (page != pagetotal) {
+					page += 1; //ページを1つ進める
+					pagekasan += 7; //ページカウントを進める
+					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
+				}
+			} 
 		}
 		prevMouseInput = mouseInput; // ループの最後で状態を保存
 	}
