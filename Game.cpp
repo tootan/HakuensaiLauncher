@@ -1,4 +1,4 @@
-// Hakuensai Launcher 2025 一部AI要素、おふざけあり
+// Hakuensai Launcher 2025 一部AI要素、おふざけあり　タスキルでのみ終了できます
 #include <math.h>//数学関数
 #include <windows.h>//Windows API
 #include <DxLib.h>// DxLibヘッダファイル
@@ -14,6 +14,7 @@ LRESULT CALLBACK MyWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	if (msg == WM_CLOSE) {
 		return 0; // WM_CLOSEを無視
 	}
+	// 他のメッセージは必ず元のプロシージャへ
 	return CallWindowProc(g_OldWndProc, hWnd, msg, wParam, lParam);
 }
 //FPS設定(固定)達
@@ -61,125 +62,162 @@ public:
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 	ChangeWindowMode(TRUE);//ウインドウ設定
 	SetGraphMode(1920, 1080, 32);//画面サイズ指定(FHD、簡単には閉じれないぞ・・・ﾆﾋﾋ)
-	SetOutApplicationLogValidFlag(FALSE);//Log.txtを生成しないように設定
 	SetMainWindowText("Hakuensai Launcher 2025");//ウインドウ名設定
 	SetAlwaysRunFlag(true);//バックグラウンド実行
 	SetBackgroundColor(255, 255, 255);//背景設定
 	SetWindowStyleMode(4);//ウインドウスタイルをボーダーレスウインドウに設定
 	SetDoubleStartValidFlag(FALSE); //二重起動禁止
+	SetUseDateNameLogFile(TRUE); //ログファイルに日付を付ける
 	if (DxLib_Init() == -1)//起動失敗したらエラー吐かせる
 		return -1;
-	HWND hwnd = (HWND)GetMainWindowHandle();
-	g_OldWndProc = (WNDPROC)SetWindowLongPtr(hwnd, GWLP_WNDPROC, (LONG_PTR)MyWndProc);
+	ErrorLogTabAdd(); //ログタブ追加
+	ErrorLogAdd("DXライブラリが正常に初期化されました。\n");//ログに初期化成功を記録
+	HWND hwnd = (HWND)GetMainWindowHandle();//メインウインドウハンドルを取得
+	g_OldWndProc = (WNDPROC)SetWindowLongPtr(hwnd, GWLP_WNDPROC, (LONG_PTR)MyWndProc);//ウインドウプロシージャをフックする
+	ErrorLogAdd("ウインドウプロシージャをフックしました。\n");//ログにフック成功を記録
 	SetDrawScreen(DX_SCREEN_BACK);//裏描画に設定
+	ErrorLogAdd("裏画面に描画を設定しました。\n");//ログに裏画面設定成功を記録
 	int font = CreateFontToHandle("BIZ UDPゴジック", 30, 3, DX_FONTTYPE_ANTIALIASING);//通常フォント生成
+	ErrorLogAdd("フォントを生成しました。\n");//ログにフォント生成成功を記録
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "NowLoading...(0/19)", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
 	int BGM = LoadSoundMem("Audio/BGM.ogg");//BGM読み込み
+	ErrorLogAdd("BGMを読み込みました。\n");//ログにBGM読み込み成功を記録
 	ClearDrawScreen(); //裏画面をクリア
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "NowLoading...(1/19)", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
 	int Communicationmark = LoadGraph("Image/Communicationmark.png");//コミュニケーションマーク読み込み
+	ErrorLogAdd("コミュニケーションマークを読み込みました。\n");//ログにコミュニケーションマーク読み込み成功を記録
 	ClearDrawScreen(); //裏画面をクリア
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "NowLoading...(2/19)", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
 	int BGMCount = 0;//BGM時間測定用変数
+	ErrorLogAdd("BGMの時間測定用変数を初期化しました。\n");//ログにBGM時間測定用変数初期化成功を記録
 	ClearDrawScreen(); //裏画面をクリア
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "NowLoading...(3/19)", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
 	double Communicationmarkangle = 4;//コミュニケーションマーク角度変数
+	ErrorLogAdd("コミュニケーションマーク角度変数を初期化しました。\n");//ログにコミュニケーションマーク角度変数初期化成功を記録
 	ClearDrawScreen(); //裏画面をクリア
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "NowLoading...(4/19)", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
 	int titlefont = CreateFontToHandle("UD デジタル 教科書体 N", 100, 8, DX_FONTTYPE_ANTIALIASING);//タイトルフォント生成
+	ErrorLogAdd("タイトルフォントを生成しました。\n");//ログにタイトルフォント生成成功を記録
 	ClearDrawScreen(); //裏画面をクリア
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "NowLoading...(5/19)", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
 	int timefont = CreateFontToHandle("BIZ UDPゴジック", 60, 3, DX_FONTTYPE_ANTIALIASING);//時刻フォント生成
+	ErrorLogAdd("時刻フォントを生成しました。\n");//ログに時刻フォント生成成功を記録
 	ClearDrawScreen(); //裏画面をクリア
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "NowLoading...(6/19)", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
 	int mouseX, mouseY;//マウス座標格納変数
+	ErrorLogAdd("マウス座標格納変数を初期化しました。\n");//ログにマウス座標格納変数初期化成功を記録
 	ClearDrawScreen(); //裏画面をクリア
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "NowLoading...(7/19)", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
 	int onpuon = LoadGraph("image/onpuon2.png");//♪ボタンオン読み込み
+	ErrorLogAdd("♪ボタンオンを読み込みました。\n");//ログに♪ボタンオン読み込み成功を記録
 	ClearDrawScreen(); //裏画面をクリア
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "NowLoading...(8/19)", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
-	int onpuoff = LoadGraph("image/onpuoff2.png");//♪ボタンオフ読み込みClearDrawScreen(); //裏画面をクリア
+	int onpuoff = LoadGraph("image/onpuoff2.png");//♪ボタンオフ読み込み
+	ErrorLogAdd("♪ボタンオフを読み込みました。\n");//ログに♪ボタンオフ読み込み成功を記録
+	ClearDrawScreen(); //裏画面をクリア
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "NowLoading...(9/19)", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
-	int BGMinfo = 1; //BGM情報格納変数（1:ON, 0:OFF）ClearDrawScreen(); //裏画面をクリア
+	int BGMinfo = 1; //BGM情報格納変数（1:ON, 0:OFF）
+	ErrorLogAdd("BGM情報格納変数を初期化しました。\n");//ログにBGM情報格納変数初期化成功を記録
+	ClearDrawScreen(); //裏画面をクリア
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "NowLoading...(10/19)", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
 	int prevMouseInput = 0; // 前回のマウス入力状態を格納する変数
+	ErrorLogAdd("前回のマウス入力状態を格納する変数を初期化しました。\n");//ログに前回のマウス入力状態変数初期化成功を記録
 	ClearDrawScreen(); //裏画面をクリア
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "NowLoading...(11/19)", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
 	int mouseInput;// マウス入力状態を格納する変数
+	ErrorLogAdd("マウス入力状態を格納する変数を初期化しました。\n");//ログにマウス入力状態変数初期化成功を記録
 	ClearDrawScreen(); //裏画面をクリア
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "NowLoading...(12/19)", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
 	int botan = LoadSoundMem("Audio/botan.ogg");//ボタン音読み込み
+	ErrorLogAdd("ボタン音を読み込みました。\n");//ログにボタン音読み込み成功を記録
 	ClearDrawScreen(); //裏画面をクリア
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "NowLoading...(13/19)", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
-	struct tm local;//時刻格納用構造体ClearDrawScreen(); //裏画面をクリア
+	struct tm local;//時刻格納用構造体
+	ErrorLogAdd("時刻格納用構造体を初期化しました。\n");//ログに時刻格納用構造体初期化成功を記録
+	ClearDrawScreen(); //裏画面をクリア
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "NowLoading...(14/19)", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
 	char timebuf[128];//時刻格納用バッファ
+	ErrorLogAdd("時刻格納用バッファを初期化しました。\n");//ログに時刻格納用バッファ初期化成功を記録
 	ClearDrawScreen(); //裏画面をクリア
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "NowLoading...(15/19)", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
 	ChangeVolumeSoundMem(255, BGM); //BGMの音量を最大に設定
+	ErrorLogAdd("BGMの音量を最大に設定しました。\n");//ログにBGM音量設定成功を記録
 	ClearDrawScreen(); //裏画面をクリア
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "NowLoading...(16/19)", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
 	Fps fps;
+	ErrorLogAdd("FPSクラスを初期化しました。\n");//ログにFPSクラス初期化成功を記録
 	ClearDrawScreen(); //裏画面をクリア
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "NowLoading...(17/19)", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
 	int hidaribotan = LoadGraph("Image/hidaribotan.png");//左ボタン読み込み
+	ErrorLogAdd("左ボタンを読み込みました。\n");//ログに左ボタン読み込み成功を記録
 	ClearDrawScreen(); //裏画面をクリア
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "NowLoading...(18/19)", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
 	int migibotan = LoadGraph("Image/migibotan.png");//右ボタン読み込み
+	ErrorLogAdd("右ボタンを読み込みました。\n");//ログに右ボタン読み込み成功を記録
 	ClearDrawScreen(); //裏画面をクリア
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "LoadFinish!", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
 	int GameInfoFile = FileRead_open("launcherInfo.txt", FALSE);//GameInfo.txtを開く
+	ErrorLogAdd("GameInfo.txtを開きました。\n");//ログにGameInfo.txt開く成功を記録
 	FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
+	ErrorLogAdd("GameInfo.txtの先頭に移動しました。\n");//ログにGameInfo.txt先頭移動成功を記録
 	char gameInfoLine[256]; //GameInfo.txtの内容を格納する文字列
+	ErrorLogAdd("GameInfo.txtの内容を格納する文字列を初期化しました。\n");//ログにGameInfo.txt内容格納文字列初期化成功を記録
 	int gameyousocheck;
+	ErrorLogAdd("Gameの個数をカウントする変数を初期化しました。\n");//ログにGame個数カウント変数初期化成功を記録
 	int gameyouso = 0; //Gameの個数をカウントする変数
+	ErrorLogAdd("Gameのタイトル画像のインデックスを格納するベクターを初期化しました。\n");//ログにGameタイトル画像インデックス格納ベクター初期化成功を記録
 	int gamecheck = 0;//StringgameInfoLineの配列をカウントする変数
+	ErrorLogAdd("StringgameInfoLineの配列をカウントする変数を初期化しました。\n");//ログにStringgameInfoLine配列カウント変数初期化成功を記録
 	std::vector<int> gametitleimage; //Gameのタイトル画像のインデックスを格納するベクター
+	ErrorLogAdd("Gameのタイトル画像のインデックスを格納するベクターを初期化しました。\n");//ログにGameタイトル画像インデックス格納ベクター初期化成功を記録
 	char chargameyouso[256];//Gameの個数を格納する文字列
+	ErrorLogAdd("Gameの個数を格納する文字列を初期化しました。\n");//ログにGame個数格納文字列初期化成功を記録
 	std::string StringgameInfoLine; //GameInfo.txtの内容を格納する文字列
+	ErrorLogAdd("GameInfo.txtの内容を格納する文字列を初期化しました。\n");//ログにGameInfo.txt内容格納文字列初期化成功を記録
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "GameScanning...", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
+	ErrorLogAdd("GameInfo.txtの内容を読み込み開始しました。\n");//ログにGameInfo.txt内容読み込み開始を記録
 	while (FileRead_eof(GameInfoFile) == 0) {
 		FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
 		StringgameInfoLine = std::string(gameInfoLine); // char型のgameInfoLineをstring型に変換して追加
@@ -205,14 +243,20 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 		}
 	}
 	FileRead_close(GameInfoFile); // ファイルを閉じる
+	ErrorLogAdd("GameInfo.txtの内容を読み込みました。\n");//ログにGameInfo.txt内容読み込み成功を記録
 	sprintf(chargameyouso, "%d", gameyouso); //Gameの個数を文字列に変換
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "Complete!", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
 	int feding = 225; //フェードイン用変数
+	ErrorLogAdd("フェードイン用変数を初期化しました。\n");//ログにフェードイン用変数初期化成功を記録
 	int page = 1;//ページ番号変数
+	ErrorLogAdd("ページ番号変数を初期化しました。\n");//ログにページ番号変数初期化成功を記録
 	int pagekasan = 0;
+	ErrorLogAdd("ページ番号加算変数を初期化しました。\n");//ログにページ番号加算変数初期化成功を記録
 	int pagetotal = gameyouso / 7 + 1;
+	ErrorLogAdd("ページ総数を計算しました。\n");//ログにページ総数計算成功を記録
+	ErrorLogAdd("すべてのデータの読み込みに成功しました!"); //ログにすべてのデータ読み込み成功を記録
 	while (ProcessMessage() == 0 /*恒例のプロセスメッセージ*/ && ClearDrawScreen() == 0/*スクリーンクリーン（初期化っていうか全削除っていうか・・・もうなんでもいいや）*/) {
 		fps.Update();	//FPS更新
 		time_t t = time(NULL);//現在時刻を取得
@@ -307,23 +351,62 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 				fps.FPS = 120; //FPSを元に戻す
 			}
 			else if (mouseX >= 10 && mouseX <= 110 && mouseY >= 650 && mouseY <= 750) { //左ボタンの範囲内なら
+				fps.FPS = 1;
 				if (page > 1) { //ページが1より大きいなら
 					page -= 1; //ページを1つ戻す
 					pagekasan -= 7; //ページカウントを戻す
 					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 				}
+				fps.FPS = 120; //FPSを元に戻す
 			}
-			else if (mouseX >= 1420 && mouseX <= 1520 && mouseY >= 650 && mouseY <= 750)/*右ボタンの範囲内なら*/{
+			else if (mouseX >= 1420 && mouseX <= 1520 && mouseY >= 650 && mouseY <= 750)/*右ボタンの範囲内なら*/ {
+				fps.FPS = 1;
 				if (page != pagetotal) {
 					page += 1; //ページを1つ進める
 					pagekasan += 7; //ページカウントを進める
 					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 				}
-			} 
+				fps.FPS = 120; //FPSを元に戻す
+			}
+			else if (mouseX >= 90 && mouseX <= 265 && mouseY >= 613 && mouseY <= 788) { // ゲーム1の範囲内なら
+				fps.FPS = 1;
+				PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
+				fps.FPS = 120; //FPSを元に戻す
+			}
+			else if (mouseX >= 285 && mouseX <= 460 && mouseY >= 613 && mouseY <= 788) { // ゲーム2の範囲内なら
+				fps.FPS = 1;
+				PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
+				fps.FPS = 120; //FPSを元に戻す
+			}
+			else if (mouseX >= 480 && mouseX <= 655 && mouseY >= 613 && mouseY <= 788) { // ゲーム3の範囲内なら
+				fps.FPS = 1;
+				PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
+				fps.FPS = 120; //FPSを元に戻す
+			}
+			else if (mouseX >= 675 && mouseX <= 850 && mouseY >= 613 && mouseY <= 788) { // ゲーム4の範囲内なら
+				fps.FPS = 1;
+				PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
+				fps.FPS = 120; //FPSを元に戻す
+			}
+			else if (mouseX >= 870 && mouseX <= 1045 && mouseY >= 613 && mouseY <= 788) { // ゲーム5の範囲内なら
+				fps.FPS = 1;
+				PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
+				fps.FPS = 120; //FPSを元に戻す
+			}
+			else if (mouseX >= 1065 && mouseX <= 1240 && mouseY >= 613 && mouseY <= 788) { // ゲーム6の範囲内なら
+				fps.FPS = 1;
+				PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
+				fps.FPS = 120; //FPSを元に戻す
+			}
+			else if (mouseX >= 1260 && mouseX <= 1435 && mouseY >= 613 && mouseY <= 788) { // ゲーム7の範囲内なら
+				fps.FPS = 1;
+				PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
+				fps.FPS = 120; //FPSを元に戻す
+			}
 		}
-		prevMouseInput = mouseInput; // ループの最後で状態を保存
+		// 毎フレーム最後に前回の状態を更新
+		prevMouseInput = mouseInput;
 	}
-
 	DxLib_End();//終わりー
 	return 0; //正常終了
 }
