@@ -138,8 +138,10 @@
     <ClCompile Include="Game.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="GamaInfo.txt" />
     <Text Include="GameInfokari.txt" />
     <Text Include="launcherInfo.txt" />
+    <Text Include="Log.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

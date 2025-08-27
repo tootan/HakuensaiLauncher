@@ -59,6 +59,13 @@ public:
 	}
 };
 
+std::string trim(const std::string& str) {
+	size_t first = str.find_first_not_of(" \t\r\n");
+	size_t last = str.find_last_not_of(" \t\r\n");
+	if (first == std::string::npos || last == std::string::npos) return "";
+	return str.substr(first, (last - first + 1));
+}
+
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 	ChangeWindowMode(TRUE);//ウインドウ設定
 	SetGraphMode(1920, 1080, 32);//画面サイズ指定(FHD、簡単には閉じれないぞ・・・ﾆﾋﾋ)
@@ -256,7 +263,25 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 	ErrorLogAdd("ページ番号加算変数を初期化しました。\n");//ログにページ番号加算変数初期化成功を記録
 	int pagetotal = gameyouso / 7 + 1;
 	ErrorLogAdd("ページ総数を計算しました。\n");//ログにページ総数計算成功を記録
-	ErrorLogAdd("すべてのデータの読み込みに成功しました!"); //ログにすべてのデータ読み込み成功を記録
+	int gametypecheck = 0; //ゲームの種類を判別する変数
+	ErrorLogAdd("ゲームの種類を判別する変数を初期化しました。\n");//ログにゲーム種類判別変数初期化成功を記録
+	int gametitleinfo = 0;
+	ErrorLogAdd("ゲームタイトル情報変数を初期化しました。\n");//ログにゲームタイトル情報変数初期化成功を記録
+	std::string gametitle;
+	ErrorLogAdd("ゲームタイトル変数を初期化しました。\n");//ログにゲームタイトル変数初期化成功を記録
+	std::string gameex;
+	ErrorLogAdd("ゲーム説明変数を初期化しました。\n");//ログにゲーム説明変数初期化成功を記録
+	std::string gameeximage;
+	ErrorLogAdd("ゲーム説明画像変数を初期化しました。\n");//ログにゲーム説明画像変数初期化成功を記録
+	int gameeximageinfo = 0;
+	ErrorLogAdd("ゲーム説明画像情報変数を初期化しました。\n");//ログにゲーム説明画像情報変数初期化成功を記録
+	std::string gameexe;
+	ErrorLogAdd("ゲーム実行ファイル変数を初期化しました。\n");//ログにゲーム実行ファイル変数初期化成功を記録
+	int gamescan = 0;
+	ErrorLogAdd("ゲームスキャン変数を初期化しました。\n");//ログにゲームスキャン変数初期化成功を記録
+	std::string searchkey;
+	ErrorLogAdd("検索キー変数を初期化しました。\n");//ログに検索キー変数初期化成功を記録
+	ErrorLogAdd("すべてのデータの読み込みに成功しました!\n"); //ログにすべてのデータ読み込み成功を記録
 	while (ProcessMessage() == 0 /*恒例のプロセスメッセージ*/ && ClearDrawScreen() == 0/*スクリーンクリーン（初期化っていうか全削除っていうか・・・もうなんでもいいや）*/) {
 		fps.Update();	//FPS更新
 		time_t t = time(NULL);//現在時刻を取得
@@ -266,8 +291,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 		SetDrawMode(DX_DRAWMODE_BILINEAR);//描画モードをバイリニアフィルタに設定(アンチエイリアス効果)
 		DrawRotaGraph(60, 50, 1.0, PI * Communicationmarkangle, Communicationmark, TRUE); //コミュニケーションマーク描画
 		SetDrawMode(DX_DRAWMODE_NEAREST);//描画モードをニアレストネイバーに設定(アンチエイリアス効果なし)
-		DrawStringToHandle(450, 10, "柏苑祭", GetColor(0, 0, 0), titlefont);//タイトル描画
-		DrawStringToHandle(785, 10, "2025", GetColor(255, 0, 0), titlefont);//タイトル描画2
+		if (gametitleinfo == 0){
+			DrawStringToHandle(450, 10, "柏苑祭", GetColor(0, 0, 0), titlefont);//タイトル描画
+			DrawStringToHandle(785, 10, "2025", GetColor(255, 0, 0), titlefont);//タイトル描画2
+		}
+		else {
+			DrawStringToHandle(450, 10, gametitle.c_str(), GetColor(0, 0, 0), titlefont);//ゲームタイトル描画
+		}
 		DrawBox(0, 105, 1920, 110, GetColor(255, 0, 0), TRUE);//赤い線描画
 		DrawStringToHandle(1320, 5, "♪昼下がり気分", GetColor(0, 0, 0), font);//BGM名描画
 		if (BGMinfo == 1) { //BGMがONなら
@@ -371,6 +401,88 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 			else if (mouseX >= 90 && mouseX <= 265 && mouseY >= 613 && mouseY <= 788) { // ゲーム1の範囲内なら
 				fps.FPS = 1;
 				PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
+				gamescan = 0;
+				GameInfoFile = FileRead_open("GamaInfo.txt", FALSE);//GameInfo.txtを開く
+				FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
+				while (FileRead_eof(GameInfoFile) == 0 && gamescan == 0) {
+					FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
+					StringgameInfoLine = trim(std::string(gameInfoLine));
+					searchkey = std::to_string(pagekasan) + ":{";
+					gamecheck = StringgameInfoLine.find(searchkey);
+					if (gamecheck != std::string::npos) {
+						FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
+						StringgameInfoLine = trim(std::string(gameInfoLine));
+						gamecheck = StringgameInfoLine.find("type:");
+						if (gamecheck != std::string::npos) {
+							StringgameInfoLine = trim(StringgameInfoLine.substr(5));
+							if (StringgameInfoLine == "note") {
+								gametypecheck = 1;
+							}
+							else if (StringgameInfoLine == "game") {
+								gametypecheck = 2;
+							}
+							else {
+								ErrorLogAdd("typeが指定された文字列ではありません。\n");//ログにゲーム情報読み込み失敗を記録
+								return -1; //typeがnoteでもgameでもなかったら異常終了
+							}
+							FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
+							StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
+							gamecheck = StringgameInfoLine.find("title:");
+							if (gamecheck != std::string::npos) {
+								StringgameInfoLine = trim(StringgameInfoLine.substr(6)); // "title:"の後ろの文字列を取得
+								gametitleinfo = 1;
+								gametitle = StringgameInfoLine;
+								FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
+								StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
+								gamecheck = StringgameInfoLine.find("ex:");
+								if (gamecheck != std::string::npos) {
+									StringgameInfoLine = trim(StringgameInfoLine.substr(3)); // "ex:"の後ろの文字列を取得
+									gameex = StringgameInfoLine;
+									FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
+									StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
+									gamecheck = StringgameInfoLine.find("eximage:");
+									if (gamecheck != std::string::npos) {
+										StringgameInfoLine = trim(StringgameInfoLine.substr(8)); // "eximage:"の後ろの文字列を取得
+										gameeximage = LoadGraph(StringgameInfoLine.c_str());
+										if (gametypecheck == 2) {
+											FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
+											StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
+											gamecheck = StringgameInfoLine.find("exe:");// "exe:"の位置を探す
+											if (gamecheck != std::string::npos) {
+												StringgameInfoLine = trim(StringgameInfoLine.substr(4)); // "exe:"の後ろの文字列を取得
+												gameexe = StringgameInfoLine;
+											}
+											else {
+												ErrorLogAdd("exeが不明です。\n");//ログにゲーム情報読み込み失敗を記録
+												return -1; //exeがなかったら異常終了
+											}
+										}
+									}
+									else {
+										ErrorLogAdd("eximageが不明です。\n");//ログにゲーム情報読み込み失敗を記録
+									}
+								}
+								else {
+									ErrorLogAdd("exが不明です。\n");//ログにゲーム情報読み込み失敗を記録
+								}
+							}
+							else {
+								ErrorLogAdd("titleが不明です。\n");//ログにゲーム情報読み込み失敗を記録
+								return -1; //titleがなかったら異常終了
+							}
+						}
+						else {
+							ErrorLogAdd("typeが不明です。\n");//ログにゲーム情報読み込み失敗を記録
+							return -1; //typeがなかったら異常終了
+						}
+					}
+				}
+				FileRead_close(GameInfoFile); // ファイルを閉じる
+				ErrorLogAdd("ゲーム情報を読み込みました。\n");//ログにゲーム情報読み込み成功を記録
+				ErrorLogAdd(("Scan:" + std::to_string(gamescan) + "\n").c_str());//ログにスキャンしたゲーム番号を記録
+                ErrorLogAdd(("Gamecheck:" + std::to_string(gamecheck) + "\n").c_str());//ログに見つけたゲーム番号を記録
+				ErrorLogAdd(("ゲーム種類:" + std::to_string(gametypecheck) + "\n").c_str());//ログにゲーム種類を記録
+				ErrorLogAdd(("ゲームタイトル:" + gametitle + "\n").c_str());//ログにゲームタイトルを記録
 				fps.FPS = 120; //FPSを元に戻す
 			}
 			else if (mouseX >= 285 && mouseX <= 460 && mouseY >= 613 && mouseY <= 788) { // ゲーム2の範囲内なら
@@ -406,6 +518,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 		}
 		// 毎フレーム最後に前回の状態を更新
 		prevMouseInput = mouseInput;
+		pagekasan = (page - 1) * 7;
 	}
 	DxLib_End();//終わりー
 	return 0; //正常終了
