@@ -3,5 +3,5 @@ type:game
 title:test
 ex:‚Ù‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ 
 eximage:image/aiueo.png
-exe:Games/hanerodango/aiueo.exe
+exe:Games\hanerodango\aiueo.exe
 }
