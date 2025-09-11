@@ -140,6 +140,7 @@
   <ItemGroup>
     <Text Include="GamaInfo.txt" />
     <Text Include="GameInfokari.txt" />
+    <Text Include="HakuensaiLauncherFullPass.txt" />
     <Text Include="launcherInfo.txt" />
     <Text Include="Log.txt" />
   </ItemGroup>

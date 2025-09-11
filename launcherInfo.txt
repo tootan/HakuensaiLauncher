@@ -1,6 +1,3 @@
 {
 titleimage:image/hahahahaha.png
 }
-{
-titleimage:image/bantyan.png
-}

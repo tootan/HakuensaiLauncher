@@ -3,7 +3,8 @@ type:note or game          通常はgameにしてください
 title:aeiou(タイトル,一行24字、256バイト以下にしてね♪改行は「\n」で)
 ex:aeiou(説明,同様に一行24字、256バイト以内,改行は「\n」で)
 eximage:a/e/i/o/u or null(説明画像の位置、任意、640x360)
-exe:a/e/i/o/u(typeがnoteなら不要,アプリケーションファイルの位置)
+dir:a\\e\\i\\o\\u or null(typeがnoteなら不要,アプリケーションファイルのあるフォルダの位置)
+exe:aaaaa.exe or null(typeがnoteなら不要,アプリケーションファイルの位置)
 (ちなみにタイトル画像は必須、175x175です)
 }
 1:{
