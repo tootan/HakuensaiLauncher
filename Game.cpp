@@ -115,7 +115,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 	HWND hwnd = (HWND)GetMainWindowHandle();//メインウインドウハンドルを取得
 	g_OldWndProc = (WNDPROC)SetWindowLongPtr(hwnd, GWLP_WNDPROC, (LONG_PTR)MyWndProc);//ウインドウプロシージャをフックする
 	ErrorLogAdd("ウインドウプロシージャをフックしました。\n");//ログにフック成功を記録
-	HideTaskbar(); //タスクバーを非表示にする
+	//HideTaskbar(); //タスクバーを非表示にする
 	ErrorLogAdd("タスクバーを非表示にしました。\n");//ログにタスクバー非表示成功を記録
 	SetDrawScreen(DX_SCREEN_BACK);//裏描画に設定
 	ErrorLogAdd("裏画面に描画を設定しました。\n");//ログに裏画面設定成功を記録
@@ -270,12 +270,20 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 			StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
 			gameyousocheck = StringgameInfoLine.find("titleimage:");
 			if (gameyousocheck == std::string::npos) {
+				ErrorLogAdd("Error: titleimageが見つかりませんでした。\n");//ログにtitleimageが見つからなかったことを記録
 				MessageBox(NULL, "Error: titleimageが見つかりませんでした。", "Error", MB_OK | MB_ICONERROR | MB_TOPMOST);
+				ShowTaskbar(); //タスクバーを再表示する
 				return -1; //titleimageがなかったら異常終了
 			}
 			else {
 				StringgameInfoLine = StringgameInfoLine.substr(11); // "titleimage:"の後ろの文字列を取得
 				gametitleimage.push_back(LoadGraph(StringgameInfoLine.c_str())); // 文字列をグラフィックハンドルに変換してベクターに追加
+				if(gametitleimage[gamecheck]==-1){
+					ErrorLogAdd("Error: titleimageの画像が見つかりませんでした。\n");//ログにtitleimageの画像が見つからなかったことを記録
+					MessageBox(NULL, "Error: titleimageの画像が見つかりませんでした。", "Error", MB_OK | MB_ICONERROR | MB_TOPMOST);
+					ShowTaskbar(); //タスクバーを再表示する
+					return -1; //titleimageの画像がなかったら異常終了
+				}
 				FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
 				StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
 				gameyousocheck = StringgameInfoLine.find("}");// "}"の位置を探す
@@ -291,7 +299,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 	DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE);//画面全体を黒で塗りつぶす
 	DrawStringToHandle(0, 0, "Complete!", GetColor(255, 255, 255), font);//タイトル描画
 	ScreenFlip();//裏画面を表画面に
-	int feding = 225; //フェードイン用変数
+	int feding; //フェードイン用変数
 	ErrorLogAdd("フェードイン用変数を初期化しました。\n");//ログにフェードイン用変数初期化成功を記録
 	int page = 1;//ページ番号変数
 	ErrorLogAdd("ページ番号変数を初期化しました。\n");//ログにページ番号変数初期化成功を記録
@@ -342,6 +350,18 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 	int logo = LoadGraph("Image/logo.png");//ロゴ読み込み
 	ErrorLogAdd("ロゴを読み込みました。\n");//ログにロゴ読み込み成功を記録
 	ErrorLogAdd("すべてのデータの読み込みに成功しました!\n"); //ログにすべてのデータ読み込み成功を記録
+	ErrorLogAdd(("ゲーム数：" + std::to_string(gameyouso) + "\n").c_str());//ログにゲーム数を記録
+	ErrorLogAdd(("ページ総数：" + std::to_string(pagetotal) + "\n").c_str());//ログにページ総数を記録
+	ErrorLogAdd(("pagekasan:" + std::to_string(pagekasan) + "\n").c_str());//ログにpagekasanを記録
+	for (feding = 225; feding != -1; --feding) {
+		ClearDrawScreen(); //裏画面をクリア
+		DrawGraph(1000, 700, logo, FALSE);
+		SetDrawBlendMode(DX_BLENDMODE_ALPHA, feding); //フェードインのためのブレンドモード設定
+		DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE); //画面全体を黒で塗りつぶす
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0); //ブレンドモードを元に戻す
+		ScreenFlip(); //描画した内容を画面に反映
+		ProcessMessage();
+	}
 	while (ProcessMessage() == 0 && ClearDrawScreen() == 0) {
 		if (CheckHitKey(KEY_INPUT_F1) && CheckHitKey(KEY_INPUT_F4) && CheckHitKey(KEY_INPUT_F10)) {
 			// 3つのキーが同時に押されたら確認
@@ -410,35 +430,15 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 		DrawBox(870, 613, 1045, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画4
 		DrawBox(1065, 613, 1240, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画5
 		DrawBox(1260, 613, 1435, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画6
-		DrawGraph(90, 613, gametitleimage[0 + pagekasan], false);//高齢化☆
-		if (gameyouso == 2 + pagekasan) {
-			DrawGraph(285, 613, gametitleimage[1 + pagekasan], false);//高齢化☆
-			if (gameyouso == 3 + pagekasan) {
-				DrawGraph(480, 613, gametitleimage[2 + pagekasan], false);//高齢化☆
-				if (gameyouso == 4 + pagekasan) {
-					DrawGraph(675, 613, gametitleimage[3 + pagekasan], false);//高齢化☆
-					if (gameyouso == 5 + pagekasan) {
-						DrawGraph(870, 613, gametitleimage[4 + pagekasan], false);//高齢化☆
-						if (gameyouso == 6 + pagekasan) {
-							DrawGraph(1065, 613, gametitleimage[5 + pagekasan], false);//高齢化☆
-							if (gameyouso == 7 + pagekasan) {
-								DrawGraph(1260, 613, gametitleimage[6 + pagekasan], false);//高齢化☆
-							}
+		for (int i = 0; i < 7; ++i) {
+			if (gameyouso > i + pagekasan) {
+				int x = 90 + i * 195;
+				DrawGraph(x, 613, gametitleimage[i + pagekasan], false);
 						}
 					}
-				}
-			}
-		}
-		fps.Draw();		//FPS描画
 		DrawFormatString(55, 0, GetColor(0, 0, 0), "BGMCount:%d", BGMCount);//BGMCount変数表示
 		DrawFormatString(180, 0, GetColor(0, 0, 0), "MouseX:%d", mouseX);//マウスX座標表示
 		DrawFormatString(280, 0, GetColor(0, 0, 0), "MouseY:%d", mouseY);//マウスY座標表示
-		if (feding != -1) {
-			SetDrawBlendMode(DX_BLENDMODE_ALPHA, feding); //フェードインのためのブレンドモード設定
-			DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE); //画面全体を黒で塗りつぶす
-			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0); //ブレンドモードを元に戻す
-			feding -= 1; //フェードインのために徐々に透明度を下げる
-		}
 		fps.Wait();		//待機
 		if (BGMCount % 28200 == 0) { // 235秒に一度
 			BGMCount = 0;//カウントリセット

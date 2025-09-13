@@ -1,7 +1,7 @@
 ﻿  Game.cpp
 C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(266,43): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
 C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(271,44): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(281,45): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(289,45): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
 C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(498,43): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
 C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(502,44): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
 C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(519,45): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
@@ -52,6 +52,6 @@ C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1338,47): warning C4267: '=': 'siz
 C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1346,49): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
 C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1358,51): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
 C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1475,18): warning C4552: '>=': 式の結果が使用されていません
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(340,8): warning C4101: 'exitcode': ローカル変数は 1 度も使われていません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(330,8): warning C4101: 'exitCode': ローカル変数は 1 度も使われていません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(348,8): warning C4101: 'exitcode': ローカル変数は 1 度も使われていません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(338,8): warning C4101: 'exitCode': ローカル変数は 1 度も使われていません。
   HakuensaiLauncher.vcxproj -> C:\Users\b1213\c++\HakuensaiLauncher\x64\Debug\HakuensaiLauncher.exe

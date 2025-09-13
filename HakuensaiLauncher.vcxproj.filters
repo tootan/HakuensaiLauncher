@@ -32,8 +32,5 @@
     <Text Include="Log.txt">
       <Filter>リソース ファイル</Filter>
     </Text>
-    <Text Include="HakuensaiLauncherFullPass.txt">
-      <Filter>リソース ファイル</Filter>
-    </Text>
   </ItemGroup>
 </Project>
