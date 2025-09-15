@@ -46,8 +46,7 @@
               "RelativeToolTip": "launcherInfo.txt",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-09-13T05:17:01.302Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-13T05:17:01.302Z"
             },
             {
               "$type": "Document",
@@ -55,9 +54,9 @@
               "Title": "Game.cpp",
               "DocumentMoniker": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\Game.cpp",
               "RelativeDocumentMoniker": "Game.cpp",
-              "ToolTip": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\Game.cpp*",
-              "RelativeToolTip": "Game.cpp*",
-              "ViewState": "AgIAAFUBAAAAAAAAAAArwGMBAAATAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\Game.cpp",
+              "RelativeToolTip": "Game.cpp",
+              "ViewState": "AgIAAJwGAAAAAAAAAAAEwGoBAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-09-10T12:06:47.093Z",
               "EditorCaption": ""
@@ -72,8 +71,7 @@
               "RelativeToolTip": "Log.txt",
               "ViewState": "AgIAAMkAAAAAAAAAAAAAANcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-08-25T02:49:08.804Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-25T02:49:08.804Z"
             },
             {
               "$type": "Document",
@@ -85,8 +83,7 @@
               "RelativeToolTip": "GamaInfo.txt",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-08-25T00:54:43.372Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-25T00:54:43.372Z"
             },
             {
               "$type": "Document",
@@ -98,8 +95,7 @@
               "RelativeToolTip": "GameInfokari.txt",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-08-25T00:53:52.02Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-25T00:53:52.02Z"
             }
           ]
         }
