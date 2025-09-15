@@ -349,10 +349,25 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 	ErrorLogAdd("終了コード変数を初期化しました。\n");//ログに終了コード変数初期化成功を記録
 	int logo = LoadGraph("Image/logo.png");//ロゴ読み込み
 	ErrorLogAdd("ロゴを読み込みました。\n");//ログにロゴ読み込み成功を記録
+	int timer;
+	ErrorLogAdd("タイマー変数を初期化しました。\n");//ログにタイマー変数初期化成功を記録
+	int timerinfo = 0;
+	ErrorLogAdd("タイマー情報変数を初期化しました。\n");//ログにタイマー情報変数初期化成功を記録
+	int focuspage = 0;;
+	ErrorLogAdd("フォーカスページ変数を初期化しました。\n");//ログにフォーカスページ変数初期化成功を記録
+	int focusgame = 0;
+	ErrorLogAdd("フォーカスゲーム変数を初期化しました。\n");//ログにフォーカスゲーム変数初期化成功を記録
+	int focus = LoadGraph("Image/focus.png");//フォーカス画像読み込み
+	ErrorLogAdd("フォーカス画像を読み込みました。\n");//ログにフォーカス画像読み込み成功を記録
 	ErrorLogAdd("すべてのデータの読み込みに成功しました!\n"); //ログにすべてのデータ読み込み成功を記録
+	if(gameyouso == 0){
+		ErrorLogAdd("Warning: Gameが一つも見つかりませんでした。\n");//ログにGameが一つも見つからなかったことを記録
+		MessageBox(NULL, "Warning: Gameが一つも見つかりませんでした。launcherInfo.txtの内容を確認してください。", "Error", MB_OK | MB_ICONWARNING | MB_TOPMOST);
+	}
 	ErrorLogAdd(("ゲーム数：" + std::to_string(gameyouso) + "\n").c_str());//ログにゲーム数を記録
 	ErrorLogAdd(("ページ総数：" + std::to_string(pagetotal) + "\n").c_str());//ログにページ総数を記録
 	ErrorLogAdd(("pagekasan:" + std::to_string(pagekasan) + "\n").c_str());//ログにpagekasanを記録
+	fukki:
 	for (feding = 225; feding != -1; --feding) {
 		ClearDrawScreen(); //裏画面をクリア
 		DrawGraph(1000, 700, logo, FALSE);
@@ -379,6 +394,64 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 			else {
 				ErrorLogAdd("終了操作がキャンセルされました。\n");//ログに終了操作キャンセルを記録
 				MessageBox(NULL, "処理を中断しました。", "警告", MB_OK | MB_ICONWARNING | MB_TOPMOST);
+			}
+		}
+		if (CheckHitKey(KEY_INPUT_F5)) {
+			if (timerinfo == 0) {
+				ErrorLogAdd("タイマー有効化操作が要求されました。\n");//ログにタイマー有効化操作要求を記録
+				int result = MessageBox(NULL, "タイマーを有効にしますか？", "確認", MB_YESNO | MB_ICONWARNING | MB_TOPMOST);
+				if (result == IDYES) {
+					GameInfoFile = FileRead_open("timer.txt", FALSE);//GameInfo.txtを開く
+					ErrorLogAdd("timer.txtを開きました。\n");//ログにtimer.txt開く成功を記録
+					FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
+					ErrorLogAdd("timer.txtの先頭に移動しました。\n");//ログにtimer.txt先頭移動成功を記録
+					FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
+					timer = atoi(gameInfoLine);
+					FileRead_close(GameInfoFile); // ファイルを閉じる
+					ErrorLogAdd("timer.txtを読み込みました。\n");//ログにtimer.txt読み込み成功を記録
+					timerinfo = 1;
+					ErrorLogAdd("タイマーを有効にしました。\n");
+					MessageBox(NULL, "タイマーを有効にしました。", "情報", MB_OK | MB_ICONINFORMATION | MB_TOPMOST);
+				}
+				else {
+					ErrorLogAdd("処理が中断されました。\n");
+					MessageBox(NULL, "処理を中断しました。", "警告", MB_OK | MB_ICONWARNING | MB_TOPMOST);
+				}
+			}else if(timerinfo == 1){
+				ErrorLogAdd("タイマー無効化操作が要求されました。\n");//ログにタイマー無効化操作要求を記録
+				int result = MessageBox(NULL, "この操作は管理者専用です。いいえをクリックして戻ってください。", "確認", MB_YESNO | MB_ICONWARNING | MB_TOPMOST);
+				if (result == IDYES) {
+					timerinfo = 0;
+					ErrorLogAdd("タイマーを無効にしました。\n");
+					MessageBox(NULL, "タイマーを無効にしました。", "情報", MB_OK | MB_ICONINFORMATION | MB_TOPMOST);
+				}
+				else {
+					ErrorLogAdd("処理が中断されました。\n");
+					MessageBox(NULL, "処理を中断しました。", "警告", MB_OK | MB_ICONWARNING | MB_TOPMOST);
+				}
+			}
+			// F5の連続判定防止のため、少し待機
+			Sleep(200);
+		}
+		if (timerinfo == 1) {
+			if (CheckHitKey(KEY_INPUT_LCONTROL) && CheckHitKey(KEY_INPUT_LALT) && CheckHitKey(KEY_INPUT_X)) {
+				ErrorLogAdd("タイマーリセット操作が要求されました。\n");//ログにタイマー初期化操作要求を記録
+				int result = MessageBox(NULL, "この操作は管理者専用です。いいえを押して戻ってください。", "確認", MB_YESNO | MB_ICONQUESTION | MB_TOPMOST);
+				if (result == IDYES) {
+					int GameInfoFile = FileRead_open("timer.txt", FALSE);
+					char gameInfoLine[256];
+					FileRead_seek(GameInfoFile, 0, SEEK_SET);
+					FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);
+					timer = atoi(gameInfoLine);
+					FileRead_close(GameInfoFile);
+					ErrorLogAdd("タイマーがリセットされました。\n");
+					MessageBox(NULL, "タイマーをリセットしました。", "情報", MB_OK | MB_ICONINFORMATION | MB_TOPMOST);
+				}
+				else {
+					ErrorLogAdd("処理が中断されました。。\n");
+					MessageBox(NULL, "処理を中断しました。", "警告", MB_OK | MB_ICONWARNING | MB_TOPMOST);
+				}
+				Sleep(200); // 連続判定防止
 			}
 		}
 		fps.Update();	//FPS更新
@@ -419,10 +492,35 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 		if (gameexinfo == 1) {
 			DrawStringToHandle(70, 150, gameex.c_str(), GetColor(0, 0, 0), font);//ゲーム説明描画
 		}
-		DrawBox(790, 173, 1430, 533, GetColor(0, 0, 0), TRUE);//黒いボックス描画
 		if (gameeximageinfo == 1) {
 			DrawGraph(790, 173, gameeximage, TRUE);//ゲーム説明画像描画
 		}
+		if (page == focuspage && focusgame >= 1 && focusgame <= 7) {
+			int x = 80 + (focusgame - 1) * 195;
+			DrawGraph(x, 603, focus, TRUE);
+		}
+		//if (focusgame == 1 && page == focuspage) {
+		//	DrawGraph(80, 603, focus, TRUE);
+		//}
+		//else if (focusgame == 2 && page == focuspage) {
+		//	DrawGraph(275, 603, focus, TRUE);
+		//}
+		//else if (focusgame == 3 && page == focuspage) {
+		//	DrawGraph(470, 603, focus, TRUE);
+		//}
+		//else if (focusgame == 4 && page == focuspage) {
+		//	DrawGraph(665, 603, focus, TRUE);
+		//}
+		//else if (focusgame == 5 && page == focuspage) {
+		//	DrawGraph(860, 603, focus, TRUE);
+		//}
+		//else if (focusgame == 6 && page == focuspage) {
+		//	DrawGraph(1055, 603, focus, TRUE);
+		//}
+		//else if (focusgame == 7 && page == focuspage) {
+		//	DrawGraph(1250, 603, focus, TRUE);
+		//}
+		DrawBox(790, 173, 1430, 533, GetColor(0, 0, 0), TRUE);//黒いボックス描画
 		DrawBox(90, 613, 265, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画0
 		DrawBox(285, 613, 460, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画1
 		DrawBox(480, 613, 655, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画2
@@ -436,9 +534,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 				DrawGraph(x, 613, gametitleimage[i + pagekasan], false);
 						}
 					}
-		DrawFormatString(55, 0, GetColor(0, 0, 0), "BGMCount:%d", BGMCount);//BGMCount変数表示
-		DrawFormatString(180, 0, GetColor(0, 0, 0), "MouseX:%d", mouseX);//マウスX座標表示
-		DrawFormatString(280, 0, GetColor(0, 0, 0), "MouseY:%d", mouseY);//マウスY座標表示
 		fps.Wait();		//待機
 		if (BGMCount % 28200 == 0) { // 235秒に一度
 			BGMCount = 0;//カウントリセット
@@ -450,6 +545,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 		if (Communicationmarkangle == 4)/*一回転したら*/ {
 			Communicationmarkangle = 2;//角度リセット
 		}
+
 		mouseInput = GetMouseInput();
 			if ((mouseInput & MOUSE_INPUT_LEFT) != 0 && (prevMouseInput & MOUSE_INPUT_LEFT) == 0) { // 押された瞬間
 				if (mouseX >= 1400 && mouseX <= 1500 && mouseY >= 35 && mouseY <= 135) { //♪ボタンの範囲内なら
@@ -535,6 +631,16 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												StringgameInfoLine = trim(StringgameInfoLine.substr(8)); // "eximage:"の後ろの文字列を取得
 												gameeximage = LoadGraph(StringgameInfoLine.c_str());
 												gameeximageinfo = 1;
+												if (gametypecheck == 1) {
+													gamescan = 1;
+													gameexeinfo = 0;
+													gameexe = "";
+													gamedir = "";
+													basedir = "";
+													fulldir = "";
+													fullexepath = "";
+													break;
+												}
 												if (gametypecheck == 2) {
 													FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
 													StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
@@ -577,12 +683,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												}
 												else {
 													ErrorLogAdd("eximageが不明です。\n");//ログにゲーム情報読み込み失敗を記録
-													MessageBox(NULL, "ゲーム説明画像が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONWARNING | MB_TOPMOST);
 												}
 											}
 											else {
 												ErrorLogAdd("exが不明です。\n");//ログにゲーム情報読み込み失敗を記録
-												MessageBox(NULL, "ゲーム説明が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONWARNING | MB_TOPMOST);
 											}
 										}
 										else {
@@ -615,6 +719,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 						ErrorLogAdd(("Scan:" + std::to_string(gamescan) + "\n").c_str());//ログにスキャンしたゲーム番号を記録
 						ErrorLogAdd(("ゲーム種類:" + std::to_string(gametypecheck) + "\n").c_str());//ログにゲーム種類を記録
 						ErrorLogAdd(("ゲームタイトル:" + gametitle + "\n").c_str());//ログにゲームタイトルを記録
+						focusgame = 1;
+						focuspage = page;
 					}
 					fps.FPS = 120; //FPSを元に戻す
 				}
@@ -669,6 +775,16 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												StringgameInfoLine = trim(StringgameInfoLine.substr(8)); // "eximage:"の後ろの文字列を取得
 												gameeximage = LoadGraph(StringgameInfoLine.c_str());
 												gameeximageinfo = 1;
+												if (gametypecheck == 1) {
+													gamescan = 1;
+													gameexeinfo = 0;
+													gameexe = "";
+													gamedir = "";
+													basedir = "";
+													fulldir = "";
+													fullexepath = "";
+													break;
+												}
 												if (gametypecheck == 2) {
 													FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
 													StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
@@ -692,7 +808,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 																ErrorLogAdd("}が不明です。\n");//ログにゲーム情報読み込み失敗を記録
 																MessageBox(NULL, "ゲーム情報の終端が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
 																ShowTaskbar();
-																ShowTaskbar();
 																return -1; //"}"がなかったら異常終了
 															}
 														}
@@ -712,12 +827,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												}
 												else {
 													ErrorLogAdd("eximageが不明です。\n");//ログにゲーム情報読み込み失敗を記録
-													MessageBox(NULL, "ゲーム説明画像が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONWARNING | MB_TOPMOST);
 												}
 											}
 											else {
 												ErrorLogAdd("exが不明です。\n");//ログにゲーム情報読み込み失敗を記録
-												MessageBox(NULL, "ゲーム説明が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONWARNING | MB_TOPMOST);
 											}
 										}
 										else {
@@ -750,6 +863,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 						ErrorLogAdd(("Scan:" + std::to_string(gamescan) + "\n").c_str());//ログにスキャンしたゲーム番号を記録
 						ErrorLogAdd(("ゲーム種類:" + std::to_string(gametypecheck) + "\n").c_str());//ログにゲーム種類を記録
 						ErrorLogAdd(("ゲームタイトル:" + gametitle + "\n").c_str());//ログにゲームタイトルを記録
+						focusgame = 2;
+						focuspage = page;
 					}
 					fps.FPS = 120; //FPSを元に戻す
 				}
@@ -804,6 +919,16 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												StringgameInfoLine = trim(StringgameInfoLine.substr(8)); // "eximage:"の後ろの文字列を取得
 												gameeximage = LoadGraph(StringgameInfoLine.c_str());
 												gameeximageinfo = 1;
+												if (gametypecheck == 1) {
+													gamescan = 1;
+													gameexeinfo = 0;
+													gameexe = "";
+													gamedir = "";
+													basedir = "";
+													fulldir = "";
+													fullexepath = "";
+													break;
+												}
 												if (gametypecheck == 2) {
 													FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
 													StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
@@ -846,12 +971,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												}
 												else {
 													ErrorLogAdd("eximageが不明です。\n");//ログにゲーム情報読み込み失敗を記録
-													MessageBox(NULL, "ゲーム説明画像が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONWARNING | MB_TOPMOST);
 												}
 											}
 											else {
 												ErrorLogAdd("exが不明です。\n");//ログにゲーム情報読み込み失敗を記録
-												MessageBox(NULL, "ゲーム説明が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONWARNING | MB_TOPMOST);
 											}
 										}
 										else {
@@ -884,6 +1007,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 						ErrorLogAdd(("Scan:" + std::to_string(gamescan) + "\n").c_str());//ログにスキャンしたゲーム番号を記録
 						ErrorLogAdd(("ゲーム種類:" + std::to_string(gametypecheck) + "\n").c_str());//ログにゲーム種類を記録
 						ErrorLogAdd(("ゲームタイトル:" + gametitle + "\n").c_str());//ログにゲームタイトルを記録
+						focusgame = 3;
+						focuspage = page;
 					}
 					fps.FPS = 120; //FPSを元に戻す
 				}
@@ -938,6 +1063,16 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												StringgameInfoLine = trim(StringgameInfoLine.substr(8)); // "eximage:"の後ろの文字列を取得
 												gameeximage = LoadGraph(StringgameInfoLine.c_str());
 												gameeximageinfo = 1;
+												if (gametypecheck == 1) {
+													gamescan = 1;
+													gameexeinfo = 0;
+													gameexe = "";
+													gamedir = "";
+													basedir = "";
+													fulldir = "";
+													fullexepath = "";
+													break;
+												}
 												if (gametypecheck == 2) {
 													FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
 													StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
@@ -980,12 +1115,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												}
 												else {
 													ErrorLogAdd("eximageが不明です。\n");//ログにゲーム情報読み込み失敗を記録
-													MessageBox(NULL, "ゲーム説明画像が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONWARNING | MB_TOPMOST);
 												}
 											}
 											else {
 												ErrorLogAdd("exが不明です。\n");//ログにゲーム情報読み込み失敗を記録
-												MessageBox(NULL, "ゲーム説明が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONWARNING | MB_TOPMOST);
 											}
 										}
 										else {
@@ -1018,6 +1151,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 						ErrorLogAdd(("Scan:" + std::to_string(gamescan) + "\n").c_str());//ログにスキャンしたゲーム番号を記録
 						ErrorLogAdd(("ゲーム種類:" + std::to_string(gametypecheck) + "\n").c_str());//ログにゲーム種類を記録
 						ErrorLogAdd(("ゲームタイトル:" + gametitle + "\n").c_str());//ログにゲームタイトルを記録
+						focusgame = 4;
+						focuspage = page;
 					}
 					fps.FPS = 120; //FPSを元に戻す
 				}
@@ -1072,6 +1207,16 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												StringgameInfoLine = trim(StringgameInfoLine.substr(8)); // "eximage:"の後ろの文字列を取得
 												gameeximage = LoadGraph(StringgameInfoLine.c_str());
 												gameeximageinfo = 1;
+												if (gametypecheck == 1) {
+													gamescan = 1;
+													gameexeinfo = 0;
+													gameexe = "";
+													gamedir = "";
+													basedir = "";
+													fulldir = "";
+													fullexepath = "";
+													break;
+												}
 												if (gametypecheck == 2) {
 													FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
 													StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
@@ -1114,12 +1259,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												}
 												else {
 													ErrorLogAdd("eximageが不明です。\n");//ログにゲーム情報読み込み失敗を記録
-													MessageBox(NULL, "ゲーム説明画像が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONWARNING | MB_TOPMOST);
 												}
 											}
 											else {
 												ErrorLogAdd("exが不明です。\n");//ログにゲーム情報読み込み失敗を記録
-												MessageBox(NULL, "ゲーム説明が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONWARNING | MB_TOPMOST);
 											}
 										}
 										else {
@@ -1152,6 +1295,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 						ErrorLogAdd(("Scan:" + std::to_string(gamescan) + "\n").c_str());//ログにスキャンしたゲーム番号を記録
 						ErrorLogAdd(("ゲーム種類:" + std::to_string(gametypecheck) + "\n").c_str());//ログにゲーム種類を記録
 						ErrorLogAdd(("ゲームタイトル:" + gametitle + "\n").c_str());//ログにゲームタイトルを記録
+						focusgame = 5;
+						focuspage = page;
 					}
 					fps.FPS = 120; //FPSを元に戻す
 				}
@@ -1206,6 +1351,16 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												StringgameInfoLine = trim(StringgameInfoLine.substr(8)); // "eximage:"の後ろの文字列を取得
 												gameeximage = LoadGraph(StringgameInfoLine.c_str());
 												gameeximageinfo = 1;
+												if (gametypecheck == 1) {
+													gamescan = 1;
+													gameexeinfo = 0;
+													gameexe = "";
+													gamedir = "";
+													basedir = "";
+													fulldir = "";
+													fullexepath = "";
+													break;
+												}
 												if (gametypecheck == 2) {
 													FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
 													StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
@@ -1248,12 +1403,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												}
 												else {
 													ErrorLogAdd("eximageが不明です。\n");//ログにゲーム情報読み込み失敗を記録
-													MessageBox(NULL, "ゲーム説明画像が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONWARNING | MB_TOPMOST);
 												}
 											}
 											else {
 												ErrorLogAdd("exが不明です。\n");//ログにゲーム情報読み込み失敗を記録
-												MessageBox(NULL, "ゲーム説明が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONWARNING | MB_TOPMOST);
 											}
 										}
 										else {
@@ -1286,6 +1439,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 						ErrorLogAdd(("Scan:" + std::to_string(gamescan) + "\n").c_str());//ログにスキャンしたゲーム番号を記録
 						ErrorLogAdd(("ゲーム種類:" + std::to_string(gametypecheck) + "\n").c_str());//ログにゲーム種類を記録
 						ErrorLogAdd(("ゲームタイトル:" + gametitle + "\n").c_str());//ログにゲームタイトルを記録
+						focusgame = 6;
+						focuspage = page;
 					}
 					fps.FPS = 120; //FPSを元に戻す
 				}
@@ -1340,6 +1495,16 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												StringgameInfoLine = trim(StringgameInfoLine.substr(8)); // "eximage:"の後ろの文字列を取得
 												gameeximage = LoadGraph(StringgameInfoLine.c_str());
 												gameeximageinfo = 1;
+												if (gametypecheck == 1) {
+													gamescan = 1;
+													gameexeinfo = 0;
+													gameexe = "";
+													gamedir = "";
+													basedir = "";
+													fulldir = "";
+													fullexepath = "";
+													break;
+												}
 												if (gametypecheck == 2) {
 													FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
 													StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
@@ -1382,12 +1547,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												}
 												else {
 													ErrorLogAdd("eximageが不明です。\n");//ログにゲーム情報読み込み失敗を記録
-													MessageBox(NULL, "ゲーム説明画像が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONWARNING | MB_TOPMOST);
 												}
 											}
 											else {
 												ErrorLogAdd("exが不明です。\n");//ログにゲーム情報読み込み失敗を記録
-												MessageBox(NULL, "ゲーム説明が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONWARNING | MB_TOPMOST);
 											}
 										}
 										else {
@@ -1420,6 +1583,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 						ErrorLogAdd(("Scan:" + std::to_string(gamescan) + "\n").c_str());//ログにスキャンしたゲーム番号を記録
 						ErrorLogAdd(("ゲーム種類:" + std::to_string(gametypecheck) + "\n").c_str());//ログにゲーム種類を記録
 						ErrorLogAdd(("ゲームタイトル:" + gametitle + "\n").c_str());//ログにゲームタイトルを記録
+						focusgame = 7;
+						focuspage = page;
 					}
 					fps.FPS = 120; //FPSを元に戻す
 				}
@@ -1454,6 +1619,18 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 							}
 							else {
 								fps.Update();	//FPS更新
+								if (timerinfo == 1) {
+									timer -= 1;
+									if (timer <= 0) {
+										TerminateProcess(pi.hProcess, 0);
+										CloseHandle(pi.hProcess);
+										CloseHandle(pi.hThread);
+										ErrorLogAdd("タイムオーバーによりゲームを強制終了しました。\n");//ログにゲーム強制終了を記録
+										MessageBox(NULL, "時間切れです!遊んでいただきありがとうございました!", "エラー", MB_OK | MB_ICONINFORMATION | MB_TOPMOST);
+										goto zikangire;
+									}
+								}
+
 							}
 						}
 						CloseHandle(pi.hProcess);
@@ -1489,6 +1666,48 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 		pagekasan = (page - 1) * 7;
 		ScreenFlip(); //描画した内容を画面に反映
 	}
+zikangire:
+	fps.FPS = 120;
+		for (feding >= 0; feding >= 0; --feding) {
+			ClearDrawScreen(); //裏画面をクリア
+			DrawGraph(1000, 700, logo, FALSE);
+			SetDrawBlendMode(DX_BLENDMODE_ALPHA, feding); //フェードインのためのブレンドモード設定
+			DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE); //画面全体を黒で塗りつぶす
+			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0); //ブレンドモードを元に戻す
+			ScreenFlip(); //描画した内容を画面に反映
+			ChangeVolumeSoundMem(255 - feding, BGM); //徐々にBGMの音量を上げる
+			ProcessMessage();
+		}
+		fps.FPS = 30;
+		while (1) {
+			ClearDrawScreen(); //裏画面をクリア
+			DrawGraph(1000, 700, logo, FALSE);
+			ScreenFlip(); //描画した内容を画面に反映
+			fps.Update();	//FPS更新
+			ProcessMessage();
+			DrawFormatString(0, 0, GetColor(0, 0, 0), "timeup");
+			if (CheckHitKey(KEY_INPUT_LCONTROL) && CheckHitKey(KEY_INPUT_LALT) && CheckHitKey(KEY_INPUT_X)) {
+				ErrorLogAdd("通常復帰操作が要求されました。\n");//ログにタイマー初期化操作要求を記録
+				int result = MessageBox(NULL, "この操作は管理者専用です。いいえを押して戻ってください。", "確認", MB_YESNO | MB_ICONQUESTION | MB_TOPMOST);
+				if (result == IDYES) {
+					int GameInfoFile = FileRead_open("timer.txt", FALSE);
+					char gameInfoLine[256];
+					FileRead_seek(GameInfoFile, 0, SEEK_SET);
+					FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);
+					timer = atoi(gameInfoLine);
+					FileRead_close(GameInfoFile);
+					ErrorLogAdd("通常状態に復帰しました。\n");
+					MessageBox(NULL, "タイマーをリセットしました。\n通常状態に戻ります。", "情報", MB_OK | MB_ICONINFORMATION | MB_TOPMOST);
+					fps.FPS = 120;
+					goto fukki;
+				}
+				else {
+					ErrorLogAdd("処理が中断されました。。\n");
+					MessageBox(NULL, "処理を中断しました。", "警告", MB_OK | MB_ICONWARNING | MB_TOPMOST);
+				}
+				Sleep(200); // 連続判定防止
+			}
+		}
 	DxLib_End(); // DXライブラリの終了処理
 	return 0; // プログラムの終了
 }

@@ -5,8 +5,13 @@ ex:aeiou(説明,同様に一行24字、256バイト以内,改行は「\n」で)
 eximage:a/e/i/o/u or null(説明画像の位置、任意、640x360)
 dir:a\\e\\i\\o\\u or null(typeがnoteなら不要,アプリケーションファイルのあるフォルダの位置)
 exe:aaaaa.exe or null(typeがnoteなら不要,アプリケーションファイルの位置)
-(ちなみにタイトル画像は必須、175x175です)
 }
 1:{
     ・・・
+}
+
+launcherinfo.txt
+
+{
+titleimage:aaaaa.png(タイトル画像は必須、175x175です)
 }

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Game xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Name>はねろだんご</Name>
-  <Description>すべてキーボード選択です。エンターキーで選択です。</Description>
-  <FilePath>VisualStudio_2022用.exe</FilePath>
-  <IcoImgPath>icon.png</IcoImgPath>
-  <DemoImgPath>haikei.png</DemoImgPath>
-  <Developer>Anpunchman</Developer>
-</Game>
