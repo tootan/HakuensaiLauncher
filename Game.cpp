@@ -349,7 +349,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 	ErrorLogAdd("終了コード変数を初期化しました。\n");//ログに終了コード変数初期化成功を記録
 	int logo = LoadGraph("Image/logo.png");//ロゴ読み込み
 	ErrorLogAdd("ロゴを読み込みました。\n");//ログにロゴ読み込み成功を記録
-	int timer;
+	int timer = 0;
 	ErrorLogAdd("タイマー変数を初期化しました。\n");//ログにタイマー変数初期化成功を記録
 	int timerinfo = 0;
 	ErrorLogAdd("タイマー情報変数を初期化しました。\n");//ログにタイマー情報変数初期化成功を記録
@@ -359,6 +359,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 	ErrorLogAdd("フォーカスゲーム変数を初期化しました。\n");//ログにフォーカスゲーム変数初期化成功を記録
 	int focus = LoadGraph("Image/focus.png");//フォーカス画像読み込み
 	ErrorLogAdd("フォーカス画像を読み込みました。\n");//ログにフォーカス画像読み込み成功を記録
+	int timerhyouzi = 0;
+	ErrorLogAdd("タイマー表示変数を初期化しました。");
 	ErrorLogAdd("すべてのデータの読み込みに成功しました!\n"); //ログにすべてのデータ読み込み成功を記録
 	if(gameyouso == 0){
 		ErrorLogAdd("Warning: Gameが一つも見つかりませんでした。\n");//ログにGameが一つも見つからなかったことを記録
@@ -394,6 +396,19 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 			else {
 				ErrorLogAdd("終了操作がキャンセルされました。\n");//ログに終了操作キャンセルを記録
 				MessageBox(NULL, "処理を中断しました。", "警告", MB_OK | MB_ICONWARNING | MB_TOPMOST);
+			}
+		}
+		if(CheckHitKey(KEY_INPUT_F7)){
+			if (timerinfo == 1) {
+				if (timerhyouzi == 0) {
+					timerhyouzi = 1;
+					ErrorLogAdd("タイマーが表示されました。\n");
+				}
+				else if (timerhyouzi == 1) {
+					timerhyouzi = 0;
+					ErrorLogAdd("タイマーが非表示にされました。\n");
+				}
+				Sleep(100); // 連続判定防止
 			}
 		}
 		if (CheckHitKey(KEY_INPUT_F5)) {
@@ -534,6 +549,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 				DrawGraph(x, 613, gametitleimage[i + pagekasan], false);
 						}
 					}
+		if (timerhyouzi == 1) {
+			DrawFormatString(0, 0, GetColor(0, 0, 0), "%d",timer);
+		}
 		fps.Wait();		//待機
 		if (BGMCount % 28200 == 0) { // 235秒に一度
 			BGMCount = 0;//カウントリセット

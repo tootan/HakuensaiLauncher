@@ -1,0 +1,10 @@
+﻿  Game.cpp
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1670,18): warning C4552: '>=': 式の結果が使用されていません
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1689,15): warning C4552: '>=': 式の結果が使用されていません
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(348,8): warning C4101: 'exitcode': ローカル変数は 1 度も使われていません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(338,8): warning C4101: 'exitCode': ローカル変数は 1 度も使われていません。
+  コード生成しています。
+  Previous IPDB not found, fall back to full compilation.
+  All 205 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  コード生成が終了しました。
+  HakuensaiLauncher.vcxproj -> C:\Users\b1213\c++\HakuensaiLauncher\Release\HakuensaiLauncher.exe
