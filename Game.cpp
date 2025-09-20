@@ -420,7 +420,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
 					ErrorLogAdd("timer.txtの先頭に移動しました。\n");//ログにtimer.txt先頭移動成功を記録
 					FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
-					timer = atoi(gameInfoLine);
+					timer = atoi(gameInfoLine) * 30;
 					FileRead_close(GameInfoFile); // ファイルを閉じる
 					ErrorLogAdd("timer.txtを読み込みました。\n");//ログにtimer.txt読み込み成功を記録
 					timerinfo = 1;
@@ -454,7 +454,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					char gameInfoLine[256];
 					FileRead_seek(GameInfoFile, 0, SEEK_SET);
 					FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);
-					timer = atoi(gameInfoLine);
+					timer = atoi(gameInfoLine) * 30;
 					FileRead_close(GameInfoFile);
 					ErrorLogAdd("タイマーがリセットされました。\n");
 					MessageBox(NULL, "タイマーをリセットしました。", "情報", MB_OK | MB_ICONINFORMATION | MB_TOPMOST);
@@ -546,7 +546,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 						}
 					}
 		if (timerhyouzi == 1) {
-			DrawFormatString(0, 0, GetColor(0, 0, 0), "%d",timer);
+			DrawFormatString(0, 0, GetColor(0, 0, 0), "%d",timer / 30);
 		}
 		fps.Wait();		//待機
 		if (BGMCount % 28200 == 0) { // 235秒に一度
@@ -1708,7 +1708,7 @@ zikangire:
 					char gameInfoLine[256];
 					FileRead_seek(GameInfoFile, 0, SEEK_SET);
 					FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);
-					timer = atoi(gameInfoLine);
+					timer = atoi(gameInfoLine) * 30;
 					FileRead_close(GameInfoFile);
 					ErrorLogAdd("通常状態に復帰しました。\n");
 					MessageBox(NULL, "タイマーをリセットしました。\n通常状態に戻ります。", "情報", MB_OK | MB_ICONINFORMATION | MB_TOPMOST);
