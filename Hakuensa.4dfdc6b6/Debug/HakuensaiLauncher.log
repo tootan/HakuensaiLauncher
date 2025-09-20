@@ -1,0 +1,6 @@
+﻿  Game.cpp
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1666,18): warning C4552: '>=': 式の結果が使用されていません
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1685,15): warning C4552: '>=': 式の結果が使用されていません
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(348,8): warning C4101: 'exitcode': ローカル変数は 1 度も使われていません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(338,8): warning C4101: 'exitCode': ローカル変数は 1 度も使われていません。
+  HakuensaiLauncher.vcxproj -> C:\Users\b1213\c++\HakuensaiLauncher\Debug\HakuensaiLauncher.exe

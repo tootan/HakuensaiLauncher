@@ -395,7 +395,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 			}
 			else {
 				ErrorLogAdd("終了操作がキャンセルされました。\n");//ログに終了操作キャンセルを記録
-				MessageBox(NULL, "処理を中断しました。", "警告", MB_OK | MB_ICONWARNING | MB_TOPMOST);
 			}
 		}
 		if(CheckHitKey(KEY_INPUT_F7)){
@@ -430,7 +429,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 				}
 				else {
 					ErrorLogAdd("処理が中断されました。\n");
-					MessageBox(NULL, "処理を中断しました。", "警告", MB_OK | MB_ICONWARNING | MB_TOPMOST);
 				}
 			}else if(timerinfo == 1){
 				ErrorLogAdd("タイマー無効化操作が要求されました。\n");//ログにタイマー無効化操作要求を記録
@@ -442,7 +440,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 				}
 				else {
 					ErrorLogAdd("処理が中断されました。\n");
-					MessageBox(NULL, "処理を中断しました。", "警告", MB_OK | MB_ICONWARNING | MB_TOPMOST);
 				}
 			}
 			// F5の連続判定防止のため、少し待機
@@ -451,7 +448,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 		if (timerinfo == 1) {
 			if (CheckHitKey(KEY_INPUT_LCONTROL) && CheckHitKey(KEY_INPUT_LALT) && CheckHitKey(KEY_INPUT_X)) {
 				ErrorLogAdd("タイマーリセット操作が要求されました。\n");//ログにタイマー初期化操作要求を記録
-				int result = MessageBox(NULL, "この操作は管理者専用です。いいえを押して戻ってください。", "確認", MB_YESNO | MB_ICONQUESTION | MB_TOPMOST);
+				int result = MessageBox(NULL, "この操作は管理者専用です。いいえを押して戻ってください。", "確認", MB_YESNO | MB_ICONWARNING | MB_TOPMOST);
 				if (result == IDYES) {
 					int GameInfoFile = FileRead_open("timer.txt", FALSE);
 					char gameInfoLine[256];
@@ -464,7 +461,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 				}
 				else {
 					ErrorLogAdd("処理が中断されました。。\n");
-					MessageBox(NULL, "処理を中断しました。", "警告", MB_OK | MB_ICONWARNING | MB_TOPMOST);
 				}
 				Sleep(200); // 連続判定防止
 			}
@@ -475,22 +471,22 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 		strftime(timebuf, sizeof(timebuf), "%H:%M", &local);//時刻をフォーマットして文字列に変換
 		GetMousePoint(&mouseX, &mouseY); //マウス座標取得
 		SetDrawMode(DX_DRAWMODE_BILINEAR);//描画モードをバイリニアフィルタに設定(アンチエイリアス効果)
-		DrawRotaGraph(60, 50, 1.0, PI * Communicationmarkangle, Communicationmark, TRUE); //コミュニケーションマーク描画
+		DrawRotaGraph(60, 58, 1.0, PI * Communicationmarkangle, Communicationmark, TRUE); //コミュニケーションマーク描画
 		SetDrawMode(DX_DRAWMODE_NEAREST);//描画モードをニアレストネイバーに設定(アンチエイリアス効果なし)
 		if (gametitleinfo == 0) {
-			DrawStringToHandle(450, 10, "柏苑祭", GetColor(0, 0, 0), titlefont);//タイトル描画
-			DrawStringToHandle(785, 10, "2025", GetColor(255, 0, 0), titlefont);//タイトル描画2
+			DrawStringToHandle(450, 15, "柏苑祭", GetColor(0, 0, 0), titlefont);//タイトル描画
+			DrawStringToHandle(785, 15, "2025", GetColor(255, 0, 0), titlefont);//タイトル描画2
 		}
 		else {
-			DrawStringToHandle(150, 10, gametitle.c_str(), GetColor(0, 0, 0), titlefont);//ゲームタイトル描画
+			DrawStringToHandle(150, 20, gametitle.c_str(), GetColor(0, 0, 0), titlefont);//ゲームタイトル描画
 		}
-		DrawBox(0, 105, 1920, 110, GetColor(255, 0, 0), TRUE);//赤い線描画
-		DrawStringToHandle(1320, 5, "♪昼下がり気分", GetColor(0, 0, 0), font);//BGM名描画
+		DrawBox(0, 117, 1920, 122, GetColor(255, 0, 0), TRUE);//赤い線描画
+		DrawStringToHandle(1320, 10, "♪昼下がり気分", GetColor(0, 0, 0), font);//BGM名描画
 		if (BGMinfo == 1) { //BGMがONなら
-			DrawGraph(1400, 35, onpuon, TRUE); //♪ボタンオン描画
+			DrawGraph(1400, 40, onpuon, TRUE); //♪ボタンオン描画
 		}
 		else if (BGMinfo == 0) { //BGMがOFFなら
-			DrawGraph(1400, 35, onpuoff, TRUE); //♪ボタンオフ描画
+			DrawGraph(1400, 40, onpuoff, TRUE); //♪ボタンオフ描画
 		}
 		DrawBox(0, 600, 1920, 800, GetColor(255, 160, 160), TRUE);//赤いボックス描画
 		DrawBox(0, 800, 1920, 900, GetColor(100, 100, 100), TRUE);//灰色のボックス描画
@@ -1706,7 +1702,7 @@ zikangire:
 			DrawFormatString(0, 0, GetColor(0, 0, 0), "timeup");
 			if (CheckHitKey(KEY_INPUT_LCONTROL) && CheckHitKey(KEY_INPUT_LALT) && CheckHitKey(KEY_INPUT_X)) {
 				ErrorLogAdd("通常復帰操作が要求されました。\n");//ログにタイマー初期化操作要求を記録
-				int result = MessageBox(NULL, "この操作は管理者専用です。いいえを押して戻ってください。", "確認", MB_YESNO | MB_ICONQUESTION | MB_TOPMOST);
+				int result = MessageBox(NULL, "この操作は管理者専用です。いいえを押して戻ってください。", "確認", MB_YESNO | MB_ICONWARNING | MB_TOPMOST);
 				if (result == IDYES) {
 					int GameInfoFile = FileRead_open("timer.txt", FALSE);
 					char gameInfoLine[256];
@@ -1721,7 +1717,6 @@ zikangire:
 				}
 				else {
 					ErrorLogAdd("処理が中断されました。。\n");
-					MessageBox(NULL, "処理を中断しました。", "警告", MB_OK | MB_ICONWARNING | MB_TOPMOST);
 				}
 				Sleep(200); // 連続判定防止
 			}
