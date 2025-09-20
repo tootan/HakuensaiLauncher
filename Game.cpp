@@ -115,7 +115,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 	HWND hwnd = (HWND)GetMainWindowHandle();//メインウインドウハンドルを取得
 	g_OldWndProc = (WNDPROC)SetWindowLongPtr(hwnd, GWLP_WNDPROC, (LONG_PTR)MyWndProc);//ウインドウプロシージャをフックする
 	ErrorLogAdd("ウインドウプロシージャをフックしました。\n");//ログにフック成功を記録
-	//HideTaskbar(); //タスクバーを非表示にする
+	HideTaskbar(); //タスクバーを非表示にする
 	ErrorLogAdd("タスクバーを非表示にしました。\n");//ログにタスクバー非表示成功を記録
 	SetDrawScreen(DX_SCREEN_BACK);//裏描画に設定
 	ErrorLogAdd("裏画面に描画を設定しました。\n");//ログに裏画面設定成功を記録
