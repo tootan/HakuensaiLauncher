@@ -20,9 +20,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="GameInfokari.txt">
-      <Filter>リソース ファイル</Filter>
-    </Text>
     <Text Include="launcherInfo.txt">
       <Filter>リソース ファイル</Filter>
     </Text>
@@ -30,6 +27,12 @@
       <Filter>リソース ファイル</Filter>
     </Text>
     <Text Include="Log.txt">
+      <Filter>リソース ファイル</Filter>
+    </Text>
+    <Text Include="真・りーどみー.txt">
+      <Filter>リソース ファイル</Filter>
+    </Text>
+    <Text Include="x64\Debug\Discordnumber.txt">
       <Filter>リソース ファイル</Filter>
     </Text>
   </ItemGroup>
