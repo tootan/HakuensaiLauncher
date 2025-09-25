@@ -5,6 +5,9 @@ titleimage:x64/Release/Games/birdshoot/titleimage.png
 titleimage:x64/Release/Games/naikakukikiippatu/titleimage.png
 }
 {
+titleimage:x64/Release/Games/animalrpg/titleimage.png
+}
+{
 titleimage:x64/Release/Games/onlyup/titleimage.png
 }
 {

@@ -16,13 +16,21 @@ exe:main.exe
 }
 2:{
 type:game
+title:アニマルRPG.Season1
+ex:主人公を操作し道中で出会う人や国の問題を解決しな\nがら進むＲＰＧです。\n今回は「Season1」なので魔王の討伐ま\nでにはいきませんが、その分会話などはこだわっている\nので、ぜひ読んで世界観に没入しながら楽しんでほし\nいです！
+eximage:x64/Release/Games/animalrpg/eximage.png
+dir:Games\\animalrpg
+exe:main.exe
+}
+3:{
+type:game
 title:Only Up
 ex:上に登っていき、頂上に着いたらゴールです。\n隠しルートも探そう!ベストタイムを更新できるよう\nに頑張ろう!
 eximage:x64/Release/Games/onlyup/eximage.png
 dir:Games\\onlyup
 exe:main.exe
 }
-3:{
+4:{
 type:game
 title:ゴルフプラットフォーマー
 ex:正式名称:操作がゴルフみたい?!プラットフォーマー\nゴルフボールのように跳ねる赤いボールを黄色の旗ま\nで操作しよう！\n使うのは右矢印キー、左矢印キー、スペースキー、\nRキーです！\nお子さんでもできるように簡単にしました！
@@ -30,7 +38,7 @@ eximage:x64/Release/Games/golf/eximage.png
 dir:Games\\golf
 exe:main.exe
 }
-4:{
+5:{
 type:game
 title:プラットフォーマー
 ex:イージー、ノーマル、ハードの3つの難易度があり、\n多くの人が楽しむことができるようになっています。\n遊び方は説明を押すことで確認してもらうことができ\nます。\nぜひ楽しんでください。
@@ -38,7 +46,7 @@ eximage:x64/Release/Games/platformer/eximage.png
 dir:Games\\platformer
 exe:main.exe
 }
-5:{
+6:{
 type:game
 title:攻撃をよけるゲーム
 ex:このゲームは白い球を動かして残り時間まで黄色い弾\n幕や青いバーを避けるゲームです。\n注意＊このゲームにスタート画面はありません。すぐ\nに始まるので気を付けてください。\nまた攻撃に当たった時の為に十分に音量を下げてから\n遊んでください。
@@ -46,7 +54,7 @@ eximage:x64/Release/Games/kougeki/eximage.png
 dir:Games\\kougeki
 exe:main.exe
 }
-6:{
+7:{
 type:game
 title:ハンバーガーゲーム
 ex:このゲームは、ハンバーガーの具材をマウスでドラッ\nグして、お手本と同じハンバーガーを組み立てていく\nゲームとなっています。難易度が普通以上のものは、\nマウスが揺れ、妨害してきます。\n難しいですが、頑張ってください！
@@ -54,7 +62,7 @@ eximage:x64/Release/Games/hanburger/eximage.png
 dir:Games\\hanburger
 exe:main.exe
 }
-7:{
+8:{
 type:game
 title:シューティングゲーム
 ex:正式名称:思いつきで作ったシューティングゲーム\n全部で五つのステージがあるシューティングゲームで\nす。遊び方はゲームの中にあり、[EASY] [NORMAL]\n [HARD]の三つの難易度から選んで遊ぶことができま\nす。
@@ -62,7 +70,7 @@ eximage:x64/Release/Games/shooting/eximage.png
 dir:Games\\shooting
 exe:main.exe
 }
-8:{
+9:{
 type:game
 title:Rain of Bullets
 ex:WASDや矢印キーで機体を操作し、色ごとの効果を持つ\n弾幕や範囲攻撃を避けて得点を稼ごう！
@@ -70,7 +78,7 @@ eximage:x64/Release/Games/rob/eximage.png
 dir:Games\\rob
 exe:main.exe
 }
-9:{
+10:{
 type:game
 title:ステージスタジオ
 ex:オリジナルのコースを作ったり、他のプレイヤーが作\nったステージに挑戦できる2Dアクション。

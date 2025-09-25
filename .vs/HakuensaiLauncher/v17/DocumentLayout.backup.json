@@ -11,16 +11,16 @@
       "RelativeMoniker": "D:0:0:{4DFDC6B6-4426-45D9-AEF0-3F67ACFD054B}|HakuensaiLauncher.vcxproj|solutionrelative:launcherInfo.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{4DFDC6B6-4426-45D9-AEF0-3F67ACFD054B}|HakuensaiLauncher.vcxproj|C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\\u771F\u30FB\u308A\u30FC\u3069\u307F\u30FC.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{4DFDC6B6-4426-45D9-AEF0-3F67ACFD054B}|HakuensaiLauncher.vcxproj|solutionrelative:\u771F\u30FB\u308A\u30FC\u3069\u307F\u30FC.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4DFDC6B6-4426-45D9-AEF0-3F67ACFD054B}|HakuensaiLauncher.vcxproj|C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4DFDC6B6-4426-45D9-AEF0-3F67ACFD054B}|HakuensaiLauncher.vcxproj|solutionrelative:Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4DFDC6B6-4426-45D9-AEF0-3F67ACFD054B}|HakuensaiLauncher.vcxproj|C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\Log.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{4DFDC6B6-4426-45D9-AEF0-3F67ACFD054B}|HakuensaiLauncher.vcxproj|solutionrelative:Log.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DFDC6B6-4426-45D9-AEF0-3F67ACFD054B}|HakuensaiLauncher.vcxproj|C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\\u771F\u30FB\u308A\u30FC\u3069\u307F\u30FC.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{4DFDC6B6-4426-45D9-AEF0-3F67ACFD054B}|HakuensaiLauncher.vcxproj|solutionrelative:\u771F\u30FB\u308A\u30FC\u3069\u307F\u30FC.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,20 +30,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Log.txt",
-              "DocumentMoniker": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\Log.txt",
-              "RelativeDocumentMoniker": "Log.txt",
-              "ToolTip": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\Log.txt",
-              "RelativeToolTip": "Log.txt",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAIwBoAAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-08-25T02:49:08.804Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Bookmark",
@@ -52,6 +43,18 @@
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "Log.txt",
+              "DocumentMoniker": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\Log.txt",
+              "RelativeDocumentMoniker": "Log.txt",
+              "ToolTip": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\Log.txt",
+              "RelativeToolTip": "Log.txt",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAIwBoAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-08-25T02:49:08.804Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "\u771F\u30FB\u308A\u30FC\u3069\u307F\u30FC.txt",
               "DocumentMoniker": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\\u771F\u30FB\u308A\u30FC\u3069\u307F\u30FC.txt",
               "RelativeDocumentMoniker": "\u771F\u30FB\u308A\u30FC\u3069\u307F\u30FC.txt",
@@ -70,14 +73,14 @@
               "RelativeDocumentMoniker": "launcherInfo.txt",
               "ToolTip": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\launcherInfo.txt",
               "RelativeToolTip": "launcherInfo.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
               "WhenOpened": "2025-09-13T05:17:01.302Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Game.cpp",
               "DocumentMoniker": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\Game.cpp",
               "RelativeDocumentMoniker": "Game.cpp",
@@ -94,9 +97,9 @@
               "Title": "GamaInfo.txt",
               "DocumentMoniker": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\GamaInfo.txt",
               "RelativeDocumentMoniker": "GamaInfo.txt",
-              "ToolTip": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\GamaInfo.txt*",
-              "RelativeToolTip": "GamaInfo.txt*",
-              "ViewState": "AgIAADUAAAAAAAAAAAAmwDsAAABWAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\b1213\\c\u002B\u002B\\HakuensaiLauncher\\GamaInfo.txt",
+              "RelativeToolTip": "GamaInfo.txt",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABMAAAB1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
               "WhenOpened": "2025-08-25T00:54:43.372Z",
               "EditorCaption": ""
