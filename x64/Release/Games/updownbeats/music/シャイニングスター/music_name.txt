@@ -1,4 +1,0 @@
-TITLE:シャイニングスター(short.ver)
-CREDIT:魔王魂
-WAVE:shining_star.wav
-BPM:158
