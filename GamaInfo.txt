@@ -16,7 +16,7 @@ exe:main.exe
 }
 2:{
 type:game
-title:アニマルRPG.Season1
+title:ANIMALRPG.Season1
 ex:主人公を操作し道中で出会う人や国の問題を解決しな\nがら進むＲＰＧです。\n今回は「Season1」なので魔王の討伐ま\nでにはいきませんが、その分会話などはこだわっている\nので、ぜひ読んで世界観に没入しながら楽しんでほし\nいです！
 eximage:x64/Release/Games/animalrpg/eximage.png
 dir:Games\\animalrpg
