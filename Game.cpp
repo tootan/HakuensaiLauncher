@@ -78,6 +78,16 @@ std::string GetExeDir() {
 	return exePath.substr(0, pos); // 実行ファイルのディレクトリ
 }
 
+// 文字列置換用のヘルパー関数
+std::string ReplaceAll(std::string str, const std::string& from, const std::string& to) {
+	size_t start_pos = 0;
+	while ((start_pos = str.find(from, start_pos)) != std::string::npos) {
+		str.replace(start_pos, from.length(), to);
+		start_pos += to.length(); // toにfromが含まれる場合でも無限ループにならないように
+	}
+	return str;
+}
+
 // タスクバーを非表示にする
 void HideTaskbar() {
 	HWND hTaskbar = FindWindowA("Shell_TrayWnd", NULL);
@@ -475,7 +485,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					timerhyouzi = 0;
 					ErrorLogAdd("タイマーが非表示にされました。\n");
 				}
-				Sleep(100); // 連続判定防止
+				Sleep(200); // 連続判定防止
 			}
 		}
 		if (CheckHitKey(KEY_INPUT_F5)) {
@@ -579,7 +589,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 				taskbarinfo = 1;
 				ErrorLogAdd("タスクバーが表示されました。\n");
 			}
-			Sleep(100); // 連続判定防止
+
+			Sleep(200); // 連続判定防止
 		}
 		fps.Update();	//FPS更新
 		time_t t = time(NULL);//現在時刻を取得
@@ -612,6 +623,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 		DrawGraph(10, 650, hidaribotan, TRUE); //左ボタン描画
 		DrawGraph(1420, 650, migibotan, TRUE); //右ボタン描画
 		DrawBox(60, 145, 1470, 560, GetColor(200, 200, 200), TRUE);//灰色ボックス描画
+		DrawBox(790, 173, 1430, 533, GetColor(0, 0, 0), TRUE);//黒いボックス描画
 		if (gameexeinfo == 1) {
 			DrawGraph(70, 450, playbotan, TRUE); //プレイボタン描画
 		}
@@ -619,8 +631,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 		if (gameexinfo == 1) {
 			DrawStringToHandle(70, 150, gameex.c_str(), GetColor(0, 0, 0), font);//ゲーム説明描画
 		}
-		if (gameeximageinfo == 1) {
-			DrawGraph(790, 173, gameeximage, TRUE);//ゲーム説明画像描画
+		if (gameeximageinfo == 1 && gameeximage != -1) {
+			DrawGraph(790, 173, gameeximage, FALSE);//ゲーム説明画像描画
+		}
+		else if (gameeximage == -1) {
+			ErrorLogAdd("Warning: Game説明画像が見つかりませんでした。\n");//ログにGame説明画像が見つからなかったことを記録
+			gameeximageinfo = 0;
 		}
 		if (page == focuspage && focusgame >= 1 && focusgame <= 7) {
 			int x = 80 + (focusgame - 1) * 195;
@@ -629,7 +645,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 		//if (focusgame == 1 && page == focuspage) {
 		//	DrawGraph(80, 603, focus, TRUE);
 		//}
-		//else if (focusgame == 2 && page == focuspage) {
+		//else if (focusgame == 2 && page == focuspage) && gameeximage != -1
 		//	DrawGraph(275, 603, focus, TRUE);
 		//}
 		//else if (focusgame == 3 && page == focuspage) {
@@ -647,7 +663,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 		//else if (focusgame == 7 && page == focuspage) {
 		//	DrawGraph(1250, 603, focus, TRUE);
 		//}
-		DrawBox(790, 173, 1430, 533, GetColor(0, 0, 0), TRUE);//黒いボックス描画
 		DrawBox(90, 613, 265, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画0
 		DrawBox(285, 613, 460, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画1
 		DrawBox(480, 613, 655, 788, GetColor(0, 0, 0), TRUE);//黒いボックス描画2
@@ -777,7 +792,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 										gamecheck = StringgameInfoLine.find("ex:");
 										if (gamecheck != std::string::npos) {
 											StringgameInfoLine = trim(StringgameInfoLine.substr(3)); // "ex:"の後ろの文字列を取得
-											gameex = StringgameInfoLine;
+											gameex = ReplaceAll(StringgameInfoLine, "\\n", "\n"); // "\\n"を改行コードに置換
 											gameexinfo = 1;
 											FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
 											StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
@@ -1089,7 +1104,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 										gamecheck = StringgameInfoLine.find("ex:");
 										if (gamecheck != std::string::npos) {
 											StringgameInfoLine = trim(StringgameInfoLine.substr(3)); // "ex:"の後ろの文字列を取得
-											gameex = StringgameInfoLine;
+											gameex = ReplaceAll(StringgameInfoLine, "\\n", "\n"); // "\\n"を改行コードに置換
 											gameexinfo = 1;
 											FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
 											StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
@@ -1401,7 +1416,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 										gamecheck = StringgameInfoLine.find("ex:");
 										if (gamecheck != std::string::npos) {
 											StringgameInfoLine = trim(StringgameInfoLine.substr(3)); // "ex:"の後ろの文字列を取得
-											gameex = StringgameInfoLine;
+											gameex = ReplaceAll(StringgameInfoLine, "\\n", "\n"); // "\\n"を改行コードに置換
 											gameexinfo = 1;
 											FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
 											StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
@@ -1713,7 +1728,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 										gamecheck = StringgameInfoLine.find("ex:");
 										if (gamecheck != std::string::npos) {
 											StringgameInfoLine = trim(StringgameInfoLine.substr(3)); // "ex:"の後ろの文字列を取得
-											gameex = StringgameInfoLine;
+											gameex = ReplaceAll(StringgameInfoLine, "\\n", "\n"); // "\\n"を改行コードに置換
 											gameexinfo = 1;
 											FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
 											StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
@@ -2025,7 +2040,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 										gamecheck = StringgameInfoLine.find("ex:");
 										if (gamecheck != std::string::npos) {
 											StringgameInfoLine = trim(StringgameInfoLine.substr(3)); // "ex:"の後ろの文字列を取得
-											gameex = StringgameInfoLine;
+											gameex = ReplaceAll(StringgameInfoLine, "\\n", "\n"); // "\\n"を改行コードに置換
 											gameexinfo = 1;
 											FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
 											StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
@@ -2337,7 +2352,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 										gamecheck = StringgameInfoLine.find("ex:");
 										if (gamecheck != std::string::npos) {
 											StringgameInfoLine = trim(StringgameInfoLine.substr(3)); // "ex:"の後ろの文字列を取得
-											gameex = StringgameInfoLine;
+											gameex = ReplaceAll(StringgameInfoLine, "\\n", "\n"); // "\\n"を改行コードに置換
 											gameexinfo = 1;
 											FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
 											StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
@@ -2649,7 +2664,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 										gamecheck = StringgameInfoLine.find("ex:");
 										if (gamecheck != std::string::npos) {
 											StringgameInfoLine = trim(StringgameInfoLine.substr(3)); // "ex:"の後ろの文字列を取得
-											gameex = StringgameInfoLine;
+											gameex = ReplaceAll(StringgameInfoLine, "\\n", "\n"); // "\\n"を改行コードに置換
 											gameexinfo = 1;
 											FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
 											StringgameInfoLine = gameInfoLine; // char型のgameInfoLineをstring型に変換して追加
@@ -2907,6 +2922,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 						ChangeVolumeSoundMem(255 - feding, BGM); //徐々にBGMの音量を下げる
 						ProcessMessage();
 					}
+					StopSoundMem(BGM); // BGM停止
 					fps.FPS = 30; //FPSを30にする
 					STARTUPINFOA si = { sizeof(si) };
 					PROCESS_INFORMATION pi;
@@ -2926,6 +2942,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 							}
 							else {
 								fps.Update();	//FPS更新
+								fps.Wait();		//FPS待機
+								ProcessMessage(); // Windowsのメッセージ処理
 								if (timerinfo == 1) {
 									timer -= 1;
 									if (timer <= 0) {
@@ -2977,10 +2995,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					SetForegroundWindow(hwnd);
 					SetActiveWindow(hwnd);
 					SetFocus(hwnd);
-					if (CheckSoundMem(BGM) == 0) {
-						PlaySoundMem(BGM, DX_PLAYTYPE_BACK);
-					}
-					for (feding >= 0; feding >= 0; --feding) {
+					PlaySoundMem(BGM, DX_PLAYTYPE_BACK); // BGM再生
+					BGMCount = 0;
+					ChangeVolumeSoundMem(0, BGM); //BGMの音量を最小に
+					for (feding == 255; feding >= 0; --feding) {
+						BGMCount += 1;
 						ClearDrawScreen(); //裏画面をクリア
 						DrawGraph(1000, 700, logo, FALSE);
 						SetDrawBlendMode(DX_BLENDMODE_ALPHA, feding); //フェードインのためのブレンドモード設定
@@ -2999,14 +3018,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 	}
 zikangire:
 	fps.FPS = 120;
-		for (feding >= 0; feding >= 0; --feding) {
+		for (feding == 255; feding >= 0; --feding) {
 			ClearDrawScreen(); //裏画面をクリア
 			DrawGraph(1000, 700, logo, FALSE);
 			SetDrawBlendMode(DX_BLENDMODE_ALPHA, feding); //フェードインのためのブレンドモード設定
 			DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE); //画面全体を黒で塗りつぶす
 			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0); //ブレンドモードを元に戻す
 			ScreenFlip(); //描画した内容を画面に反映
-			ChangeVolumeSoundMem(255 - feding, BGM); //徐々にBGMの音量を上げる
 			ProcessMessage();
 		}
 		fps.FPS = 30;
@@ -3015,6 +3033,7 @@ zikangire:
 			DrawGraph(1000, 700, logo, FALSE);
 			ScreenFlip(); //描画した内容を画面に反映
 			fps.Update();	//FPS更新
+			fps.Wait();		//FPS待機
 			ProcessMessage();
 			DrawFormatString(0, 0, GetColor(0, 0, 0), "timeup");
 			if (CheckHitKey(KEY_INPUT_LCONTROL) && CheckHitKey(KEY_INPUT_LALT) && CheckHitKey(KEY_INPUT_X)) {
@@ -3030,6 +3049,8 @@ zikangire:
 					ErrorLogAdd("通常状態に復帰しました。\n");
 					MessageBox(NULL, "タイマーをリセットしました。\n通常状態に戻ります。", "情報", MB_OK | MB_ICONINFORMATION | MB_TOPMOST);
 					fps.FPS = 120;
+					BGMCount = 0;
+					ChangeVolumeSoundMem(255, BGM); //BGMの音量を最大に
 					goto fukki;
 				}
 				else {

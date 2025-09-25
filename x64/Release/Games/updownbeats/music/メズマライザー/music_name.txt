@@ -1,0 +1,4 @@
+TITLE:メズマライザー
+CREDIT:サツキ
+WAVE:メズマライザー.wav
+BPM:185

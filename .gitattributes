@@ -48,3 +48,5 @@
 #*.RTF   diff=astextplain
 *.ipch filter=lfs diff=lfs merge=lfs -text
 .vs/HakuensaiLauncher/v17/ipch/AutoPCH/e6d6541c15ce7164/GAME.ipch filter=lfs diff=lfs merge=lfs -text
+x64/Release/Games/onlyup/Only_Up/Binaries/Win64/Only_Up.pdb filter=lfs diff=lfs merge=lfs -text
+x64/Release/Games/onlyup/Only_Up/Content/Paks/Only_Up-Windows.ucas filter=lfs diff=lfs merge=lfs -text
