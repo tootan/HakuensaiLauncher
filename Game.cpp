@@ -384,6 +384,14 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 	ErrorLogAdd("タイマー表示変数を初期化しました。\n");//ログにタイマー表示変数初期化成功を記録
 	int taskbarinfo = 0;
 	ErrorLogAdd("タスクバー情報変数を初期化しました。\n");//ログにタスクバー情報変数初期化成功を記録
+	int touchinputnum;
+	ErrorLogAdd("タッチ入力番号変数を初期化しました。\n");//ログにタッチ入力番号変数初期化成功を記録
+	int touchX;
+	ErrorLogAdd("タッチX座標変数を初期化しました。\n");//ログにタッチX座標変数初期化成功を記録
+	int touchY;
+	ErrorLogAdd("タッチY座標変数を初期化しました。\n");//ログにタッチY座標変数初期化成功を記録
+	int prevtouch;
+	ErrorLogAdd("前回のタッチ入力状態変数を初期化しました。\n");//ログに前回のタッチ入力状態変数初期化成功を記録
 	// DiscordのWebhook URL
 	std::string webhook_url = "https://discord.com/api/webhooks/1419228652356374569/6GKMGmg37mByn_LcQ-NWFYl5HQ3z_NRuGp0VUI0f3dXdz3N6zb4L8H5xRV0UuKGiRH-e";
 	std::stringstream ss;
@@ -694,9 +702,76 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 			Communicationmarkangle = 2;//角度リセット
 		}
 
+		if (focusgame != 0) {
+			if (CheckHitKey(KEY_INPUT_RIGHT)) {
+				Sleep(160); // 連続判定防止
+				if (focusgame == 1) {
+					goto focus2;
+				}
+				else if(focusgame == 2) {
+					goto focus3;
+				}
+				else if (focusgame == 3) {
+					goto focus4;
+				}
+				else if (focusgame == 4) {
+					goto focus5;
+				}
+				else if (focusgame == 5) {
+					goto focus6;
+				}
+				else if (focusgame == 6) {
+					goto focus7;
+				}
+				else if (focusgame == 7) {
+					if (page != pagetotal) {
+						page += 1; //ページを1つ進める
+						pagekasan += 7; //ページカウントを進める
+						goto focus1;
+					}
+				}
+			}
+			if (CheckHitKey(KEY_INPUT_LEFT)) {
+				Sleep(160); // 連続判定防止
+				if (focusgame == 1) {
+					if (page > 1) { //ページが1より大きいなら
+						page -= 1; //ページを1つ戻す
+						pagekasan -= 7; //ページカウントを戻す
+						goto focus7;
+					}
+				}
+				else if (focusgame == 2) {
+					goto focus1;
+				}
+				else if (focusgame == 3) {
+					goto focus2;
+				}
+				else if (focusgame == 4) {
+					goto focus3;
+				}
+				else if (focusgame == 5) {
+					goto focus4;
+				}
+				else if (focusgame == 6) {
+					goto focus5;
+				}
+				else if (focusgame == 7) {
+					goto focus6;
+				}
+			}
+			if (CheckHitKey(KEY_INPUT_RETURN)) {
+				if (gameexeinfo == 1) {
+					Sleep(160); // 連続判定防止
+					goto startgame;
+				}
+			}
+		}
 		mouseInput = GetMouseInput();
-			if ((mouseInput & MOUSE_INPUT_LEFT) != 0 && (prevMouseInput & MOUSE_INPUT_LEFT) == 0) { // 押された瞬間
-				if (mouseX >= 1400 && mouseX <= 1500 && mouseY >= 35 && mouseY <= 135) { //♪ボタンの範囲内なら
+		if (touchinputnum == 1) {
+			GetTouchInput(NULL, &touchX, &touchY, NULL, NULL);
+		}
+		if ((mouseInput & MOUSE_INPUT_LEFT) != 0 && (prevMouseInput & MOUSE_INPUT_LEFT) == 0 || touchinputnum == 1 && prevtouch == 0) { // 押された瞬間
+				if (mouseX >= 1400 && mouseX <= 1500 && mouseY >= 35 && mouseY <= 135 || touchX >= 1400 && touchX <= 1500 && touchY >= 35 && touchY <= 135) { //♪ボタンの範囲内なら
 					fps.FPS = 1;
 					if (BGMinfo == 1) {//BGMがONなら
 						ChangeVolumeSoundMem(0, BGM); //BGMの音量を0に設定
@@ -710,7 +785,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					}
 					fps.FPS = 120; //FPSを元に戻す
 				}
-				else if (mouseX >= 10 && mouseX <= 110 && mouseY >= 650 && mouseY <= 750) { //左ボタンの範囲内なら
+				else if (mouseX >= 10 && mouseX <= 110 && mouseY >= 650 && mouseY <= 750 || touchX >= 10 && touchX <= 110 && touchY >= 650 && touchY <= 750) { //左ボタンの範囲内なら
 					fps.FPS = 1;
 					if (page > 1) { //ページが1より大きいなら
 						page -= 1; //ページを1つ戻す
@@ -719,7 +794,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					}
 					fps.FPS = 120; //FPSを元に戻す
 				}
-				else if (mouseX >= 1420 && mouseX <= 1520 && mouseY >= 650 && mouseY <= 750)/*右ボタンの範囲内なら*/ {
+				else if (mouseX >= 1420 && mouseX <= 1520 && mouseY >= 650 && mouseY <= 750 || touchX >= 1420 && touchX <= 1520 && touchY >= 650 && touchY <= 750)/*右ボタンの範囲内なら*/ {
 					fps.FPS = 1;
 					if (page != pagetotal) {
 						page += 1; //ページを1つ進める
@@ -728,10 +803,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					}
 					fps.FPS = 120; //FPSを元に戻す
 				}
-				else if (mouseX >= 90 && mouseX <= 265 && mouseY >= 613 && mouseY <= 788) { // ゲーム1の範囲内なら
+				else if (mouseX >= 90 && mouseX <= 265 && mouseY >= 613 && mouseY <= 788 || touchX >= 90 && touchX <= 265 && touchY >= 613 && touchY <= 788) { // ゲーム1の範囲内なら
+					focus1:
 					fps.FPS = 1;
-					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 					if (gameyouso >= 1 + pagekasan) {
+						PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 						gamescan = 0;
 						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
@@ -1041,10 +1117,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					}
 					fps.FPS = 120; //FPSを元に戻す
 				}
-				else if (mouseX >= 285 && mouseX <= 460 && mouseY >= 613 && mouseY <= 788) { // ゲーム2の範囲内なら
+				else if (mouseX >= 285 && mouseX <= 460 && mouseY >= 613 && mouseY <= 788 || touchX >= 285 && touchX <= 460 && touchY >= 613 && touchY <= 788) { // ゲーム2の範囲内なら
+					focus2:
 					fps.FPS = 1;
-					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 					if (gameyouso >= 2 + pagekasan) {
+						PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 						gamescan = 0;
 						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
@@ -1353,10 +1430,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					}
 					fps.FPS = 120; //FPSを元に戻す
 				}
-				else if (mouseX >= 480 && mouseX <= 655 && mouseY >= 613 && mouseY <= 788) { // ゲーム3の範囲内なら
+				else if (mouseX >= 480 && mouseX <= 655 && mouseY >= 613 && mouseY <= 788 || touchX >= 480 && touchX <= 655 && touchY >= 613 && touchY <= 788) { // ゲーム3の範囲内なら
+					focus3:
 					fps.FPS = 1;
-					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 					if (gameyouso >= 3 + pagekasan) {
+						PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 						gamescan = 0;
 						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
@@ -1665,10 +1743,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					}
 					fps.FPS = 120; //FPSを元に戻す
 				}
-				else if (mouseX >= 675 && mouseX <= 850 && mouseY >= 613 && mouseY <= 788) { // ゲーム4の範囲内なら
+				else if (mouseX >= 675 && mouseX <= 850 && mouseY >= 613 && mouseY <= 788 || touchX >= 675 && touchX <= 850 && touchY >= 613 && touchY <= 788) { // ゲーム4の範囲内なら
+					focus4:
 					fps.FPS = 1;
-					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 					if (gameyouso >= 4 + pagekasan) {
+						PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 						gamescan = 0;
 						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
@@ -1977,10 +2056,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					}
 					fps.FPS = 120; //FPSを元に戻す
 				}
-				else if (mouseX >= 870 && mouseX <= 1045 && mouseY >= 613 && mouseY <= 788) { // ゲーム5の範囲内なら
+				else if (mouseX >= 870 && mouseX <= 1045 && mouseY >= 613 && mouseY <= 788 || touchX >= 870 && touchX <= 1045 && touchY >= 613 && touchY <= 788) { // ゲーム5の範囲内なら
+					focus5:
 					fps.FPS = 1;
-					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 					if (gameyouso >= 5 + pagekasan) {
+						PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 						gamescan = 0;
 						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
@@ -2289,10 +2369,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					}
 					fps.FPS = 120; //FPSを元に戻す
 				}
-				else if (mouseX >= 1065 && mouseX <= 1240 && mouseY >= 613 && mouseY <= 788) { // ゲーム6の範囲内なら
+				else if (mouseX >= 1065 && mouseX <= 1240 && mouseY >= 613 && mouseY <= 788 || touchX >= 1065 && touchX <= 1240 && touchY >= 613 && touchY <= 788) { // ゲーム6の範囲内なら
+					focus6:
 					fps.FPS = 1;
-					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 					if (gameyouso >= 6 + pagekasan) {
+						PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 						gamescan = 0;
 						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
@@ -2601,10 +2682,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					}
 					fps.FPS = 120; //FPSを元に戻す
 				}
-				else if (mouseX >= 1260 && mouseX <= 1435 && mouseY >= 613 && mouseY <= 788) { // ゲーム7の範囲内なら
+				else if (mouseX >= 1260 && mouseX <= 1435 && mouseY >= 613 && mouseY <= 788 || touchX >= 1260 && touchX <= 1435 && touchY >= 613 && touchY <= 788) { // ゲーム7の範囲内なら
+					focus7:
 					fps.FPS = 1;
-					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 					if (gameyouso >= 7 + pagekasan) {
+						PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 						gamescan = 0;
 						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
@@ -2913,7 +2995,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					}
 					fps.FPS = 120; //FPSを元に戻す
 				}
-				else if (mouseX >= 70 && mouseX <= 778 && mouseY >= 450 && mouseY <= 550 && gameexeinfo == 1) { // プレイボタンの範囲内なら
+				else if (mouseX >= 70 && mouseX <= 778 && mouseY >= 450 && mouseY <= 550 && gameexeinfo == 1 || touchX >= 70 && touchX <= 778 && touchY >= 450 && touchY <= 550 && gameexeinfo == 1) { // プレイボタンの範囲内なら
+					startgame:
 					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 					for (feding = 0; feding <= 255; ++feding) {
 						ClearDrawScreen(); //裏画面をクリア
@@ -3017,6 +3100,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 		// 毎フレーム最後に前回の状態を更新
 		prevMouseInput = mouseInput;
 		pagekasan = (page - 1) * 7;
+		touchinputnum = GetTouchInputNum();
+		prevtouch = touchinputnum;
 		ScreenFlip(); //描画した内容を画面に反映
 	}
 zikangire:
