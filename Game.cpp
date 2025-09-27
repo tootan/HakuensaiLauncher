@@ -288,7 +288,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 				ErrorLogAdd("Error: titleimageが見つかりませんでした。\n");//ログにtitleimageが見つからなかったことを記録
 				MessageBox(NULL, "Error: titleimageが見つかりませんでした。", "Error", MB_OK | MB_ICONERROR | MB_TOPMOST);
 				ShowTaskbar(); //タスクバーを再表示する
-				 
+
 				return -1; //titleimageがなかったら異常終了
 			}
 			else {
@@ -298,7 +298,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					ErrorLogAdd("Error: titleimageの画像が見つかりませんでした。\n");//ログにtitleimageの画像が見つからなかったことを記録
 					MessageBox(NULL, "Error: titleimageの画像が見つかりませんでした。", "Error", MB_OK | MB_ICONERROR | MB_TOPMOST);
 					ShowTaskbar(); //タスクバーを再表示する
-					 
+
 					return -1; //titleimageの画像がなかったら異常終了
 				}
 				FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -308,7 +308,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					ErrorLogAdd("Error: }が見つかりませんでした。\n");//ログに"}"が見つからなかったことを記録
 					MessageBox(NULL, "Error: }が見つかりませんでした。", "Error", MB_OK | MB_ICONERROR | MB_TOPMOST);
 					ShowTaskbar(); //タスクバーを再表示する
-					 
+
 					return -1;// "}"がなかったら異常終了
 				}
 			}
@@ -467,7 +467,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 				// ウインドウプロシージャのフック解除
 				SetWindowLongPtr(hwnd, GWLP_WNDPROC, (LONG_PTR)g_OldWndProc);
 				ShowTaskbar();
-				 
+
 				DxLib_End(); // DXライブラリの終了処理
 				return 0; // プログラムの終了
 			}
@@ -487,6 +487,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 				}
 				Sleep(200); // 連続判定防止
 			}
+		}
+		if (CheckHitKey(KEY_INPUT_F9)) {
+			goto zikangire;
 		}
 		if (CheckHitKey(KEY_INPUT_F5)) {
 			if (timerinfo == 0) {
@@ -777,7 +780,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 											curl_easy_cleanup(curl);
 										}
 										ShowTaskbar();
-										 
+
 										return -1; //typeがnoteでもgameでもなかったら異常終了
 									}
 									FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -857,7 +860,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 																	curl_easy_cleanup(curl);
 																}
 																ShowTaskbar();
-																 
+
 																return -1; //"}"がなかったら異常終了
 															}
 														}
@@ -888,7 +891,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 																curl_easy_cleanup(curl);
 															}
 															ShowTaskbar();
-															 
+
 															return -1; //exeがなかったら異常終了
 														}
 													}
@@ -919,7 +922,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 															curl_easy_cleanup(curl);
 														}
 														ShowTaskbar();
-														 
+
 														return -1; //dirがなかったら異常終了
 													}
 												}
@@ -958,7 +961,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												curl_easy_cleanup(curl);
 											}
 											ShowTaskbar();
-											 
+
 											return -1; //titleがなかったら異常終了
 										}
 									}
@@ -989,7 +992,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 											curl_easy_cleanup(curl);
 										}
 											ShowTaskbar();
-											 
+
 											return -1; //typeがなかったら異常終了
 									}
 								}
@@ -1026,7 +1029,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 								curl_easy_cleanup(curl);
 							}
 							ShowTaskbar();
-							 
+
 							return -1; //ゲーム情報が見つからなかったら異常終了
 						}
 						ErrorLogAdd("ゲーム情報を読み込みました。\n");//ログにゲーム情報読み込み成功を記録
@@ -1089,7 +1092,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 											curl_easy_cleanup(curl);
 										}
 										ShowTaskbar();
-										 
+
 										return -1; //typeがnoteでもgameでもなかったら異常終了
 									}
 									FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -1169,7 +1172,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 																	curl_easy_cleanup(curl);
 																}
 																ShowTaskbar();
-																 
+
 																return -1; //"}"がなかったら異常終了
 															}
 														}
@@ -1200,7 +1203,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 																curl_easy_cleanup(curl);
 															}
 															ShowTaskbar();
-															 
+
 															return -1; //exeがなかったら異常終了
 														}
 													}
@@ -1231,7 +1234,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 															curl_easy_cleanup(curl);
 														}
 														ShowTaskbar();
-														 
+
 														return -1; //dirがなかったら異常終了
 													}
 												}
@@ -1270,7 +1273,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												curl_easy_cleanup(curl);
 											}
 											ShowTaskbar();
-											 
+
 											return -1; //titleがなかったら異常終了
 										}
 									}
@@ -1301,7 +1304,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 											curl_easy_cleanup(curl);
 										}
 										ShowTaskbar();
-										 
+
 										return -1; //typeがなかったら異常終了
 									}
 								}
@@ -1338,7 +1341,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 								curl_easy_cleanup(curl);
 							}
 							ShowTaskbar();
-							 
+
 							return -1; //ゲーム情報が見つからなかったら異常終了
 						}
 						ErrorLogAdd("ゲーム情報を読み込みました。\n");//ログにゲーム情報読み込み成功を記録
@@ -1401,7 +1404,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 											curl_easy_cleanup(curl);
 										}
 										ShowTaskbar();
-										 
+
 										return -1; //typeがnoteでもgameでもなかったら異常終了
 									}
 									FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -1481,7 +1484,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 																	curl_easy_cleanup(curl);
 																}
 																ShowTaskbar();
-																 
+
 																return -1; //"}"がなかったら異常終了
 															}
 														}
@@ -1512,7 +1515,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 																curl_easy_cleanup(curl);
 															}
 															ShowTaskbar();
-															 
+
 															return -1; //exeがなかったら異常終了
 														}
 													}
@@ -1543,7 +1546,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 															curl_easy_cleanup(curl);
 														}
 														ShowTaskbar();
-														 
+
 														return -1; //dirがなかったら異常終了
 													}
 												}
@@ -1582,7 +1585,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												curl_easy_cleanup(curl);
 											}
 											ShowTaskbar();
-											 
+
 											return -1; //titleがなかったら異常終了
 										}
 									}
@@ -1613,7 +1616,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 											curl_easy_cleanup(curl);
 										}
 										ShowTaskbar();
-										 
+
 										return -1; //typeがなかったら異常終了
 									}
 								}
@@ -1650,7 +1653,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 								curl_easy_cleanup(curl);
 							}
 							ShowTaskbar();
-							 
+
 							return -1; //ゲーム情報が見つからなかったら異常終了
 						}
 						ErrorLogAdd("ゲーム情報を読み込みました。\n");//ログにゲーム情報読み込み成功を記録
@@ -1713,7 +1716,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 											curl_easy_cleanup(curl);
 										}
 										ShowTaskbar();
-										 
+
 										return -1; //typeがnoteでもgameでもなかったら異常終了
 									}
 									FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -1793,7 +1796,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 																	curl_easy_cleanup(curl);
 																}
 																ShowTaskbar();
-																 
+
 																return -1; //"}"がなかったら異常終了
 															}
 														}
@@ -1824,7 +1827,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 																curl_easy_cleanup(curl);
 															}
 															ShowTaskbar();
-															 
+
 															return -1; //exeがなかったら異常終了
 														}
 													}
@@ -1854,7 +1857,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 															curl_slist_free_all(headers);
 															curl_easy_cleanup(curl);
 														}
-														 
+
 														ShowTaskbar();
 														return -1; //dirがなかったら異常終了
 													}
@@ -1894,7 +1897,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												curl_easy_cleanup(curl);
 											}
 											ShowTaskbar();
-											 
+
 											return -1; //titleがなかったら異常終了
 										}
 									}
@@ -1925,7 +1928,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 											curl_easy_cleanup(curl);
 										}
 										ShowTaskbar();
-										 
+
 										return -1; //typeがなかったら異常終了
 									}
 								}
@@ -1962,7 +1965,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 								curl_easy_cleanup(curl);
 							}
 							ShowTaskbar();
-							 
+
 							return -1; //ゲーム情報が見つからなかったら異常終了
 						}
 						ErrorLogAdd("ゲーム情報を読み込みました。\n");//ログにゲーム情報読み込み成功を記録
@@ -2025,7 +2028,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 											curl_easy_cleanup(curl);
 										}
 										ShowTaskbar();
-										 
+
 										return -1; //typeがnoteでもgameでもなかったら異常終了
 									}
 									FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -2104,7 +2107,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 																	curl_slist_free_all(headers);
 																	curl_easy_cleanup(curl);
 																}
-																 
+
 																ShowTaskbar();
 																return -1; //"}"がなかったら異常終了
 															}
@@ -2136,7 +2139,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 																curl_easy_cleanup(curl);
 															}
 															ShowTaskbar();
-															 
+
 															return -1; //exeがなかったら異常終了
 														}
 													}
@@ -2166,7 +2169,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 															curl_slist_free_all(headers);
 															curl_easy_cleanup(curl);
 														}
-														 
+
 														ShowTaskbar();
 														return -1; //dirがなかったら異常終了
 													}
@@ -2206,7 +2209,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												curl_easy_cleanup(curl);
 											}
 											ShowTaskbar();
-											 
+
 											return -1; //titleがなかったら異常終了
 										}
 									}
@@ -2237,7 +2240,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 											curl_easy_cleanup(curl);
 										}
 										ShowTaskbar();
-										 
+
 										return -1; //typeがなかったら異常終了
 									}
 								}
@@ -2274,7 +2277,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 								curl_easy_cleanup(curl);
 							}
 							ShowTaskbar();
-							 
+
 							return -1; //ゲーム情報が見つからなかったら異常終了
 						}
 						ErrorLogAdd("ゲーム情報を読み込みました。\n");//ログにゲーム情報読み込み成功を記録
@@ -2337,7 +2340,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 											curl_easy_cleanup(curl);
 										}
 										ShowTaskbar();
-										 
+
 										return -1; //typeがnoteでもgameでもなかったら異常終了
 									}
 									FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -2417,7 +2420,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 																	curl_easy_cleanup(curl);
 																}
 																ShowTaskbar();
-																 
+
 																return -1; //"}"がなかったら異常終了
 															}
 														}
@@ -2448,7 +2451,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 																curl_easy_cleanup(curl);
 															}
 															ShowTaskbar();
-															 
+
 															return -1; //exeがなかったら異常終了
 														}
 													}
@@ -2479,7 +2482,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 															curl_easy_cleanup(curl);
 														}
 														ShowTaskbar();
-														 
+
 														return -1; //dirがなかったら異常終了
 													}
 												}
@@ -2518,7 +2521,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												curl_easy_cleanup(curl);
 											}
 											ShowTaskbar();
-											 
+
 											return -1; //titleがなかったら異常終了
 										}
 									}
@@ -2549,7 +2552,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 											curl_easy_cleanup(curl);
 										}
 										ShowTaskbar();
-										 
+
 										return -1; //typeがなかったら異常終了
 									}
 								}
@@ -2586,7 +2589,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 								curl_easy_cleanup(curl);
 							}
 							ShowTaskbar();
-							 
+
 							return -1; //ゲーム情報が見つからなかったら異常終了
 						}
 						ErrorLogAdd("ゲーム情報を読み込みました。\n");//ログにゲーム情報読み込み成功を記録
@@ -2649,7 +2652,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 											curl_easy_cleanup(curl);
 										}
 										ShowTaskbar();
-										 
+
 										return -1; //typeがnoteでもgameでもなかったら異常終了
 									}
 									FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -2729,7 +2732,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 																	curl_easy_cleanup(curl);
 																}
 																ShowTaskbar();
-																 
+
 																return -1; //"}"がなかったら異常終了
 															}
 														}
@@ -2760,7 +2763,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 																curl_easy_cleanup(curl);
 															}
 															ShowTaskbar();
-															 
+
 															return -1; //exeがなかったら異常終了
 														}
 													}
@@ -2791,7 +2794,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 															curl_easy_cleanup(curl);
 														}
 														ShowTaskbar();
-														 
+
 														return -1; //dirがなかったら異常終了
 													}
 												}
@@ -2830,7 +2833,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 												curl_easy_cleanup(curl);
 											}
 											ShowTaskbar();
-											 
+
 											return -1; //titleがなかったら異常終了
 										}
 									}
@@ -2861,7 +2864,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 											curl_easy_cleanup(curl);
 										}
 										ShowTaskbar();
-										 
+
 										return -1; //typeがなかったら異常終了
 									}
 								}
@@ -2898,7 +2901,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 								curl_easy_cleanup(curl);
 							}
 							ShowTaskbar();
-							 
+
 							return -1; //ゲーム情報が見つからなかったら異常終了
 						}
 						ErrorLogAdd("ゲーム情報を読み込みました。\n");//ログにゲーム情報読み込み成功を記録
@@ -2988,7 +2991,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 							curl_easy_cleanup(curl);
 						}
 						ShowTaskbar();
-						 
+
 						return -1; //ゲーム起動に失敗したら異常終了
 					}
 					fps.FPS = 120; //FPSを元に戻す
@@ -3084,7 +3087,7 @@ zikangire:
 		ErrorLogAdd("不明なエラーにより強制終了しました。\n");//ログに不明なエラーによる強制終了を記録
 		MessageBox(NULL, "不明なエラーにより強制終了しました。", "?????", MB_OK | MB_ICONERROR | MB_TOPMOST);
 		ShowTaskbar();
-		 
+
 	DxLib_End(); // DXライブラリの終了処理
 	return 0; // プログラムの終了
 }
