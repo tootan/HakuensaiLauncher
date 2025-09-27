@@ -2,58 +2,62 @@
 C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(281,43): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
 C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(286,44): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
 C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(306,45): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(818,43): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(822,44): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(864,45): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(871,46): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(878,47): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(896,49): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(908,51): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1132,43): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1136,44): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1177,45): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1184,46): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1191,47): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1209,49): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1221,51): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1445,43): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1449,44): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1490,45): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1497,46): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1504,47): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1522,49): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1534,51): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1758,43): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1762,44): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1803,45): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1810,46): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1817,47): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1835,49): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1847,51): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2071,43): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2075,44): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2116,45): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2123,46): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2130,47): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2148,49): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2160,51): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2384,43): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2388,44): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2429,45): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2436,46): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2443,47): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2461,49): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2473,51): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2697,43): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2701,44): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2742,45): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2749,46): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2756,47): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2774,49): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2786,51): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(3087,18): warning C4553: '==': 式の結果が使用されていません。'=' を意図していますか?
-C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(3109,15): warning C4553: '==': 式の結果が使用されていません。'=' を意図していますか?
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(814,43): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(818,44): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(860,45): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(867,46): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(874,47): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(892,49): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(904,51): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1128,43): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1132,44): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1173,45): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1180,46): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1187,47): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1205,49): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1217,51): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1441,43): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1445,44): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1486,45): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1493,46): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1500,47): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1518,49): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1530,51): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1754,43): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1758,44): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1799,45): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1806,46): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1813,47): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1831,49): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(1843,51): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2067,43): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2071,44): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2112,45): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2119,46): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2126,47): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2144,49): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2156,51): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2380,43): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2384,44): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2425,45): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2432,46): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2439,47): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2457,49): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2469,51): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2693,43): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2697,44): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2738,45): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2745,46): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2752,47): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2770,49): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(2782,51): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(3081,18): warning C4553: '==': 式の結果が使用されていません。'=' を意図していますか?
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(3100,15): warning C4553: '==': 式の結果が使用されていません。'=' を意図していますか?
 C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(369,8): warning C4101: 'exitcode': ローカル変数は 1 度も使われていません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(393,6): warning C4101: 'prevtouch': ローカル変数は 1 度も使われていません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(391,6): warning C4101: 'touchY': ローカル変数は 1 度も使われていません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(389,6): warning C4101: 'touchX': ローカル変数は 1 度も使われていません。
+C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(387,6): warning C4101: 'touchinputnum': ローカル変数は 1 度も使われていません。
 C:\Users\b1213\c++\HakuensaiLauncher\Game.cpp(359,8): warning C4101: 'exitCode': ローカル変数は 1 度も使われていません。
   コード生成しています。
   1 of 430 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
