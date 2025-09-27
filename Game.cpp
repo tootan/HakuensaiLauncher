@@ -730,7 +730,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 					if (gameyouso >= 1 + pagekasan) {
 						gamescan = 0;
-						GameInfoFile = FileRead_open("GamaInfo.txt", FALSE);//GameInfo.txtを開く
+						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
 						while (FileRead_eof(GameInfoFile) == 0 && gamescan == 0) {
 							FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -1043,7 +1043,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 					if (gameyouso >= 2 + pagekasan) {
 						gamescan = 0;
-						GameInfoFile = FileRead_open("GamaInfo.txt", FALSE);//GameInfo.txtを開く
+						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
 						while (FileRead_eof(GameInfoFile) == 0 && gamescan == 0) {
 							FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -1355,7 +1355,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 					if (gameyouso >= 3 + pagekasan) {
 						gamescan = 0;
-						GameInfoFile = FileRead_open("GamaInfo.txt", FALSE);//GameInfo.txtを開く
+						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
 						while (FileRead_eof(GameInfoFile) == 0 && gamescan == 0) {
 							FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -1667,7 +1667,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 					if (gameyouso >= 4 + pagekasan) {
 						gamescan = 0;
-						GameInfoFile = FileRead_open("GamaInfo.txt", FALSE);//GameInfo.txtを開く
+						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
 						while (FileRead_eof(GameInfoFile) == 0 && gamescan == 0) {
 							FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -1979,7 +1979,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 					if (gameyouso >= 5 + pagekasan) {
 						gamescan = 0;
-						GameInfoFile = FileRead_open("GamaInfo.txt", FALSE);//GameInfo.txtを開く
+						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
 						while (FileRead_eof(GameInfoFile) == 0 && gamescan == 0) {
 							FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -2291,7 +2291,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 					if (gameyouso >= 6 + pagekasan) {
 						gamescan = 0;
-						GameInfoFile = FileRead_open("GamaInfo.txt", FALSE);//GameInfo.txtを開く
+						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
 						while (FileRead_eof(GameInfoFile) == 0 && gamescan == 0) {
 							FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -2603,7 +2603,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 					if (gameyouso >= 7 + pagekasan) {
 						gamescan = 0;
-						GameInfoFile = FileRead_open("GamaInfo.txt", FALSE);//GameInfo.txtを開く
+						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
 						while (FileRead_eof(GameInfoFile) == 0 && gamescan == 0) {
 							FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
