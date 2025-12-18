@@ -1,0 +1,4806 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C28251",
+          "message": {
+            "text": "'WinMain' に対する整合性のない注釈: このインスタンスには 注釈なし が含まれます。c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\winbase.h(1062) を参照してください。"
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/b1213/c++/hakuensailauncher/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                },
+                "region": {
+                  "startLine": 116,
+                  "startColumn": 12
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "WinMain",
+                  "decoratedName": "WinMain",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6001",
+          "message": {
+            "text": "初期化されていないメモリ 'gameeximage' を使用しています。"
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/b1213/c++/hakuensailauncher/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                },
+                "region": {
+                  "startLine": 640,
+                  "startColumn": 12
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "WinMain",
+                  "decoratedName": "WinMain",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 117,
+                            "startColumn": 18
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 118,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 119,
+                            "startColumn": 19
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 120,
+                            "startColumn": 18
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 121,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 122,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 123,
+                            "startColumn": 25
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 124,
+                            "startColumn": 23
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 125,
+                            "startColumn": 19
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 127,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 128,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 129,
+                            "startColumn": 7
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 130,
+                            "startColumn": 15
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 131,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 132,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 133,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 134,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 135,
+                            "startColumn": 15
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 136,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 137,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 138,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 139,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 140,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 141,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 142,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 143,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 144,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 145,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 146,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 147,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 148,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 149,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 150,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 151,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 152,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 153,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 154,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 155,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 156,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 157,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 158,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 159,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 160,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 161,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 162,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 163,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 164,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 165,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 166,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 167,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 168,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 169,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 170,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 171,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 172,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 173,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 174,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 175,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 176,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 177,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 178,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 178,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 179,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 180,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 181,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 182,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 183,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 184,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 185,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 186,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 187,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 188,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 189,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 190,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 191,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 192,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 193,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 194,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 195,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 196,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 197,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 198,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 199,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 200,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 201,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 202,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 203,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 204,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 205,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 206,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 207,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 208,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 209,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 210,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 211,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 212,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 213,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 214,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 215,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 216,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 217,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 218,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 219,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 220,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 221,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 222,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 223,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 224,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 225,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 226,
+                            "startColumn": 7
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 227,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 228,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 229,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 230,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 231,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 232,
+                            "startColumn": 22
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 233,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 234,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 235,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 236,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 237,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 238,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 239,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 240,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 241,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 242,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 243,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 244,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 245,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 246,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 247,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 248,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 249,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 250,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 251,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 252,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 253,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 254,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 255,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 256,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 257,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 258,
+                            "startColumn": 15
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 259,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 260,
+                            "startColumn": 7
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 261,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 262,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 263,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 264,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 265,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 266,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 267,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 268,
+                            "startColumn": 19
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 269,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 270,
+                            "startColumn": 7
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 271,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 272,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 273,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 274,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 275,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 276,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 277,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 278,
+                            "startColumn": 36
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 317,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 318,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 319,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 320,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 321,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 322,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 323,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 324,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 325,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 326,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 327,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 328,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 329,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 330,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 331,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 332,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 333,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 334,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 335,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 336,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 337,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 338,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 339,
+                            "startColumn": 6
+                          }
+                        },
+                        "message": {
+                          "text": "'gameeximage' が初期化されていません"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ],
+                      "importance": "essential"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 340,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 341,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 342,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 343,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 344,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 345,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 346,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 347,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 348,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 349,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 350,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 351,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 352,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 353,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 354,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 355,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 356,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 357,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 358,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 359,
+                            "startColumn": 8
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 360,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 361,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 362,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 363,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 364,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 365,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 366,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 367,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 368,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 369,
+                            "startColumn": 8
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 370,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 371,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 372,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 373,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 374,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 375,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 376,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 377,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 378,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 379,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 380,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 381,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 382,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 383,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 384,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 385,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 386,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 388,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 389,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 390,
+                            "startColumn": 5
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 392,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 395,
+                            "startColumn": 8
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 396,
+                            "startColumn": 6
+                          }
+                        },
+                        "message": {
+                          "text": "この分岐をスキップする ('curl' が false と仮定)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 416,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 417,
+                            "startColumn": 15
+                          }
+                        },
+                        "message": {
+                          "text": "この分岐に入る ('gameyouso==0' と仮定)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 418,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 419,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 421,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 421,
+                            "startColumn": 40
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 421,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 421,
+                            "startColumn": 33
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 421,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 421,
+                            "startColumn": 61
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 421,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 422,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 422,
+                            "startColumn": 43
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 422,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 422,
+                            "startColumn": 36
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 422,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 422,
+                            "startColumn": 64
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 422,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 423,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 423,
+                            "startColumn": 35
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 423,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 423,
+                            "startColumn": 28
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 423,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 423,
+                            "startColumn": 56
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 423,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 424,
+                            "startColumn": 2
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 425,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 425,
+                            "startColumn": 28
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 426,
+                            "startColumn": 18
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 427,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 428,
+                            "startColumn": 19
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 429,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 430,
+                            "startColumn": 19
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 431,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 432,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 425,
+                            "startColumn": 35
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 425,
+                            "startColumn": 28
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 426,
+                            "startColumn": 18
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 427,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 428,
+                            "startColumn": 19
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 429,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 430,
+                            "startColumn": 19
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 431,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 432,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 425,
+                            "startColumn": 35
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 425,
+                            "startColumn": 28
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 434,
+                            "startColumn": 31
+                          }
+                        },
+                        "message": {
+                          "text": "このループに入る ('<分岐条件>' と仮定)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 435,
+                            "startColumn": 62
+                          }
+                        },
+                        "message": {
+                          "text": "この分岐をスキップする ('<分岐条件>' が false と仮定)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 478,
+                            "startColumn": 17
+                          }
+                        },
+                        "message": {
+                          "text": "この分岐をスキップする ('CheckHitKey((65))' が false と仮定)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 491,
+                            "startColumn": 18
+                          }
+                        },
+                        "message": {
+                          "text": "この分岐をスキップする ('CheckHitKey((67))' が false と仮定)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 494,
+                            "startColumn": 18
+                          }
+                        },
+                        "message": {
+                          "text": "この分岐をスキップする ('CheckHitKey((63))' が false と仮定)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 529,
+                            "startColumn": 17
+                          }
+                        },
+                        "message": {
+                          "text": "この分岐をスキップする ('timerinfo==1' が false と仮定)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 549,
+                            "startColumn": 18
+                          }
+                        },
+                        "message": {
+                          "text": "この分岐をスキップする ('CheckHitKey((199))' が false と仮定)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 584,
+                            "startColumn": 18
+                          }
+                        },
+                        "message": {
+                          "text": "この分岐をスキップする ('CheckHitKey((207))' が false と仮定)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 598,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 599,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 600,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 601,
+                            "startColumn": 11
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 602,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 603,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 604,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 605,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 606,
+                            "startColumn": 21
+                          }
+                        },
+                        "message": {
+                          "text": "この分岐に入る ('gametitleinfo==0' と仮定)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 607,
+                            "startColumn": 22
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 608,
+                            "startColumn": 22
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 613,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 614,
+                            "startColumn": 21
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 615,
+                            "startColumn": 15
+                          }
+                        },
+                        "message": {
+                          "text": "この分岐に入る ('BGMinfo==1' と仮定)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 616,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 621,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 622,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 623,
+                            "startColumn": 21
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 624,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 625,
+                            "startColumn": 27
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 626,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 627,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 628,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 629,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 630,
+                            "startColumn": 19
+                          }
+                        },
+                        "message": {
+                          "text": "この分岐をスキップする ('gameexeinfo==1' が false と仮定)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 634,
+                            "startColumn": 18
+                          }
+                        },
+                        "message": {
+                          "text": "この分岐をスキップする ('gameexinfo==1' が false と仮定)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 637,
+                            "startColumn": 28
+                          }
+                        },
+                        "message": {
+                          "text": "この分岐をスキップする ('<分岐条件>' が false と仮定)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 640,
+                            "startColumn": 24
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/b1213/c++/HakuensaiLauncher/Game.cpp"
+                          },
+                          "region": {
+                            "startLine": 640,
+                            "startColumn": 12
+                          }
+                        },
+                        "message": {
+                          "text": "'gameeximage' が使用されますが、初期化されていない可能性があります"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "MSVC Code Analysis",
+          "version": "14.44.35214.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///c:/users/b1213/c++/hakuensailauncher/game.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "8b0788ffabd835eeb88f46731ca9da2ba6180c3de81147c7df5961d61de22719"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/b1213/a/dxlib_vc/プロジェクトに追加すべきファイル_vc用/dxlib.h"
+          },
+          "hashes": {
+            "sha-256": "b28f70ef11d0d5e4d96b81e5b4348f749d2d2a38ce8bb1f85f4d566856e9abfe"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/b1213/a/dxlib_vc/プロジェクトに追加すべきファイル_vc用/dxcompileconfig.h"
+          },
+          "hashes": {
+            "sha-256": "aab14f7830951fa5229afc075331292588642bc0dc22c31009fc3301a00c91f8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/b1213/a/dxlib_vc/プロジェクトに追加すべきファイル_vc用/dxdatatype.h"
+          },
+          "hashes": {
+            "sha-256": "ea8f5a366029e3861b98a10ad3b95b69f7c3d3e78a5cb82fa685ee1230976c71"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/b1213/a/dxlib_vc/プロジェクトに追加すべきファイル_vc用/dxdatatypewin.h"
+          },
+          "hashes": {
+            "sha-256": "84dd98b9323c8c9ad3df0383684f6dab687925cbdd9cb2ad365b9bc73649aefc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/b1213/a/dxlib_vc/プロジェクトに追加すべきファイル_vc用/dxfunctionwin.h"
+          },
+          "hashes": {
+            "sha-256": "0f3011dd598323b7c83158b516e389072fb5ddd8b5e0c7f1255a0e47595df352"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/vcpkg/installed/x64-windows/include/curl/curl.h"
+          },
+          "hashes": {
+            "sha-256": "0af37296a8e4a6ca947ef9bdd7178066741ec608b3e6b9378c56e1f625224b08"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/vcpkg/installed/x64-windows/include/curl/curlver.h"
+          },
+          "hashes": {
+            "sha-256": "7c8e34c3afe49137924402fd98c731e59ac5bd086acddf2b24a99813451515df"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/vcpkg/installed/x64-windows/include/curl/system.h"
+          },
+          "hashes": {
+            "sha-256": "15ba58f9373421d4799472ae7adf1fce0bc8bfc96e3d9017520d5d36c1286d03"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/vcpkg/installed/x64-windows/include/curl/easy.h"
+          },
+          "hashes": {
+            "sha-256": "3a9a663e57fa4104ae479e513a41d99b069f735543d118c90f73c5b5b0f37291"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/vcpkg/installed/x64-windows/include/curl/multi.h"
+          },
+          "hashes": {
+            "sha-256": "83ae673f7655768bf70b141c9cf845b09695aa801d4d1d56362c3928c38e397c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/vcpkg/installed/x64-windows/include/curl/urlapi.h"
+          },
+          "hashes": {
+            "sha-256": "4366e8eead1d92742c679b14dd3c65b92087226e1cebecc7803d619eded6a868"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/vcpkg/installed/x64-windows/include/curl/options.h"
+          },
+          "hashes": {
+            "sha-256": "5716018d27e783283825bed2a8a051190487722fdeb64b7aa2d03a997e99b8d1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/vcpkg/installed/x64-windows/include/curl/header.h"
+          },
+          "hashes": {
+            "sha-256": "614be48a86f4e5d304c5aa40ef1c85245e25b97732921c3631840146669d992f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/vcpkg/installed/x64-windows/include/curl/websockets.h"
+          },
+          "hashes": {
+            "sha-256": "e5e4883b6de1a62d28cbfad75b45e4a428e160871715ebc34dc696b7c38efb48"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/vcpkg/installed/x64-windows/include/curl/mprintf.h"
+          },
+          "hashes": {
+            "sha-256": "5254b33e5e351298cdc25303381edc15889a41e129d41821bbd186dc2ddcbd40"
+          }
+        }
+      ]
+    }
+  ]
+}

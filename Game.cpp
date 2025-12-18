@@ -384,42 +384,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 	ErrorLogAdd("タイマー表示変数を初期化しました。\n");//ログにタイマー表示変数初期化成功を記録
 	int taskbarinfo = 0;
 	ErrorLogAdd("タスクバー情報変数を初期化しました。\n");//ログにタスクバー情報変数初期化成功を記録
-	int touchinputnum;
-	ErrorLogAdd("タッチ入力番号変数を初期化しました。\n");//ログにタッチ入力番号変数初期化成功を記録
-	int touchX;
-	ErrorLogAdd("タッチX座標変数を初期化しました。\n");//ログにタッチX座標変数初期化成功を記録
-	int touchY;
-	ErrorLogAdd("タッチY座標変数を初期化しました。\n");//ログにタッチY座標変数初期化成功を記録
-	int prevtouch;
-	ErrorLogAdd("前回のタッチ入力状態変数を初期化しました。\n");//ログに前回のタッチ入力状態変数初期化成功を記録
-	// DiscordのWebhook URL
-	std::string webhook_url = "https://discord.com/api/webhooks/1419228652356374569/6GKMGmg37mByn_LcQ-NWFYl5HQ3z_NRuGp0VUI0f3dXdz3N6zb4L8H5xRV0UuKGiRH-e";
-	std::stringstream ss;
-	ss << "{\"content\": \"1\\u3064\\u306eHakuensaiLauncher\\u304c\\u8d77\\u52d5\\u3057\\u307e\\u3057\\u305f!\"}";
-	// 送信するJSONデータ
-	std::string json_data = ss.str();
-	// cURLを使ってPOSTリクエストを送信
-
-	CURL* curl = curl_easy_init();
-	if (curl) {
-		struct curl_slist* headers = nullptr;
-		headers = curl_slist_append(headers, "Content-Type: application/json");
-
-		curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-		curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-		curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-		CURLcode res = curl_easy_perform(curl);
-		if (res != CURLE_OK) {
-			ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-		}
-		else {
-			ErrorLogAdd("Discordへの通知が成功しました。\n");
-		}
-
-		curl_slist_free_all(headers);
-		curl_easy_cleanup(curl);
-	}
 
 	ErrorLogAdd("すべてのデータの読み込みに成功しました!\n"); //ログにすべてのデータ読み込み成功を記録
 	if(gameyouso == 0){
@@ -448,30 +412,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 				ErrorLogAdd("終了操作が確認されました。プログラムを終了します。\n");//ログに終了操作確認を記録
 				MessageBox(NULL, "プログラムを終了します。", "終了", MB_OK | MB_ICONINFORMATION | MB_TOPMOST);
 
-				// cURLを使ってPOSTリクエストを送信
-				std::stringstream ss;
-				ss << "{\"content\": \"1\\u3064\\u306eHakuensaiLauncher\\u304c\\u7d42\\u4e86\\u3057\\u307e\\u3057\\u305f!\"}";
-				json_data = ss.str();
-				CURL* curl = curl_easy_init();
-				if (curl) {
-					struct curl_slist* headers = nullptr;
-					headers = curl_slist_append(headers, "Content-Type: application/json");
 
-					curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-					curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-					curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-					CURLcode res = curl_easy_perform(curl);
-					if (res != CURLE_OK) {
-						ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-					}
-					else {
-						ErrorLogAdd("Discordへの通知が成功しました。\n");
-					}
-
-					curl_slist_free_all(headers);
-					curl_easy_cleanup(curl);
-				}
 				// ウインドウプロシージャのフック解除
 				SetWindowLongPtr(hwnd, GWLP_WNDPROC, (LONG_PTR)g_OldWndProc);
 				ShowTaskbar();
@@ -495,6 +436,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 				}
 				Sleep(200); // 連続判定防止
 			}
+		}
+		if (CheckHitKey(KEY_INPUT_F9)) {
+			goto zikangire;
 		}
 		if (CheckHitKey(KEY_INPUT_F5)) {
 			if (timerinfo == 0) {
@@ -551,41 +495,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 				Sleep(200); // 連続判定防止
 			}
 		}
-		if (CheckHitKey(KEY_INPUT_HOME)) {
-			ErrorLogAdd("Bantyancall要求(?????)\n");//ログにBantyancall要求を記録
-			int result = MessageBox(NULL, "Are you ready Bantyan call?????", "?????", MB_YESNO | MB_ICONWARNING | MB_TOPMOST);
-			if (result == IDYES) {
-				std::stringstream ss;
-				ss << "{\"content\": \"\\u0042\\u0061\\u006e\\u0074\\u0079\\u0061\\u006e\\u0020\\u0063\\u0061\\u006c\\u006c\\u0021\\u0021\\u0021\\u0021\\u0021\"}";
-				json_data = ss.str();
-				CURL* curl = curl_easy_init();
-				if (curl) {
-					struct curl_slist* headers = nullptr;
-					headers = curl_slist_append(headers, "Content-Type: application/json");
-
-					curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-					curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-					curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-					CURLcode res = curl_easy_perform(curl);
-					if (res != CURLE_OK) {
-						ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-					}
-					else {
-						ErrorLogAdd("Discordへの通知が成功しました。\n");
-					}
-
-					curl_slist_free_all(headers);
-					curl_easy_cleanup(curl);
-				}
-				ErrorLogAdd("Bantyan call!!!!!\n");//ログにBantyancall実行を記録
-				MessageBox(NULL, "Bantyan call!!!!!", "!!!!!", MB_OK | MB_ICONINFORMATION | MB_TOPMOST);
-			}
-			else {
-				ErrorLogAdd("処理が中断されました。。\n");
-			}
-			Sleep(200); // 連続判定防止
-		}
 		if (CheckHitKey(KEY_INPUT_END)) {
 			if (taskbarinfo == 1) {
 				HideTaskbar();
@@ -609,8 +518,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 		DrawRotaGraph(60, 58, 1.0, PI * Communicationmarkangle, Communicationmark, TRUE); //コミュニケーションマーク描画
 		SetDrawMode(DX_DRAWMODE_NEAREST);//描画モードをニアレストネイバーに設定(アンチエイリアス効果なし)
 		if (gametitleinfo == 0) {
-			DrawStringToHandle(450, 15, "柏苑祭", GetColor(0, 0, 0), titlefont);//タイトル描画
-			DrawStringToHandle(785, 15, "2025", GetColor(255, 0, 0), titlefont);//タイトル描画2
+			DrawStringToHandle(450, 15, "仮入部", GetColor(0, 0, 0), titlefont);//タイトル描画
+			DrawStringToHandle(785, 15, "2026", GetColor(255, 0, 0), titlefont);//タイトル描画2
 		}
 		else {
 			DrawStringToHandle(150, 20, gametitle.c_str(), GetColor(0, 0, 0), titlefont);//ゲームタイトル描画
@@ -705,7 +614,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 				if (focusgame == 1) {
 					goto focus2;
 				}
-				else if (focusgame == 2) {
+				else if(focusgame == 2) {
 					goto focus3;
 				}
 				else if (focusgame == 3) {
@@ -764,19 +673,17 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 			}
 		}
 		mouseInput = GetMouseInput();
-			if ((mouseInput & MOUSE_INPUT_LEFT) != 0 && (prevMouseInput & MOUSE_INPUT_LEFT) == 0) { // 押された瞬間
+		if ((mouseInput & MOUSE_INPUT_LEFT) != 0 && (prevMouseInput & MOUSE_INPUT_LEFT) == 0) { // 押された瞬間
 				if (mouseX >= 1400 && mouseX <= 1500 && mouseY >= 35 && mouseY <= 135) { //♪ボタンの範囲内なら
 					fps.FPS = 1;
 					if (BGMinfo == 1) {//BGMがONなら
-						StopSoundMem(BGM); //BGM停止
+						ChangeVolumeSoundMem(0, BGM); //BGMの音量を0に設定
 						BGMinfo = 0; //BGM情報をOFFに変更
 						PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 					}
 					else { //BGMがOFFなら
-						PlaySoundMem(BGM, DX_PLAYTYPE_BACK); // BGM再生
-						ChangeVolumeSoundMem(255, BGM); // BGM音量最大
+						ChangeVolumeSoundMem(255, BGM); //BGMの音量を最大に設定
 						BGMinfo = 1; //BGM情報をONに変更
-						BGMCount = 0; //BGMカウントリセット
 						PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 					}
 					fps.FPS = 120; //FPSを元に戻す
@@ -805,7 +712,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					if (gameyouso >= 1 + pagekasan) {
 						PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 						gamescan = 0;
-						GameInfoFile = FileRead_open("GameInfo.txt", FALSE);//GameInfo.txtを開く
+						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
 						while (FileRead_eof(GameInfoFile) == 0 && gamescan == 0) {
 							FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -827,30 +734,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 									else {
 										ErrorLogAdd("typeが指定された文字列ではありません。\n");//ログにゲーム情報読み込み失敗を記録
 										MessageBox(NULL, "ゲームの種類が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-										// cURLを使ってPOSTリクエストを送信
-										std::stringstream ss;
-										ss << "{\"content\": \"1\\u3064\\u306eHakuensaiLauncher\\u3067GameInfo.txt\\u306etype\\u306e\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-										json_data = ss.str();
-										CURL* curl = curl_easy_init();
-										if (curl) {
-											struct curl_slist* headers = nullptr;
-											headers = curl_slist_append(headers, "Content-Type: application/json");
-
-											curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-											curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-											curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-											CURLcode res = curl_easy_perform(curl);
-											if (res != CURLE_OK) {
-												ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-											}
-											else {
-												ErrorLogAdd("Discordへの通知が成功しました。\n");
-											}
-
-											curl_slist_free_all(headers);
-											curl_easy_cleanup(curl);
-										}
 										ShowTaskbar();
 
 										return -1; //typeがnoteでもgameでもなかったら異常終了
@@ -908,29 +791,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 															else {
 																ErrorLogAdd("}が不明です。\n");//ログにゲーム情報読み込み失敗を記録
 																MessageBox(NULL, "ゲーム情報の終端が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-																std::stringstream ss;
-																ss << "{\"content\": \"1\\u3064\\u306eHakuensaiLauncher\\u3067GameInfo.txt\\u306e\\u30b2\\u30fc\\u30e0\\u306e\\u7d42\\u7aef\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-																json_data = ss.str();
-																CURL* curl = curl_easy_init();
-																if (curl) {
-																	struct curl_slist* headers = nullptr;
-																	headers = curl_slist_append(headers, "Content-Type: application/json");
-
-																	curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-																	curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-																	curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-																	CURLcode res = curl_easy_perform(curl);
-																	if (res != CURLE_OK) {
-																		ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-																	}
-																	else {
-																		ErrorLogAdd("Discordへの通知が成功しました。\n");
-																	}
-
-																	curl_slist_free_all(headers);
-																	curl_easy_cleanup(curl);
-																}
 																ShowTaskbar();
 
 																return -1; //"}"がなかったら異常終了
@@ -939,29 +799,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 														else {
 															ErrorLogAdd("exeが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 															MessageBox(NULL, "ゲームの実行ファイルが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-															std::stringstream ss;
-															ss << "{\"content\": \"1\\u3064\\u306eHakuensaiLauncher\\u3067GameInfo.txt\\u306e\\u30b2\\u30fc\\u30e0\\u306e\\u5b9f\\u884c\\u30d5\\u30a1\\u30a4\\u30eb\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-															json_data = ss.str();
-															CURL* curl = curl_easy_init();
-															if (curl) {
-																struct curl_slist* headers = nullptr;
-																headers = curl_slist_append(headers, "Content-Type: application/json");
-
-																curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-																curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-																curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-																CURLcode res = curl_easy_perform(curl);
-																if (res != CURLE_OK) {
-																	ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-																}
-																else {
-																	ErrorLogAdd("Discordへの通知が成功しました。\n");
-																}
-
-																curl_slist_free_all(headers);
-																curl_easy_cleanup(curl);
-															}
 															ShowTaskbar();
 
 															return -1; //exeがなかったら異常終了
@@ -970,29 +807,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 													else {
 														ErrorLogAdd("dirが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 														MessageBox(NULL, "ゲームのディレクトリが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-														std::stringstream ss;
-														ss << "{\"content\": \"1\\u3064\\u306eHakuensaiLauncher\\u3067GameInfo.txt\\u306e\\u30b2\\u30fc\\u30e0\\u306e\\u30c7\\u30a3\\u30ec\\u30af\\u30c8\\u30ea\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-														json_data = ss.str();
-														CURL* curl = curl_easy_init();
-														if (curl) {
-															struct curl_slist* headers = nullptr;
-															headers = curl_slist_append(headers, "Content-Type: application/json");
-
-															curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-															curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-															curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-															CURLcode res = curl_easy_perform(curl);
-															if (res != CURLE_OK) {
-																ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-															}
-															else {
-																ErrorLogAdd("Discordへの通知が成功しました。\n");
-															}
-
-															curl_slist_free_all(headers);
-															curl_easy_cleanup(curl);
-														}
 														ShowTaskbar();
 
 														return -1; //dirがなかったら異常終了
@@ -1009,29 +823,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 										else {
 											ErrorLogAdd("titleが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 											MessageBox(NULL, "ゲームタイトルが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-											std::stringstream ss;
-											ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u30bf\\u30a4\\u30c8\\u30eb\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-											json_data = ss.str();
-											CURL* curl = curl_easy_init();
-											if (curl) {
-												struct curl_slist* headers = nullptr;
-												headers = curl_slist_append(headers, "Content-Type: application/json");
-
-												curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-												curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-												curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-												CURLcode res = curl_easy_perform(curl);
-												if (res != CURLE_OK) {
-													ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-												}
-												else {
-													ErrorLogAdd("Discordへの通知が成功しました。\n");
-												}
-
-												curl_slist_free_all(headers);
-												curl_easy_cleanup(curl);
-											}
 											ShowTaskbar();
 
 											return -1; //titleがなかったら異常終了
@@ -1040,29 +831,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 									else {
 										ErrorLogAdd("typeが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 										MessageBox(NULL, "ゲームの種類が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-										std::stringstream ss;
-										ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u0074\\u0079\\u0070\\u0065\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-										json_data = ss.str();
-										CURL* curl = curl_easy_init();
-										if (curl) {
-											struct curl_slist* headers = nullptr;
-											headers = curl_slist_append(headers, "Content-Type: application/json");
-
-											curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-											curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-											curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-											CURLcode res = curl_easy_perform(curl);
-											if (res != CURLE_OK) {
-												ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-											}
-											else {
-												ErrorLogAdd("Discordへの通知が成功しました。\n");
-											}
-
-											curl_slist_free_all(headers);
-											curl_easy_cleanup(curl);
-										}
 											ShowTaskbar();
 
 											return -1; //typeがなかったら異常終了
@@ -1077,29 +845,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 						if (gamescan == 0) {
 							ErrorLogAdd("ゲーム情報が見つかりません。\n");//ログにゲーム情報読み込み失敗を記録
 							MessageBox(NULL, "ゲーム情報が見つかりません。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-							std::stringstream ss;
-							ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u60c5\\u5831\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-							json_data = ss.str();
-							CURL* curl = curl_easy_init();
-							if (curl) {
-								struct curl_slist* headers = nullptr;
-								headers = curl_slist_append(headers, "Content-Type: application/json");
-
-								curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-								curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-								curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-								CURLcode res = curl_easy_perform(curl);
-								if (res != CURLE_OK) {
-									ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-								}
-								else {
-									ErrorLogAdd("Discordへの通知が成功しました。\n");
-								}
-
-								curl_slist_free_all(headers);
-								curl_easy_cleanup(curl);
-							}
 							ShowTaskbar();
 
 							return -1; //ゲーム情報が見つからなかったら異常終了
@@ -1119,7 +864,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					if (gameyouso >= 2 + pagekasan) {
 						PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 						gamescan = 0;
-						GameInfoFile = FileRead_open("GameInfo.txt", FALSE);//GameInfo.txtを開く
+						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
 						while (FileRead_eof(GameInfoFile) == 0 && gamescan == 0) {
 							FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -1141,29 +886,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 									else {
 										ErrorLogAdd("typeが指定された文字列ではありません。\n");//ログにゲーム情報読み込み失敗を記録
 										MessageBox(NULL, "ゲームの種類が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-										std::stringstream ss;
-										ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u7a2e\\u985e\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-										json_data = ss.str();
-										CURL* curl = curl_easy_init();
-										if (curl) {
-											struct curl_slist* headers = nullptr;
-											headers = curl_slist_append(headers, "Content-Type: application/json");
-
-											curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-											curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-											curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-											CURLcode res = curl_easy_perform(curl);
-											if (res != CURLE_OK) {
-												ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-											}
-											else {
-												ErrorLogAdd("Discordへの通知が成功しました。\n");
-											}
-
-											curl_slist_free_all(headers);
-											curl_easy_cleanup(curl);
-										}
 										ShowTaskbar();
 
 										return -1; //typeがnoteでもgameでもなかったら異常終了
@@ -1221,29 +943,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 															else {
 																ErrorLogAdd("}が不明です。\n");//ログにゲーム情報読み込み失敗を記録
 																MessageBox(NULL, "ゲーム情報の終端が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-																std::stringstream ss;
-																ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u7d42\\u7ae0\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-																json_data = ss.str();
-																CURL* curl = curl_easy_init();
-																if (curl) {
-																	struct curl_slist* headers = nullptr;
-																	headers = curl_slist_append(headers, "Content-Type: application/json");
-
-																	curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-																	curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-																	curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-																	CURLcode res = curl_easy_perform(curl);
-																	if (res != CURLE_OK) {
-																		ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-																	}
-																	else {
-																		ErrorLogAdd("Discordへの通知が成功しました。\n");
-																	}
-
-																	curl_slist_free_all(headers);
-																	curl_easy_cleanup(curl);
-																}
 																ShowTaskbar();
 
 																return -1; //"}"がなかったら異常終了
@@ -1252,29 +951,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 														else {
 															ErrorLogAdd("exeが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 															MessageBox(NULL, "ゲームの実行ファイルが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-															std::stringstream ss;
-															ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u5b9f\\u884c\\u30d5\\u30a1\\u30a4\\u30eb\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-															json_data = ss.str();
-															CURL* curl = curl_easy_init();
-															if (curl) {
-																struct curl_slist* headers = nullptr;
-																headers = curl_slist_append(headers, "Content-Type: application/json");
-
-																curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-																curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-																curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-																CURLcode res = curl_easy_perform(curl);
-																if (res != CURLE_OK) {
-																	ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-																}
-																else {
-																	ErrorLogAdd("Discordへの通知が成功しました。\n");
-																}
-
-																curl_slist_free_all(headers);
-																curl_easy_cleanup(curl);
-															}
 															ShowTaskbar();
 
 															return -1; //exeがなかったら異常終了
@@ -1283,29 +959,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 													else {
 														ErrorLogAdd("dirが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 														MessageBox(NULL, "ゲームのディレクトリが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-														std::stringstream ss;
-														ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u30c7\\u30a3\\u30ec\\u30af\\u30c8\\u30ea\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-														json_data = ss.str();
-														CURL* curl = curl_easy_init();
-														if (curl) {
-															struct curl_slist* headers = nullptr;
-															headers = curl_slist_append(headers, "Content-Type: application/json");
-
-															curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-															curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-															curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-															CURLcode res = curl_easy_perform(curl);
-															if (res != CURLE_OK) {
-																ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-															}
-															else {
-																ErrorLogAdd("Discordへの通知が成功しました。\n");
-															}
-
-															curl_slist_free_all(headers);
-															curl_easy_cleanup(curl);
-														}
 														ShowTaskbar();
 
 														return -1; //dirがなかったら異常終了
@@ -1322,29 +975,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 										else {
 											ErrorLogAdd("titleが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 											MessageBox(NULL, "ゲームタイトルが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-											std::stringstream ss;
-											ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u30bf\\u30a4\\u30c8\\u30eb\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-											json_data = ss.str();
-											CURL* curl = curl_easy_init();
-											if (curl) {
-												struct curl_slist* headers = nullptr;
-												headers = curl_slist_append(headers, "Content-Type: application/json");
-
-												curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-												curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-												curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-												CURLcode res = curl_easy_perform(curl);
-												if (res != CURLE_OK) {
-													ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-												}
-												else {
-													ErrorLogAdd("Discordへの通知が成功しました。\n");
-												}
-
-												curl_slist_free_all(headers);
-												curl_easy_cleanup(curl);
-											}
 											ShowTaskbar();
 
 											return -1; //titleがなかったら異常終了
@@ -1353,29 +983,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 									else {
 										ErrorLogAdd("typeが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 										MessageBox(NULL, "ゲームの種類が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-										std::stringstream ss;
-										ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u7a2e\\u985e\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-										json_data = ss.str();
-										CURL* curl = curl_easy_init();
-										if (curl) {
-											struct curl_slist* headers = nullptr;
-											headers = curl_slist_append(headers, "Content-Type: application/json");
-
-											curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-											curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-											curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-											CURLcode res = curl_easy_perform(curl);
-											if (res != CURLE_OK) {
-												ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-											}
-											else {
-												ErrorLogAdd("Discordへの通知が成功しました。\n");
-											}
-
-											curl_slist_free_all(headers);
-											curl_easy_cleanup(curl);
-										}
 										ShowTaskbar();
 
 										return -1; //typeがなかったら異常終了
@@ -1390,29 +997,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 						if (gamescan == 0) {
 							ErrorLogAdd("ゲーム情報が見つかりません。\n");//ログにゲーム情報読み込み失敗を記録
 							MessageBox(NULL, "ゲーム情報が見つかりません。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-							std::stringstream ss;
-							ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u60c5\\u5831\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-							json_data = ss.str();
-							CURL* curl = curl_easy_init();
-							if (curl) {
-								struct curl_slist* headers = nullptr;
-								headers = curl_slist_append(headers, "Content-Type: application/json");
 
-								curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-								curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-								curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-								CURLcode res = curl_easy_perform(curl);
-								if (res != CURLE_OK) {
-									ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-								}
-								else {
-									ErrorLogAdd("Discordへの通知が成功しました。\n");
-								}
-
-								curl_slist_free_all(headers);
-								curl_easy_cleanup(curl);
-							}
 							ShowTaskbar();
 
 							return -1; //ゲーム情報が見つからなかったら異常終了
@@ -1432,7 +1017,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					if (gameyouso >= 3 + pagekasan) {
 						PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 						gamescan = 0;
-						GameInfoFile = FileRead_open("GameInfo.txt", FALSE);//GameInfo.txtを開く
+						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
 						while (FileRead_eof(GameInfoFile) == 0 && gamescan == 0) {
 							FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -1454,29 +1039,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 									else {
 										ErrorLogAdd("typeが指定された文字列ではありません。\n");//ログにゲーム情報読み込み失敗を記録
 										MessageBox(NULL, "ゲームの種類が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-										std::stringstream ss;
-										ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u7a2e\\u985e\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-										json_data = ss.str();
-										CURL* curl = curl_easy_init();
-										if (curl) {
-											struct curl_slist* headers = nullptr;
-											headers = curl_slist_append(headers, "Content-Type: application/json");
-
-											curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-											curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-											curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-											CURLcode res = curl_easy_perform(curl);
-											if (res != CURLE_OK) {
-												ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-											}
-											else {
-												ErrorLogAdd("Discordへの通知が成功しました。\n");
-											}
-
-											curl_slist_free_all(headers);
-											curl_easy_cleanup(curl);
-										}
 										ShowTaskbar();
 
 										return -1; //typeがnoteでもgameでもなかったら異常終了
@@ -1534,29 +1096,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 															else {
 																ErrorLogAdd("}が不明です。\n");//ログにゲーム情報読み込み失敗を記録
 																MessageBox(NULL, "ゲーム情報の終端が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-																std::stringstream ss;
-																ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u7d42\\u7ae0\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-																json_data = ss.str();
-																CURL* curl = curl_easy_init();
-																if (curl) {
-																	struct curl_slist* headers = nullptr;
-																	headers = curl_slist_append(headers, "Content-Type: application/json");
-
-																	curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-																	curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-																	curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-																	CURLcode res = curl_easy_perform(curl);
-																	if (res != CURLE_OK) {
-																		ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-																	}
-																	else {
-																		ErrorLogAdd("Discordへの通知が成功しました。\n");
-																	}
-
-																	curl_slist_free_all(headers);
-																	curl_easy_cleanup(curl);
-																}
 																ShowTaskbar();
 
 																return -1; //"}"がなかったら異常終了
@@ -1565,29 +1104,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 														else {
 															ErrorLogAdd("exeが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 															MessageBox(NULL, "ゲームの実行ファイルが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-															std::stringstream ss;
-															ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u5b9f\\u884c\\u30d5\\u30a1\\u30a4\\u30eb\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-															json_data = ss.str();
-															CURL* curl = curl_easy_init();
-															if (curl) {
-																struct curl_slist* headers = nullptr;
-																headers = curl_slist_append(headers, "Content-Type: application/json");
-
-																curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-																curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-																curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-																CURLcode res = curl_easy_perform(curl);
-																if (res != CURLE_OK) {
-																	ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-																}
-																else {
-																	ErrorLogAdd("Discordへの通知が成功しました。\n");
-																}
-
-																curl_slist_free_all(headers);
-																curl_easy_cleanup(curl);
-															}
 															ShowTaskbar();
 
 															return -1; //exeがなかったら異常終了
@@ -1596,29 +1112,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 													else {
 														ErrorLogAdd("dirが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 														MessageBox(NULL, "ゲームのディレクトリが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-														std::stringstream ss;
-														ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u30c7\\u30a3\\u30ec\\u30af\\u30c8\\u30ea\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-														json_data = ss.str();
-														CURL* curl = curl_easy_init();
-														if (curl) {
-															struct curl_slist* headers = nullptr;
-															headers = curl_slist_append(headers, "Content-Type: application/json");
-
-															curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-															curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-															curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-															CURLcode res = curl_easy_perform(curl);
-															if (res != CURLE_OK) {
-																ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-															}
-															else {
-																ErrorLogAdd("Discordへの通知が成功しました。\n");
-															}
-
-															curl_slist_free_all(headers);
-															curl_easy_cleanup(curl);
-														}
 														ShowTaskbar();
 
 														return -1; //dirがなかったら異常終了
@@ -1635,29 +1128,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 										else {
 											ErrorLogAdd("titleが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 											MessageBox(NULL, "ゲームタイトルが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-											std::stringstream ss;
-											ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u30bf\\u30a4\\u30c8\\u30eb\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-											json_data = ss.str();
-											CURL* curl = curl_easy_init();
-											if (curl) {
-												struct curl_slist* headers = nullptr;
-												headers = curl_slist_append(headers, "Content-Type: application/json");
-
-												curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-												curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-												curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-												CURLcode res = curl_easy_perform(curl);
-												if (res != CURLE_OK) {
-													ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-												}
-												else {
-													ErrorLogAdd("Discordへの通知が成功しました。\n");
-												}
-
-												curl_slist_free_all(headers);
-												curl_easy_cleanup(curl);
-											}
 											ShowTaskbar();
 
 											return -1; //titleがなかったら異常終了
@@ -1666,29 +1136,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 									else {
 										ErrorLogAdd("typeが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 										MessageBox(NULL, "ゲームの種類が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-										std::stringstream ss;
-										ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u7a2e\\u985e\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-										json_data = ss.str();
-										CURL* curl = curl_easy_init();
-										if (curl) {
-											struct curl_slist* headers = nullptr;
-											headers = curl_slist_append(headers, "Content-Type: application/json");
-
-											curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-											curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-											curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-											CURLcode res = curl_easy_perform(curl);
-											if (res != CURLE_OK) {
-												ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-											}
-											else {
-												ErrorLogAdd("Discordへの通知が成功しました。\n");
-											}
-
-											curl_slist_free_all(headers);
-											curl_easy_cleanup(curl);
-										}
 										ShowTaskbar();
 
 										return -1; //typeがなかったら異常終了
@@ -1703,29 +1150,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 						if (gamescan == 0) {
 							ErrorLogAdd("ゲーム情報が見つかりません。\n");//ログにゲーム情報読み込み失敗を記録
 							MessageBox(NULL, "ゲーム情報が見つかりません。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-							std::stringstream ss;
-							ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u60c5\\u5831\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-							json_data = ss.str();
-							CURL* curl = curl_easy_init();
-							if (curl) {
-								struct curl_slist* headers = nullptr;
-								headers = curl_slist_append(headers, "Content-Type: application/json");
-
-								curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-								curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-								curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-								CURLcode res = curl_easy_perform(curl);
-								if (res != CURLE_OK) {
-									ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-								}
-								else {
-									ErrorLogAdd("Discordへの通知が成功しました。\n");
-								}
-
-								curl_slist_free_all(headers);
-								curl_easy_cleanup(curl);
-							}
 							ShowTaskbar();
 
 							return -1; //ゲーム情報が見つからなかったら異常終了
@@ -1745,7 +1169,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					if (gameyouso >= 4 + pagekasan) {
 						PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 						gamescan = 0;
-						GameInfoFile = FileRead_open("GameInfo.txt", FALSE);//GameInfo.txtを開く
+						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
 						while (FileRead_eof(GameInfoFile) == 0 && gamescan == 0) {
 							FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -1767,29 +1191,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 									else {
 										ErrorLogAdd("typeが指定された文字列ではありません。\n");//ログにゲーム情報読み込み失敗を記録
 										MessageBox(NULL, "ゲームの種類が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-										std::stringstream ss;
-										ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u7a2e\\u985e\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-										json_data = ss.str();
-										CURL* curl = curl_easy_init();
-										if (curl) {
-											struct curl_slist* headers = nullptr;
-											headers = curl_slist_append(headers, "Content-Type: application/json");
-
-											curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-											curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-											curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-											CURLcode res = curl_easy_perform(curl);
-											if (res != CURLE_OK) {
-												ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-											}
-											else {
-												ErrorLogAdd("Discordへの通知が成功しました。\n");
-											}
-
-											curl_slist_free_all(headers);
-											curl_easy_cleanup(curl);
-										}
 										ShowTaskbar();
 
 										return -1; //typeがnoteでもgameでもなかったら異常終了
@@ -1847,29 +1248,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 															else {
 																ErrorLogAdd("}が不明です。\n");//ログにゲーム情報読み込み失敗を記録
 																MessageBox(NULL, "ゲーム情報の終端が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-																std::stringstream ss;
-																ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u7d42\\u7ae0\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-																json_data = ss.str();
-																CURL* curl = curl_easy_init();
-																if (curl) {
-																	struct curl_slist* headers = nullptr;
-																	headers = curl_slist_append(headers, "Content-Type: application/json");
-
-																	curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-																	curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-																	curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-																	CURLcode res = curl_easy_perform(curl);
-																	if (res != CURLE_OK) {
-																		ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-																	}
-																	else {
-																		ErrorLogAdd("Discordへの通知が成功しました。\n");
-																	}
-
-																	curl_slist_free_all(headers);
-																	curl_easy_cleanup(curl);
-																}
 																ShowTaskbar();
 
 																return -1; //"}"がなかったら異常終了
@@ -1878,29 +1256,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 														else {
 															ErrorLogAdd("exeが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 															MessageBox(NULL, "ゲームの実行ファイルが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-															std::stringstream ss;
-															ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u5b9f\\u884c\\u30d5\\u30a1\\u30a4\\u30eb\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-															json_data = ss.str();
-															CURL* curl = curl_easy_init();
-															if (curl) {
-																struct curl_slist* headers = nullptr;
-																headers = curl_slist_append(headers, "Content-Type: application/json");
-
-																curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-																curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-																curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-																CURLcode res = curl_easy_perform(curl);
-																if (res != CURLE_OK) {
-																	ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-																}
-																else {
-																	ErrorLogAdd("Discordへの通知が成功しました。\n");
-																}
-
-																curl_slist_free_all(headers);
-																curl_easy_cleanup(curl);
-															}
 															ShowTaskbar();
 
 															return -1; //exeがなかったら異常終了
@@ -1909,29 +1264,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 													else {
 														ErrorLogAdd("dirが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 														MessageBox(NULL, "ゲームのディレクトリが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-														std::stringstream ss;
-														ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u30c7\\u30a3\\u30ec\\u30af\\u30c8\\u30ea\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-														json_data = ss.str();
-														CURL* curl = curl_easy_init();
-														if (curl) {
-															struct curl_slist* headers = nullptr;
-															headers = curl_slist_append(headers, "Content-Type: application/json");
-
-															curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-															curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-															curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-															CURLcode res = curl_easy_perform(curl);
-															if (res != CURLE_OK) {
-																ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-															}
-															else {
-																ErrorLogAdd("Discordへの通知が成功しました。\n");
-															}
-
-															curl_slist_free_all(headers);
-															curl_easy_cleanup(curl);
-														}
 
 														ShowTaskbar();
 														return -1; //dirがなかったら異常終了
@@ -1948,29 +1280,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 										else {
 											ErrorLogAdd("titleが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 											MessageBox(NULL, "ゲームタイトルが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-											std::stringstream ss;
-											ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u30bf\\u30a4\\u30c8\\u30eb\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-											json_data = ss.str();
-											CURL* curl = curl_easy_init();
-											if (curl) {
-												struct curl_slist* headers = nullptr;
-												headers = curl_slist_append(headers, "Content-Type: application/json");
-
-												curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-												curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-												curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-												CURLcode res = curl_easy_perform(curl);
-												if (res != CURLE_OK) {
-													ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-												}
-												else {
-													ErrorLogAdd("Discordへの通知が成功しました。\n");
-												}
-
-												curl_slist_free_all(headers);
-												curl_easy_cleanup(curl);
-											}
 											ShowTaskbar();
 
 											return -1; //titleがなかったら異常終了
@@ -1979,29 +1288,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 									else {
 										ErrorLogAdd("typeが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 										MessageBox(NULL, "ゲームの種類が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-										std::stringstream ss;
-										ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u7a2e\\u985e\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-										json_data = ss.str();
-										CURL* curl = curl_easy_init();
-										if (curl) {
-											struct curl_slist* headers = nullptr;
-											headers = curl_slist_append(headers, "Content-Type: application/json");
-
-											curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-											curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-											curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-											CURLcode res = curl_easy_perform(curl);
-											if (res != CURLE_OK) {
-												ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-											}
-											else {
-												ErrorLogAdd("Discordへの通知が成功しました。\n");
-											}
-
-											curl_slist_free_all(headers);
-											curl_easy_cleanup(curl);
-										}
 										ShowTaskbar();
 
 										return -1; //typeがなかったら異常終了
@@ -2016,29 +1302,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 						if (gamescan == 0) {
 							ErrorLogAdd("ゲーム情報が見つかりません。\n");//ログにゲーム情報読み込み失敗を記録
 							MessageBox(NULL, "ゲーム情報が見つかりません。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-							std::stringstream ss;
-							ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u60c5\\u5831\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-							json_data = ss.str();
-							CURL* curl = curl_easy_init();
-							if (curl) {
-								struct curl_slist* headers = nullptr;
-								headers = curl_slist_append(headers, "Content-Type: application/json");
-
-								curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-								curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-								curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-								CURLcode res = curl_easy_perform(curl);
-								if (res != CURLE_OK) {
-									ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-								}
-								else {
-									ErrorLogAdd("Discordへの通知が成功しました。\n");
-								}
-
-								curl_slist_free_all(headers);
-								curl_easy_cleanup(curl);
-							}
 							ShowTaskbar();
 
 							return -1; //ゲーム情報が見つからなかったら異常終了
@@ -2058,7 +1321,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					if (gameyouso >= 5 + pagekasan) {
 						PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 						gamescan = 0;
-						GameInfoFile = FileRead_open("GameInfo.txt", FALSE);//GameInfo.txtを開く
+						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
 						while (FileRead_eof(GameInfoFile) == 0 && gamescan == 0) {
 							FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -2080,29 +1343,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 									else {
 										ErrorLogAdd("typeが指定された文字列ではありません。\n");//ログにゲーム情報読み込み失敗を記録
 										MessageBox(NULL, "ゲームの種類が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-										std::stringstream ss;
-										ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u7a2e\\u985e\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-										json_data = ss.str();
-										CURL* curl = curl_easy_init();
-										if (curl) {
-											struct curl_slist* headers = nullptr;
-											headers = curl_slist_append(headers, "Content-Type: application/json");
-
-											curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-											curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-											curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-											CURLcode res = curl_easy_perform(curl);
-											if (res != CURLE_OK) {
-												ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-											}
-											else {
-												ErrorLogAdd("Discordへの通知が成功しました。\n");
-											}
-
-											curl_slist_free_all(headers);
-											curl_easy_cleanup(curl);
-										}
 										ShowTaskbar();
 
 										return -1; //typeがnoteでもgameでもなかったら異常終了
@@ -2160,29 +1400,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 															else {
 																ErrorLogAdd("}が不明です。\n");//ログにゲーム情報読み込み失敗を記録
 																MessageBox(NULL, "ゲーム情報の終端が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-																std::stringstream ss;
-																ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u7d42\\u7ae0\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-																json_data = ss.str();
-																CURL* curl = curl_easy_init();
-																if (curl) {
-																	struct curl_slist* headers = nullptr;
-																	headers = curl_slist_append(headers, "Content-Type: application/json");
-
-																	curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-																	curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-																	curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-																	CURLcode res = curl_easy_perform(curl);
-																	if (res != CURLE_OK) {
-																		ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-																	}
-																	else {
-																		ErrorLogAdd("Discordへの通知が成功しました。\n");
-																	}
-
-																	curl_slist_free_all(headers);
-																	curl_easy_cleanup(curl);
-																}
 
 																ShowTaskbar();
 																return -1; //"}"がなかったら異常終了
@@ -2191,29 +1408,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 														else {
 															ErrorLogAdd("exeが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 															MessageBox(NULL, "ゲームの実行ファイルが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-															std::stringstream ss;
-															ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u5b9f\\u884c\\u30d5\\u30a1\\u30a4\\u30eb\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-															json_data = ss.str();
-															CURL* curl = curl_easy_init();
-															if (curl) {
-																struct curl_slist* headers = nullptr;
-																headers = curl_slist_append(headers, "Content-Type: application/json");
-
-																curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-																curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-																curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-																CURLcode res = curl_easy_perform(curl);
-																if (res != CURLE_OK) {
-																	ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-																}
-																else {
-																	ErrorLogAdd("Discordへの通知が成功しました。\n");
-																}
-
-																curl_slist_free_all(headers);
-																curl_easy_cleanup(curl);
-															}
 															ShowTaskbar();
 
 															return -1; //exeがなかったら異常終了
@@ -2222,29 +1416,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 													else {
 														ErrorLogAdd("dirが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 														MessageBox(NULL, "ゲームのディレクトリが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-														std::stringstream ss;
-														ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u30c7\\u30a3\\u30ec\\u30af\\u30c8\\u30ea\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-														json_data = ss.str();
-														CURL* curl = curl_easy_init();
-														if (curl) {
-															struct curl_slist* headers = nullptr;
-															headers = curl_slist_append(headers, "Content-Type: application/json");
-
-															curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-															curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-															curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-															CURLcode res = curl_easy_perform(curl);
-															if (res != CURLE_OK) {
-																ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-															}
-															else {
-																ErrorLogAdd("Discordへの通知が成功しました。\n");
-															}
-
-															curl_slist_free_all(headers);
-															curl_easy_cleanup(curl);
-														}
 
 														ShowTaskbar();
 														return -1; //dirがなかったら異常終了
@@ -2261,29 +1432,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 										else {
 											ErrorLogAdd("titleが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 											MessageBox(NULL, "ゲームタイトルが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-											std::stringstream ss;
-											ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u30bf\\u30a4\\u30c8\\u30eb\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-											json_data = ss.str();
-											CURL* curl = curl_easy_init();
-											if (curl) {
-												struct curl_slist* headers = nullptr;
-												headers = curl_slist_append(headers, "Content-Type: application/json");
-
-												curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-												curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-												curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-												CURLcode res = curl_easy_perform(curl);
-												if (res != CURLE_OK) {
-													ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-												}
-												else {
-													ErrorLogAdd("Discordへの通知が成功しました。\n");
-												}
-
-												curl_slist_free_all(headers);
-												curl_easy_cleanup(curl);
-											}
 											ShowTaskbar();
 
 											return -1; //titleがなかったら異常終了
@@ -2292,29 +1440,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 									else {
 										ErrorLogAdd("typeが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 										MessageBox(NULL, "ゲームの種類が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-										std::stringstream ss;
-										ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u7a2e\\u985e\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-										json_data = ss.str();
-										CURL* curl = curl_easy_init();
-										if (curl) {
-											struct curl_slist* headers = nullptr;
-											headers = curl_slist_append(headers, "Content-Type: application/json");
-
-											curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-											curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-											curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-											CURLcode res = curl_easy_perform(curl);
-											if (res != CURLE_OK) {
-												ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-											}
-											else {
-												ErrorLogAdd("Discordへの通知が成功しました。\n");
-											}
-
-											curl_slist_free_all(headers);
-											curl_easy_cleanup(curl);
-										}
 										ShowTaskbar();
 
 										return -1; //typeがなかったら異常終了
@@ -2329,29 +1454,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 						if (gamescan == 0) {
 							ErrorLogAdd("ゲーム情報が見つかりません。\n");//ログにゲーム情報読み込み失敗を記録
 							MessageBox(NULL, "ゲーム情報が見つかりません。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-							std::stringstream ss;
-							ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u60c5\\u5831\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-							json_data = ss.str();
-							CURL* curl = curl_easy_init();
-							if (curl) {
-								struct curl_slist* headers = nullptr;
-								headers = curl_slist_append(headers, "Content-Type: application/json");
-
-								curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-								curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-								curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-								CURLcode res = curl_easy_perform(curl);
-								if (res != CURLE_OK) {
-									ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-								}
-								else {
-									ErrorLogAdd("Discordへの通知が成功しました。\n");
-								}
-
-								curl_slist_free_all(headers);
-								curl_easy_cleanup(curl);
-							}
 							ShowTaskbar();
 
 							return -1; //ゲーム情報が見つからなかったら異常終了
@@ -2371,7 +1473,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					if (gameyouso >= 6 + pagekasan) {
 						PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 						gamescan = 0;
-						GameInfoFile = FileRead_open("GameInfo.txt", FALSE);//GameInfo.txtを開く
+						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
 						while (FileRead_eof(GameInfoFile) == 0 && gamescan == 0) {
 							FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -2393,29 +1495,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 									else {
 										ErrorLogAdd("typeが指定された文字列ではありません。\n");//ログにゲーム情報読み込み失敗を記録
 										MessageBox(NULL, "ゲームの種類が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-										std::stringstream ss;
-										ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u0074\\u0079\\u0070\\u0065\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-										json_data = ss.str();
-										CURL* curl = curl_easy_init();
-										if (curl) {
-											struct curl_slist* headers = nullptr;
-											headers = curl_slist_append(headers, "Content-Type: application/json");
-
-											curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-											curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-											curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-											CURLcode res = curl_easy_perform(curl);
-											if (res != CURLE_OK) {
-												ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-											}
-											else {
-												ErrorLogAdd("Discordへの通知が成功しました。\n");
-											}
-
-											curl_slist_free_all(headers);
-											curl_easy_cleanup(curl);
-										}
 										ShowTaskbar();
 
 										return -1; //typeがnoteでもgameでもなかったら異常終了
@@ -2473,29 +1552,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 															else {
 																ErrorLogAdd("}が不明です。\n");//ログにゲーム情報読み込み失敗を記録
 																MessageBox(NULL, "ゲーム情報の終端が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-																std::stringstream ss;
-																ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u60c5\\u5831\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-																json_data = ss.str();
-																CURL* curl = curl_easy_init();
-																if (curl) {
-																	struct curl_slist* headers = nullptr;
-																	headers = curl_slist_append(headers, "Content-Type: application/json");
-
-																	curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-																	curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-																	curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-																	CURLcode res = curl_easy_perform(curl);
-																	if (res != CURLE_OK) {
-																		ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-																	}
-																	else {
-																		ErrorLogAdd("Discordへの通知が成功しました。\n");
-																	}
-
-																	curl_slist_free_all(headers);
-																	curl_easy_cleanup(curl);
-																}
 																ShowTaskbar();
 
 																return -1; //"}"がなかったら異常終了
@@ -2504,29 +1560,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 														else {
 															ErrorLogAdd("exeが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 															MessageBox(NULL, "ゲームの実行ファイルが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-															std::stringstream ss;
-															ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u5b9f\\u884c\\u30d5\\u30a1\\u30a4\\u30eb\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-															json_data = ss.str();
-															CURL* curl = curl_easy_init();
-															if (curl) {
-																struct curl_slist* headers = nullptr;
-																headers = curl_slist_append(headers, "Content-Type: application/json");
-
-																curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-																curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-																curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-																CURLcode res = curl_easy_perform(curl);
-																if (res != CURLE_OK) {
-																	ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-																}
-																else {
-																	ErrorLogAdd("Discordへの通知が成功しました。\n");
-																}
-
-																curl_slist_free_all(headers);
-																curl_easy_cleanup(curl);
-															}
 															ShowTaskbar();
 
 															return -1; //exeがなかったら異常終了
@@ -2535,29 +1568,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 													else {
 														ErrorLogAdd("dirが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 														MessageBox(NULL, "ゲームのディレクトリが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-														std::stringstream ss;
-														ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u30c7\\u30a3\\u30ec\\u30af\\u30c8\\u30ea\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-														json_data = ss.str();
-														CURL* curl = curl_easy_init();
-														if (curl) {
-															struct curl_slist* headers = nullptr;
-															headers = curl_slist_append(headers, "Content-Type: application/json");
-
-															curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-															curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-															curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-															CURLcode res = curl_easy_perform(curl);
-															if (res != CURLE_OK) {
-																ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-															}
-															else {
-																ErrorLogAdd("Discordへの通知が成功しました。\n");
-															}
-
-															curl_slist_free_all(headers);
-															curl_easy_cleanup(curl);
-														}
 														ShowTaskbar();
 
 														return -1; //dirがなかったら異常終了
@@ -2574,29 +1584,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 										else {
 											ErrorLogAdd("titleが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 											MessageBox(NULL, "ゲームタイトルが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-											std::stringstream ss;
-											ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u30bf\\u30a4\\u30c8\\u30eb\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-											json_data = ss.str();
-											CURL* curl = curl_easy_init();
-											if (curl) {
-												struct curl_slist* headers = nullptr;
-												headers = curl_slist_append(headers, "Content-Type: application/json");
-
-												curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-												curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-												curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-												CURLcode res = curl_easy_perform(curl);
-												if (res != CURLE_OK) {
-													ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-												}
-												else {
-													ErrorLogAdd("Discordへの通知が成功しました。\n");
-												}
-
-												curl_slist_free_all(headers);
-												curl_easy_cleanup(curl);
-											}
 											ShowTaskbar();
 
 											return -1; //titleがなかったら異常終了
@@ -2605,29 +1592,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 									else {
 										ErrorLogAdd("typeが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 										MessageBox(NULL, "ゲームの種類が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-										std::stringstream ss;
-										ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u7a2e\\u985e\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-										json_data = ss.str();
-										CURL* curl = curl_easy_init();
-										if (curl) {
-											struct curl_slist* headers = nullptr;
-											headers = curl_slist_append(headers, "Content-Type: application/json");
-
-											curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-											curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-											curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-											CURLcode res = curl_easy_perform(curl);
-											if (res != CURLE_OK) {
-												ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-											}
-											else {
-												ErrorLogAdd("Discordへの通知が成功しました。\n");
-											}
-
-											curl_slist_free_all(headers);
-											curl_easy_cleanup(curl);
-										}
 										ShowTaskbar();
 
 										return -1; //typeがなかったら異常終了
@@ -2642,29 +1606,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 						if (gamescan == 0) {
 							ErrorLogAdd("ゲーム情報が見つかりません。\n");//ログにゲーム情報読み込み失敗を記録
 							MessageBox(NULL, "ゲーム情報が見つかりません。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-							std::stringstream ss;
-							ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u60c5\\u5831\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-							json_data = ss.str();
-							CURL* curl = curl_easy_init();
-							if (curl) {
-								struct curl_slist* headers = nullptr;
-								headers = curl_slist_append(headers, "Content-Type: application/json");
-
-								curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-								curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-								curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-								CURLcode res = curl_easy_perform(curl);
-								if (res != CURLE_OK) {
-									ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-								}
-								else {
-									ErrorLogAdd("Discordへの通知が成功しました。\n");
-								}
-
-								curl_slist_free_all(headers);
-								curl_easy_cleanup(curl);
-							}
 							ShowTaskbar();
 
 							return -1; //ゲーム情報が見つからなかったら異常終了
@@ -2684,7 +1625,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					if (gameyouso >= 7 + pagekasan) {
 						PlaySoundMem(botan, DX_PLAYTYPE_BACK); // ボタン音再生
 						gamescan = 0;
-						GameInfoFile = FileRead_open("GameInfo.txt", FALSE);//GameInfo.txtを開く
+						GameInfoFile = FileRead_open("Gameinfo.txt", FALSE);//GameInfo.txtを開く
 						FileRead_seek(GameInfoFile, 0, SEEK_SET); // ファイルの先頭に移動
 						while (FileRead_eof(GameInfoFile) == 0 && gamescan == 0) {
 							FileRead_gets(gameInfoLine, sizeof(gameInfoLine), GameInfoFile);//指定されたサイズ－１バイト分の文字列があった所までの文字列が格納されるため注意
@@ -2706,29 +1647,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 									else {
 										ErrorLogAdd("typeが指定された文字列ではありません。\n");//ログにゲーム情報読み込み失敗を記録
 										MessageBox(NULL, "ゲームの種類が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-										std::stringstream ss;
-										ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u0074\\u0079\\u0070\\u0065\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-										json_data = ss.str();
-										CURL* curl = curl_easy_init();
-										if (curl) {
-											struct curl_slist* headers = nullptr;
-											headers = curl_slist_append(headers, "Content-Type: application/json");
-
-											curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-											curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-											curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-											CURLcode res = curl_easy_perform(curl);
-											if (res != CURLE_OK) {
-												ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-											}
-											else {
-												ErrorLogAdd("Discordへの通知が成功しました。\n");
-											}
-
-											curl_slist_free_all(headers);
-											curl_easy_cleanup(curl);
-										}
 										ShowTaskbar();
 
 										return -1; //typeがnoteでもgameでもなかったら異常終了
@@ -2786,29 +1704,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 															else {
 																ErrorLogAdd("}が不明です。\n");//ログにゲーム情報読み込み失敗を記録
 																MessageBox(NULL, "ゲーム情報の終端が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-																std::stringstream ss;
-																ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u7d42\\u7ae0\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-																json_data = ss.str();
-																CURL* curl = curl_easy_init();
-																if (curl) {
-																	struct curl_slist* headers = nullptr;
-																	headers = curl_slist_append(headers, "Content-Type: application/json");
-
-																	curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-																	curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-																	curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-																	CURLcode res = curl_easy_perform(curl);
-																	if (res != CURLE_OK) {
-																		ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-																	}
-																	else {
-																		ErrorLogAdd("Discordへの通知が成功しました。\n");
-																	}
-
-																	curl_slist_free_all(headers);
-																	curl_easy_cleanup(curl);
-																}
 																ShowTaskbar();
 
 																return -1; //"}"がなかったら異常終了
@@ -2817,29 +1712,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 														else {
 															ErrorLogAdd("exeが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 															MessageBox(NULL, "ゲームの実行ファイルが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-															std::stringstream ss;
-															ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u5b9f\\u884c\\u30d5\\u30a1\\u30a4\\u30eb\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-															json_data = ss.str();
-															CURL* curl = curl_easy_init();
-															if (curl) {
-																struct curl_slist* headers = nullptr;
-																headers = curl_slist_append(headers, "Content-Type: application/json");
-
-																curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-																curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-																curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-																CURLcode res = curl_easy_perform(curl);
-																if (res != CURLE_OK) {
-																	ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-																}
-																else {
-																	ErrorLogAdd("Discordへの通知が成功しました。\n");
-																}
-
-																curl_slist_free_all(headers);
-																curl_easy_cleanup(curl);
-															}
 															ShowTaskbar();
 
 															return -1; //exeがなかったら異常終了
@@ -2848,29 +1720,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 													else {
 														ErrorLogAdd("dirが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 														MessageBox(NULL, "ゲームのディレクトリが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-														std::stringstream ss;
-														ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u30c7\\u30a3\\u30ec\\u30af\\u30c8\\u30ea\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-														json_data = ss.str();
-														CURL* curl = curl_easy_init();
-														if (curl) {
-															struct curl_slist* headers = nullptr;
-															headers = curl_slist_append(headers, "Content-Type: application/json");
-
-															curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-															curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-															curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-															CURLcode res = curl_easy_perform(curl);
-															if (res != CURLE_OK) {
-																ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-															}
-															else {
-																ErrorLogAdd("Discordへの通知が成功しました。\n");
-															}
-
-															curl_slist_free_all(headers);
-															curl_easy_cleanup(curl);
-														}
 														ShowTaskbar();
 
 														return -1; //dirがなかったら異常終了
@@ -2887,29 +1736,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 										else {
 											ErrorLogAdd("titleが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 											MessageBox(NULL, "ゲームタイトルが不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-											std::stringstream ss;
-											ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u30bf\\u30a4\\u30c8\\u30eb\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-											json_data = ss.str();
-											CURL* curl = curl_easy_init();
-											if (curl) {
-												struct curl_slist* headers = nullptr;
-												headers = curl_slist_append(headers, "Content-Type: application/json");
-
-												curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-												curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-												curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-												CURLcode res = curl_easy_perform(curl);
-												if (res != CURLE_OK) {
-													ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-												}
-												else {
-													ErrorLogAdd("Discordへの通知が成功しました。\n");
-												}
-
-												curl_slist_free_all(headers);
-												curl_easy_cleanup(curl);
-											}
 											ShowTaskbar();
 
 											return -1; //titleがなかったら異常終了
@@ -2918,29 +1744,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 									else {
 										ErrorLogAdd("typeが不明です。\n");//ログにゲーム情報読み込み失敗を記録
 										MessageBox(NULL, "ゲームの種類が不明です。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-										std::stringstream ss;
-										ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u7a2e\\u985e\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-										json_data = ss.str();
-										CURL* curl = curl_easy_init();
-										if (curl) {
-											struct curl_slist* headers = nullptr;
-											headers = curl_slist_append(headers, "Content-Type: application/json");
-
-											curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-											curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-											curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-											CURLcode res = curl_easy_perform(curl);
-											if (res != CURLE_OK) {
-												ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-											}
-											else {
-												ErrorLogAdd("Discordへの通知が成功しました。\n");
-											}
-
-											curl_slist_free_all(headers);
-											curl_easy_cleanup(curl);
-										}
 										ShowTaskbar();
 
 										return -1; //typeがなかったら異常終了
@@ -2955,29 +1758,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 						if (gamescan == 0) {
 							ErrorLogAdd("ゲーム情報が見つかりません。\n");//ログにゲーム情報読み込み失敗を記録
 							MessageBox(NULL, "ゲーム情報が見つかりません。GameInfo.txtの記述を確認してください。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-							std::stringstream ss;
-							ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u0047\\u0061\\u006d\\u0065\\u0049\\u006e\\u0066\\u006f\\u002e\\u0074\\u0078\\u0074\\u306e\\u30b2\\u30fc\\u30e0\\u60c5\\u5831\\u4e0d\\u660e\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-							json_data = ss.str();
-							CURL* curl = curl_easy_init();
-							if (curl) {
-								struct curl_slist* headers = nullptr;
-								headers = curl_slist_append(headers, "Content-Type: application/json");
-
-								curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-								curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-								curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-								CURLcode res = curl_easy_perform(curl);
-								if (res != CURLE_OK) {
-									ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-								}
-								else {
-									ErrorLogAdd("Discordへの通知が成功しました。\n");
-								}
-
-								curl_slist_free_all(headers);
-								curl_easy_cleanup(curl);
-							}
 							ShowTaskbar();
 
 							return -1; //ゲーム情報が見つからなかったら異常終了
@@ -3005,13 +1785,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 						ProcessMessage();
 					}
 					StopSoundMem(BGM); // BGM停止
-					BGMinfo = 0;
 					fps.FPS = 30; //FPSを30にする
 					STARTUPINFOA si = { sizeof(si) };
 					PROCESS_INFORMATION pi;
 					basedir = GetExeDir();
 					fulldir = basedir + "\\" + gamedir;
-					fullexepath = "cmd.exe /C start \"\" \"" + fulldir + "\\" + gameexe;
+					fullexepath = gamedir + "\\" + gameexe;
 					ErrorLogAdd(("ゲームディレクトリ:" + fulldir + "\n").c_str());//ログにゲームディレクトリを記録
 					ErrorLogAdd(("ゲーム実行ファイルパス:" + fullexepath + "\n").c_str());//ログにゲーム実行ファイルパスを記録
 					ErrorLogAdd("ゲームを起動します。\n");//ログにゲーム起動を記録
@@ -3047,29 +1826,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					else {
 						ErrorLogAdd("ゲームの起動に失敗しました。\n");//ログにゲーム起動失敗を記録
 						MessageBox(NULL, "ゲームの起動に失敗しました。", "エラー", MB_OK | MB_ICONERROR | MB_TOPMOST);
-						std::stringstream ss;
-						ss << "{\"content\": \"\\u0031\\u3064\\u306e\\u0048\\u0061\\u006b\\u0075\\u0065\\u006e\\u0073\\u0061\\u0069\\u004c\\u0061\\u0075\\u006e\\u0063\\u0068\\u0065\\u0072\\u3067\\u30b2\\u30fc\\u30e0\\u306e\\u8d77\\u52d5\\u5931\\u6557\\u30a8\\u30e9\\u30fc\\u304c\\u767a\\u751f\\u3057\\u307e\\u3057\\u305f\\u3002\"}";
-						json_data = ss.str();
-						CURL* curl = curl_easy_init();
-						if (curl) {
-							struct curl_slist* headers = nullptr;
-							headers = curl_slist_append(headers, "Content-Type: application/json");
-
-							curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-							curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-							curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-							CURLcode res = curl_easy_perform(curl);
-							if (res != CURLE_OK) {
-								ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-							}
-							else {
-								ErrorLogAdd("Discordへの通知が成功しました。\n");
-							}
-
-							curl_slist_free_all(headers);
-							curl_easy_cleanup(curl);
-						}
 						ShowTaskbar();
 
 						return -1; //ゲーム起動に失敗したら異常終了
@@ -3078,6 +1834,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 					SetForegroundWindow(hwnd);
 					SetActiveWindow(hwnd);
 					SetFocus(hwnd);
+					PlaySoundMem(BGM, DX_PLAYTYPE_BACK); // BGM再生
+					BGMCount = 0;
+					ChangeVolumeSoundMem(0, BGM); //BGMの音量を最小に
 					for (feding == 255; feding >= 0; --feding) {
 						BGMCount += 1;
 						ClearDrawScreen(); //裏画面をクリア
@@ -3086,6 +1845,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) /*おまじない♪*/ {
 						DrawBox(0, 0, 1920, 1080, GetColor(0, 0, 0), TRUE); //画面全体を黒で塗りつぶす
 						SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0); //ブレンドモードを元に戻す
 						ScreenFlip(); //描画した内容を画面に反映
+						ChangeVolumeSoundMem(255 - feding, BGM); //徐々にBGMの音量を上げる
 						ProcessMessage();
 					}
 				}
@@ -3137,28 +1897,6 @@ zikangire:
 				}
 				Sleep(200); // 連続判定防止
 			}
-		}
-		ss << "{\"content\": \"\\u003f\\u003f\\u003f\\u003f\\u003f\"}";
-		json_data = ss.str();
-		curl = curl_easy_init();
-		if (curl) {
-			struct curl_slist* headers = nullptr;
-			headers = curl_slist_append(headers, "Content-Type: application/json");
-
-			curl_easy_setopt(curl, CURLOPT_URL, webhook_url.c_str());
-			curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data.c_str());
-			curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-			CURLcode res = curl_easy_perform(curl);
-			if (res != CURLE_OK) {
-				ErrorLogAdd(("curl_easy_perform() failed: " + std::string(curl_easy_strerror(res)) + "\n").c_str());
-			}
-			else {
-				ErrorLogAdd("Discordへの通知が成功しました。\n");
-			}
-
-			curl_slist_free_all(headers);
-			curl_easy_cleanup(curl);
 		}
 		ErrorLogAdd("不明なエラーにより強制終了しました。\n");//ログに不明なエラーによる強制終了を記録
 		MessageBox(NULL, "不明なエラーにより強制終了しました。", "?????", MB_OK | MB_ICONERROR | MB_TOPMOST);
